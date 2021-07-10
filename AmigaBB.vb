@@ -7,7 +7,7 @@
     Public Property KS As String
     Public Property Bootable As Boolean
     Public Property Note As String
-    Public Property ColorName As String = "Black"
+    Public Property ColorName As String
 
 
     Public Sub New(ByVal BN As String, ByVal BootClass As String, ByVal BR As String, ByVal DN As Boolean, ByVal BKS As String, ByVal Boot As Boolean, ByVal BCRC As String)
@@ -42,5 +42,8 @@
             End If
         Next
         Return returncolor
+    End Function
+    Public Function BootClass()
+
     End Function
 End Class
