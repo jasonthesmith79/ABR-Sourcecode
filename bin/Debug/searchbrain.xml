@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?><SBBootblocks>
+  <Bootblock>
+    <Name>GrandBoot v1.1</Name>
+    <Recog>GrandBoot V1.1</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>Y</Data>
+	<Notes>---</Notes>
+  </Bootblock>	
+  <Bootblock>
+    <Name>68000 Disk System 1.01</Name>
+    <Recog>This Loader is VERSION V1.01</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>Y</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>68000 Disk System 1.02</Name>
+    <Recog>This Loader is VERSION V1.02</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>Y</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>Action Packs Bootloader</Name>
+    <Recog>&gt;&gt;&gt; ACTION PACKS &lt;&lt;&lt;</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>Y</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>AddTrk0 Paradox Bootblock</Name>
+    <Recog>ADDTRK0 BY BLACKHAWK/PARADOX!</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>Y</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>Amigaman Wizzcat Trashcan LoaderSystem</Name>
+    <Recog>Trashcan LoaderSystem By Felix Of Wizzcat.</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>Y</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>CHW A-Lock Disk Protection v2.01</Name>
+    <Recog>A-LOCK DISK PROTECTION V2.01</Recog>
+    <Class>p</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>CHW Amiga Low Density Disk Format</Name>
+    <Recog>AMIGA LOW DENSITY DISK FORMAT</Recog>
+    <Class>u</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>CHW Amiga-Lock Disk Protection v3.1</Name>
+    <Recog>AMIGA-LOCK DISK PROTECTION V3.1</Recog>
+    <Class>p</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>CHW Dugger Boot Loader</Name>
+    <Recog>DUGGER (C) 1988 BY LINEL SWITZERLAND</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>Y</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>Copylock Amiga 1988</Name>
+    <Recog>Protection (C) Copyright 1988 Rob Northen Computing. All Rights Reserved</Recog>
+    <Class>p</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>Copylock Amiga 1988-89</Name>
+    <Recog>Copylock Amiga (c)1988-89 Rob Northen Computing, U.K. All Rights Reserved</Recog>
+    <Class>p</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>Copylock Amiga 1988-90</Name>
+    <Recog>Copylock Amiga (c)1988-90 Rob Northen Computing, U.K. All Rights Reserved</Recog>
+    <Class>p</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>Copylock Amiga 1988-91</Name>
+    <Recog>Copylock Amiga (c)1988-91 Rob Northen Computing, U.K. All Rights Reserved</Recog>
+    <Class>p</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>Copylock Amiga 1988-92</Name>
+    <Recog>Copylock Amiga (c) 1988-92 Rob Northen Computing, U.K. All Rights Reserved</Recog>
+    <Class>p</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>Custom Bootstrap Loader</Name>
+    <Recog>This is a CUSTOM bootstrap</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>Y</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>DDC Bootloader</Name>
+    <Recog>Don't panic! It's just D.D.C.'s Bootloader</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>Y</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>Electronic Arts Bootloader</Name>
+    <Recog>1992 Electronic Arts Ltd</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>Y</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>Fast Eddie Virus</Name>
+    <Recog>FE91C</Recog>
+    <Class>v</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>Mailman Cracked</Name>
+    <Recog>THE MAILMAN PRESENT</Recog>
+    <Class>i</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>MFM Disk Loader</Name>
+    <Recog>MFM Disk Loader (C)1995 LeeCH / NerVe aXis</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>Y</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>Paradox Leeched Bootblock</Name>
+    <Recog>THIS FILE WAS LEECHED FROM!!!</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>Y</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>PowerBoot Install</Name>
+    <Recog>POWERBOOT Install</Recog>
+    <Class>u</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>Rattlehead 3 Loader</Name>
+    <Recog>RattleHead 3</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>Y</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>Rattlehead Loader</Name>
+    <Recog>RATTLEHEAD</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>Y</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>ReadyLock bootblock</Name>
+    <Recog>SCCTEMP=RAM:</Recog>
+    <Class>p</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+  <Bootblock>
+    <Name>Antiaction Cracked Boot (15-01-89)</Name>
+    <Recog>BOOT BY ANTIACTION 89-01-15</Recog>
+    <Class>u</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+    <Bootblock>
+    <Name>Boot Loading System v1.0 by Michael Schwendt</Name>
+    <Recog>Boot Loading System v1.0</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+    <Bootblock>
+    <Name>Kangaroo-DOS Autoboot System</Name>
+    <Recog>KANGAROO-DOS AUTOBOOT SYSTEM</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+    <Bootblock>
+    <Name>Sector Accessor v1.2 Loader</Name>
+    <Recog>SECTOR ACCESSOR v1.2</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+    <Bootblock>
+    <Name>Alcatraz Megademo Bootblock Loader</Name>
+    <Recog>ALCATRAZ MEGADEMO</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+    <Bootblock>
+    <Name>Cryptoburners Loader</Name>
+    <Recog>HERE IS WITNESS of CrYpToBuRnErS</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+    <Bootblock>
+    <Name>Cyclone Loader</Name>
+    <Recog>PRODUCTION BY FTB FROM CYCLONE</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+    <Bootblock>
+    <Name>DefJam and CCS Menu</Name>
+    <Recog>DEFJAM and CCS Proudly Present</Recog>
+    <Class>bm</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+    <Bootblock>
+    <Name>Dionysus Boot loader</Name>
+    <Recog>DIONYSUS</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+    <Bootblock>
+    <Name>Disk Format Formatted [1992]</Name>
+    <Recog>Disk Format (C)1992 Grants Computing</Recog>
+    <Class>s</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+    <Bootblock>
+    <Name>Maze Loader</Name>
+    <Recog>LOADER COPYRIGHT MAZE</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+    <Bootblock>
+    <Name>Carnivore Loader</Name>
+    <Recog>LOADER BY CARNIVORE</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+    <Bootblock>
+    <Name>Colin Boswell Loader</Name>
+    <Recog>Colin Boswell</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+    <Bootblock>
+    <Name>Overdrive Loader</Name>
+    <Recog>OVERDRIVE BOOT BLOCK</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+  </Bootblock>
+    <Bootblock>
+    <Name>Psionic Systems BootLoader [1993]</Name>
+    <Recog>(c) Psionic systems 1993</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+ </Bootblock>
+    <Bootblock>
+    <Name>Rob Northern Protected [1993]</Name>
+    <Recog>Copyright 1988 Rob Northen Computing</Recog>
+    <Class>p</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+ </Bootblock>
+    <Bootblock>
+    <Name>Subway Bootloader</Name>
+    <Recog>Subway Bootloader</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+ </Bootblock>
+    <Bootblock>
+    <Name>Sunlight Bootloader</Name>
+    <Recog>Sunlight Bootblock</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+ </Bootblock>
+    <Bootblock>
+    <Name>TIMEX Bootloader</Name>
+    <Recog>TIMEX Bootloader</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+ </Bootblock>
+    <Bootblock>
+    <Name>TrackMaster V2.0 Bootloader</Name>
+    <Recog>TrackMaster V2.0</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+ </Bootblock>
+    <Bootblock>
+    <Name>Trilogy Mega Game Pack Menu</Name>
+    <Recog>TRILOGY MEGA GAME PACK</Recog>
+    <Class>bm</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+ </Bootblock>
+    <Bootblock>
+    <Name>Tristar Red Sector Demo Boot</Name>
+    <Recog>RED SECTOR INCORPORATION</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+	<Notes>---</Notes>
+    </Bootblock>
+	<Bootblock>
+    <Name>Custom Bootstrap Loader</Name>
+    <Recog>This is a CUSTOM Bootstrap</Recog>
+    <Class>bl</Class>
+    <KS>1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>Y</Data>
+	<Notes>---</Notes>
+    </Bootblock>
+</SBBootblocks>

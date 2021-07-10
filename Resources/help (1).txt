@@ -1,0 +1,159 @@
+
+Amiga BootBlock Reader
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ABR is a program that reads and writes the bootblock area of
+Amiga disks. 
+
+
+With this program you can:
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+- View and identify bootblocks from ADF's and saved bootblock 
+  files
+- Batch scan your ADF files to find viruses / unknown bootblocks
+- Save bootblocks to your PC harddisk from ADF's for backup 
+  purposes / collection
+- Install a variety of standard AmigaOS bootblocks to ADF's to 
+  fix booting problems
+- Learn new bootblocks with my 7-byte recognition system
+  (sounds fancier than it actually is)
+- Crash your computer and wipe your hard drive 
+  (if your really lucky)
+
+
+Adding bootblocks to the brainfile - Instructions:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1/ After you have opened the disk with the bootblock you want 
+   to learn change to the 'Add / Redo Recognition' tab on the 
+   right side of the interface. 
+
+2/ Examine the bootblock you want to learn, look for any version 
+   numbers or text that would uniquely identify it.
+
+3/ Click somewhere in the bootblock display and press the
+   'Goto and Add location' button, the program will add  the 
+   byte position and value into the textbox in the 
+   'Add / Redo recognition' tab
+
+4/ Repeat the above step until the program displays 
+   'Max 7 Elements added' 
+
+5/ A Textbox around the top should now appear asking for a new 
+   bootblock name, enter it and choose a 'Classification' from 
+   the 'Add / Redo Recognition' tab
+
+6/ Click the 'Save Bootblock' button
+
+
+Redo recognition of a Known bootblock
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1/ Examine the bootblock, look for any version numbers or text 
+   that would uniquely identify it.
+
+2/ Click somewhere in the bootblock display and press the 
+   'Goto and Add location' button, the program will add the
+   byte position and value into the textbox in the 
+   'Add / Redo recognition' tab
+
+3/ Repeat the above step until the program displays 'Max 7 Elements added' 
+
+4/ A Textbox around the top should now appear asking for a new 
+   bootblock name, enter it and choose a 'Classification' from 
+   the 'Add / Redo Recognition' tab
+
+5/ Click the 'Save changes' button
+
+It could be rife with problems and I would appreciate any feedback,
+suggestions and coding help you could give me
+
+Version history
+
+1.0 Initial release
+
+1.10
+- Bootblock brainfile now recognises 396 bootblocks
+- Added hex display mode
+- Added ability to delete a brainfile entry
+- Added 'Relearn with previous recognition' in Add / Redo
+  Recognition tab
+  tab to make name/class changes easier
+- Added ability to backup and restore your brainfile
+- Merged OS bootblocks with program
+- Rewrote bootblock display code for better display
+- Fixed broken add bootblock system
+- Redesigned interface 
+- 'Clear' function when adding bootblock now fuctions correctly
+	
+1.20 
+- Redesigned Interface with tabs to allow more features
+  (I apologise to users with small screen modes with this) 
+- Bootblock brainfile now recognises 596 bootblocks / viruses
+- Added 'Batch scanner' to scan directories full of ADF files
+- Added 'Brain file Manager' tab to manage brainfile entries
+- Fixed bug that caused crash after loading 5+ bootblocks
+- Fixed hex viewer to display hex-based position values
+
+1.21
+- Fixed a bad bug in the add routine
+
+1.25
+- Bootblock brain now recognises 618 bootbootlocks
+- Tweaked interface again (sorry - im a bit of a perfectionist :))
+- Added brainfile entry classification changing in the brain file manager
+- A dialog box saying 'tets' appears when saving a new bootblock
+- various other things i dont remember
+- Created a program icon :)
+
+1.30
+- Bootblock brain now recognises:
+800 Bootblocks in total
+262 Viruses
+412 Utility Bootblocks
+32 Bootloaders
+41 Standard Bootblocks
+45 Scroller / Logo
+7 Games
+
+- More interface changes
+- Added Bootblock Compare to compare bootblock in main buffer with another from a file *
+- Added 'ADF's only' option to batch scanner to enable scanning of bootblock files
+- Added 'TEXT' view mode to show bootblocks with just the text elements (mostly) like BootX / Virus Expert
+- Added explanations to path tab
+- Added 3.0 ffs dircache to standard installs
+
+* Checksum is derived from checksum byte (4) in bootblock and converted to a hex value. 
+  - I dont know how to calculate checksum in vb 2005 - if you know how to then please tell me :)
+	(ADFLib sources and andreas efforts in C dont help) :)
+
+1.35
+849 Bootblocks recognised
+- Batch scan navigation controls added to main tab
+- Redid brainfile tab to display recognition values rather than just a meaningless line of numbers
+- Brainfile category filtering
+- Batch scan now has an option to only show Virus and unknown bootblocks
+- Added hex value display to bootblock recognition tab
+- Bootblock checksum display now is accurate (maybe) 
+  [Checked with a program called DoBB, the only program i could find that displays a boot checksum]
+  
+1.40
+965 Bootblocks now recognised
+- Added more bootblock classifications (Scroller, BootIntro, Logo and BootMenu) and changed 'Game' to 'Boot Game'
+- ZIP Support added through ICSharpLib ZIP library
+- Added 'Boot disk with WinUAE' (will boot loaded ADF / ZIP with WinUAE) [Path to WinUAE set in Settings / Paths]
+- Added 'Test run bootblock' (will copy loaded bootblock onto a blank image and boot it in WinUAE) [Useful to try viruses]
+- Added bootblocks screenshots to Brainfile Manager (490 currently)
+	- Option to add your own bootblock images to brainfile entries
+- Rearranged GUI a little 
+
+Contact me at the English Amiga Board:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+eab.abime.net and look for me / PM me
+
+or 
+
+jasonthesmith@hotmail.com
+
+Jason Smith
+
+jasonver2.0 (2007+)
+jjsmith (2002 - 2007) 
+	

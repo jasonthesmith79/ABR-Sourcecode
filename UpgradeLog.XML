@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="WindowsApplication1">
+</Property><Property Name="Solution File" Value="C:\temp\WindowsApplication1\WindowsApplication1.sln">
+</Property><Property Name="User Options File" Value="C:\temp\WindowsApplication1\WindowsApplication1.suo">
+</Property><Property Name="Date" Value="Tuesday, 4 May 2010">
+</Property><Property Name="Time" Value="18:28 PM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="WindowsApplication1.sln" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\WindowsApplication1.sln">
+</Event><Event ErrorLevel="0" Project="" Source="WindowsApplication1.suo" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\WindowsApplication1.suo">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="WindowsApplication1.vbproj" Description="Project file successfully backed up as C:\temp\WindowsApplication1\Backup\WindowsApplication1.vbproj">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="WindowsApplication1.vbproj.user" Description="Project user file successfully backed up as C:\temp\WindowsApplication1\Backup\WindowsApplication1.vbproj.user">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="ApplicationEvents.vb" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\ApplicationEvents.vb">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="BBReader.Designer.vb" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\BBReader.Designer.vb">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="BBReader.vb" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\BBReader.vb">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="My Project\AssemblyInfo.vb" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\My Project\AssemblyInfo.vb">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="My Project\Application.Designer.vb" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\My Project\Application.Designer.vb">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="My Project\Resources.Designer.vb" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\My Project\Resources.Designer.vb">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="My Project\Settings.Designer.vb" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\My Project\Settings.Designer.vb">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="Settings.vb" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\Settings.vb">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="app.config" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\app.config">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="My Project\Application.myapp" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\My Project\Application.myapp">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="My Project\Settings.settings" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\My Project\Settings.settings">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="WindowsApplication1_TemporaryKey.pfx" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\WindowsApplication1_TemporaryKey.pfx">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="bin\Debug\stdboot1x.bbk" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\bin\Debug\stdboot1x.bbk">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="bin\Debug\stdboot1xB.bbk" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\bin\Debug\stdboot1xB.bbk">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="bin\Debug\stdboot20ffs.bbk" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\bin\Debug\stdboot20ffs.bbk">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="bin\Debug\stdboot20ffsintl.bbk" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\bin\Debug\stdboot20ffsintl.bbk">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="bin\Debug\stdboot20ofs.bbk" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\bin\Debug\stdboot20ofs.bbk">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="bin\Debug\stdboot20ofsintl.bbk" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\bin\Debug\stdboot20ofsintl.bbk">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="bin\Debug\stdboot30ffsdir.bbk" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\bin\Debug\stdboot30ffsdir.bbk">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="bin\Debug\stdboot30ofsdir.bbk" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\bin\Debug\stdboot30ofsdir.bbk">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="bin\Debug\stdclear.bbk" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\bin\Debug\stdclear.bbk">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="bin\Debug\temp.adf" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\bin\Debug\temp.adf">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="bin\Debug\tempffs.adf" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\bin\Debug\tempffs.adf">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="My Project\app.manifest" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\My Project\app.manifest">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="Resources\help.txt" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\Resources\help.txt">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="Resources\colourbatch.png" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\Resources\colourbatch.png">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="Resources\colourbatchnew.png" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\Resources\colourbatchnew.png">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="Resources\colourbrainnew.png" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\Resources\colourbrainnew.png">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="Resources\Untitled.png" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\Resources\Untitled.png">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="Resources\colourbrainblack.png" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\Resources\colourbrainblack.png">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="Resources\colourbrain.png" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\Resources\colourbrain.png">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="Resources\check.png" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\Resources\check.png">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="Resources\colourizeON.png" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\Resources\colourizeON.png">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="Resources\colourizeOFF.png" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\Resources\colourizeOFF.png">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="Resources\ICSharpCode.SharpZipLib.dll" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\Resources\ICSharpCode.SharpZipLib.dll">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="Resources\temp.adf" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\Resources\temp.adf">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="ABR.ico" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\ABR.ico">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="BBReader.resx" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\BBReader.resx">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="My Project\Resources.resx" Description="File successfully backed up as C:\temp\WindowsApplication1\Backup\My Project\Resources.resx">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="WindowsApplication1.vbproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="WindowsApplication1" Source="WindowsApplication1.vbproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="WindowsApplication1.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="WindowsApplication1.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WindowsApplication1" Source="WindowsApplication1.vbproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

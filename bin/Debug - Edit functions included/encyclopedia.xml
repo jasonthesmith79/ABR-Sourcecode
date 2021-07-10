@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Bootprograms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Program>
+		<Name>Amiga Tool 2.0</Name>
+		<Note>Created in 1990 by M. Hoffman. Loads program into memory and checks bootblock. Installs Virus Protector and Standard</Note>
+		<ProgramID>at20</ProgramID>
+	</Program>
+	<Program>
+		<Name>Atomic Virus Detector</Name>
+		<Note>Created by Dietmar Noll</Note>
+		<ProgramID>avd</ProgramID>
+	</Program>
+	<Program>
+		<Name>Blizzard Protector 1.0</Name>
+		<Note>Created in 1988 by I.C.C.O</Note>
+		<ProgramID>blizp10</ProgramID>
+	</Program>
+	<Program>
+		<Name>BootBoy - Title-Generator v1.0</Name>
+		<Note>1987 The Amiga Artists</Note>
+		<ProgramID>bbtg10</ProgramID>
+	</Program>
+	<Program>
+		<Name>Boot Control 1.2</Name>
+		<Note>Created in 1987 by TIP of TCG</Note>
+		<ProgramID>bc12</ProgramID>
+	</Program>
+	<Program>
+		<Name>Boot Control 1.5</Name>
+		<Note>Created in 1988 by TIP of TCG</Note>
+		<ProgramID>bc15</ProgramID>
+	</Program>
+	<Program>
+		<Name>Boot Control 1.8</Name>
+		<Note>Created in 1989 by TIP of TCG</Note>
+		<ProgramID>bc18</ProgramID>
+	</Program>
+	<Program>
+		<Name>Boot Intro Construction Set v1.1</Name>
+		<Note>1992 Roger Fischlin</Note>
+		<ProgramID>bics11</ProgramID>
+	</Program>
+	<Program>
+		<Name>BootMaster v1.4</Name>
+		<Note>1990 Jim Blackler</Note>
+		<ProgramID>bm14</ProgramID>
+	</Program>
+	<Program>
+		<Name>Boot-Master v1.2</Name>
+		<Note>1991 G.R.C</Note>
+		<ProgramID>bmv12</ProgramID>
+	</Program>
+	<Program>
+		<Name>Boot-Writer </Name>
+		<Note>1987 HCS</Note>
+		<ProgramID>bwhcs</ProgramID>
+	</Program>
+	<Program>
+		<Name>Bootblock Champion 3.1</Name>
+		<Note>Created in 1989 by Roger Fischlin</Note>
+		<ProgramID>bbc31</ProgramID>
+	</Program>
+	<Program>
+		<Name>Bootblock Champion 3.21</Name>
+		<Note>Created in 10/1989 by Roger Fischlin</Note>
+		<ProgramID>bbc321</ProgramID>
+	</Program>
+	<Program>
+		<Name>BootFighter Version 1 Kongomans</Name>
+		<Note>Created by Kongoman</Note>
+		<ProgramID>bf1</ProgramID>
+	</Program>
+	<Program>
+		<Name>BootMaker 2.0</Name>
+		<Note>Created in 1990 by Cranium.</Note>
+		<ProgramID>bootm20</ProgramID>
+	</Program>
+	<Program>
+		<Name>BootShop 1.0</Name>
+		<Note>Note</Note>
+		<ProgramID>bs10</ProgramID>
+	</Program>
+	<Program>
+		<Name>BootTron Installer</Name>
+		<Note>1991 P.Hayter</Note>
+		<ProgramID>bt</ProgramID>
+	</Program>
+	<Program>
+		<Name>BootX 3.72</Name>
+		<Note>1991 Peter Stuer</Note>
+		<ProgramID>bx372</ProgramID>
+	</Program>
+	<Program>
+		<Name>BootX 3.80</Name>
+		<Note>Note</Note>
+		<ProgramID>bx380</ProgramID>
+	</Program>
+	<Program>
+		<Name>BootX 4.13</Name>
+		<Note>1991 Peter Stuer</Note>
+		<ProgramID>bx413</ProgramID>
+	</Program>
+	<Program>
+		<Name>BootX 4.30</Name>
+		<Note>Note</Note>
+		<ProgramID>bx430</ProgramID>
+	</Program>
+	<Program>
+		<Name>BootX 4.44</Name>
+		<Note>Note</Note>
+		<ProgramID>bx444</ProgramID>
+	</Program>
+	<Program>
+		<Name>BootX 5.23</Name>
+		<Note>1993 Peter Stuer</Note>
+		<ProgramID>bx523</ProgramID>
+	</Program>
+	<Program>
+		<Name>Byte Bandit Virus Killer</Name>
+		<Note>1988 by SCAIP</Note>
+		<ProgramID>bbvk</ProgramID>
+	</Program>
+	<Program>
+		<Name>FN - Bootwriter Boot Boy IV - Blue</Name>
+		<Note>Free Network</Note>
+		<ProgramID>fnbbbIV</ProgramID>
+	</Program>
+	<Program>
+		<Name>Grandboot v1.0 Installer</Name>
+		<Note>Happy Cracking Service</Note>
+		<ProgramID>gbv10</ProgramID>
+	</Program>
+	<Program>
+		<Name>Industrial Boot Injector v1.0</Name>
+		<Note>Captain Zilog</Note>
+		<ProgramID>ibi10</ProgramID>
+	</Program>
+	<Program>
+		<Name>Jarre Pal bootblock Installer 1.2</Name>
+		<Note>Note</Note>
+		<ProgramID>jpb12</ProgramID>
+	</Program>
+	<Program>
+		<Name>Jungle Command Bootleg 2.1</Name>
+		<Note>1989 by Boil</Note>
+		<ProgramID>jcb21</ProgramID>
+	</Program>
+	<Program>
+		<Name>Keeper 2.0 by The Strikers</Name>
+		<Note>Created by The Strikers.</Note>
+		<ProgramID>keep20</ProgramID>
+	</Program>
+	<Program>
+		<Name>Kefrens Power-Boot v2.0</Name>
+		<Note>1990 Metallion of Kefrens</Note>
+		<ProgramID>kpb20</ProgramID>
+	</Program>
+	<Program>
+		<Name>Kill da Virus III v1.22</Name>
+		<Note>by TUPperware Mike Hansell</Note>
+		<ProgramID>kdvIII122</ProgramID>
+	</Program>
+	<Program>
+		<Name>Kill da Virus III v1.49</Name>
+		<Note>by TUPperware Mike Hansell</Note>
+		<ProgramID>kdvIII149</ProgramID>
+	</Program>
+	<Program>
+		<Name>Kill da Virus V v2.07</Name>
+		<Note>by TUPperware Mike Hansell</Note>
+		<ProgramID>kdvV207</ProgramID>
+	</Program>
+	<Program>
+		<Name>Master Virus Killer 1.6</Name>
+		<Note>Xavier Leclercq</Note>
+		<ProgramID>mvk16</ProgramID>
+	</Program>
+	<Program>
+		<Name>Master Virus Killer 1.7</Name>
+		<Note>Xavier Leclercq</Note>
+		<ProgramID>mvk17</ProgramID>
+	</Program>
+	<Program>
+		<Name>Master Virus Killer 1.8</Name>
+		<Note>Xavier Leclercq</Note>
+		<ProgramID>mvk18</ProgramID>
+	</Program>
+	<Program>
+		<Name>Master Virus Killer 2.0</Name>
+		<Note>Xavier Leclercq</Note>
+		<ProgramID>mvk20</ProgramID>
+	</Program>
+	<Program>
+		<Name>Master Virus Killer 2.1</Name>
+		<Note>Xavier Leclercq</Note>
+		<ProgramID>mvk21</ProgramID>
+	</Program>
+	<Program>
+		<Name>Master Virus Killer 2.2</Name>
+		<Note>Xavier Leclercq</Note>
+		<ProgramID>mvk22</ProgramID>
+	</Program>
+	<Program>
+		<Name>Master Virus Killer 3.1378</Name>
+		<Note>1993 Xavier Leclercq</Note>
+		<ProgramID>mvk31378</ProgramID>
+	</Program>
+	<Program>
+		<Name>Metal Boot Tool v1.2</Name>
+		<Note>1989 Jorgen Kahre</Note>
+		<ProgramID>mbt12</ProgramID>
+	</Program>
+	<Program>
+		<Name>miniBootGirl!</Name>
+		<Note>German language</Note>
+		<ProgramID>mbg</ProgramID>
+	</Program>
+	<Program>
+		<Name>NOMAD Utility Boot 1.0 Installer</Name>
+		<Note>by NOMAD of Crystal.</Note>
+		<ProgramID>nub10</ProgramID>
+	</Program>
+	<Program>
+		<Name>NoVirus 1.49</Name>
+		<Note>Created in 1988 by Nic Wilson</Note>
+		<ProgramID>nv149</ProgramID>
+	</Program>
+	<Program>
+		<Name>NoVirus 1.62</Name>
+		<Note>Created in 1989 by Nic Wilson</Note>
+		<ProgramID>nv162</ProgramID>
+	</Program>
+	<Program>
+		<Name>NoVIrus 2.03</Name>
+		<Note>Creared in 1989 by Nic Wilson</Note>
+		<ProgramID>nv203</ProgramID>
+	</Program>
+	<Program>
+		<Name>NoVirus 3.00</Name>
+		<Note>Created in 1990 by Nic Wilson</Note>
+		<ProgramID>nv300</ProgramID>
+	</Program>
+	<Program>
+		<Name>NoVirus 3.52</Name>
+		<Note>Created in 1991 by Nic Wilson</Note>
+		<ProgramID>nv352</ProgramID>
+	</Program>
+	<Program>
+		<Name>Nuke 1.3a</Name>
+		<Note>1991 Shagratt of LSD</Note>
+		<ProgramID>nuke13a</ProgramID>
+	</Program>
+	<Program>
+		<Name>Nuke 1.5a</Name>
+		<Note>Note</Note>
+		<ProgramID>nuke15a</ProgramID>
+	</Program>
+	<Program>
+		<Name>Outlaw Virus Killer v1.42</Name>
+		<Note>1988 The Outlaw</Note>
+		<ProgramID>ovk142</ProgramID>
+	</Program>
+	<Program>
+		<Name>PSEUDO-OPS Virus Killer 1.6</Name>
+		<Note>Note</Note>
+		<ProgramID>povk16</ProgramID>
+	</Program>
+	<Program>
+		<Name>PSEUDO-OPS Virus Killer 1.7</Name>
+		<Note>Note</Note>
+		<ProgramID>povk17</ProgramID>
+	</Program>
+	<Program>
+		<Name>PSEUDO-OPS Virus Killer 2.0</Name>
+		<Note>Note</Note>
+		<ProgramID>povk20</ProgramID>
+	</Program>
+	<Program>
+		<Name>PSEUDO-OPS Virus Killer 2.1</Name>
+		<Note>Note</Note>
+		<ProgramID>povk21</ProgramID>
+	</Program>
+	<Program>
+		<Name>Random Access Virus Killer v1.2</Name>
+		<Note>Note</Note>
+		<ProgramID>ravk12</ProgramID>
+	</Program>
+	<Program>
+		<Name>Roger Fischlin Boot Intro - TNG  v1.1</Name>
+		<Note>Roger Fischlin in 7/1989</Note>
+		<ProgramID>rfbing11</ProgramID>
+	</Program>
+	<Program>
+		<Name>Scoopex Boot-Intro 1.3 Installer</Name>
+		<Note>Note</Note>
+		<ProgramID>sbi13</ProgramID>
+	</Program>
+	<Program>
+		<Name>Scoopex PAL-Booter v2.0</Name>
+		<Note>Note</Note>
+		<ProgramID>spb20</ProgramID>
+	</Program>
+	<Program>
+		<Name>Seek and Destroy v1.0</Name>
+		<Note>This is an example description of this program</Note>
+		<ProgramID>sad10</ProgramID>
+	</Program>
+	<Program>
+		<Name>Seek and Destroy v1.1</Name>
+		<Note>This is an example description of this program</Note>
+		<ProgramID>sad11</ProgramID>
+	</Program>
+	<Program>
+		<Name>Seek and Destroy v1.2</Name>
+		<Note>This is an example description of this program</Note>
+		<ProgramID>sad12</ProgramID>
+	</Program>
+	<Program>
+		<Name>Semtex Utility Boot 3.3 Installer</Name>
+		<Note>1990 Rasputin and Soul</Note>
+		<ProgramID>sub33</ProgramID>
+	</Program>
+	<Program>
+		<Name>SOD BootGenerator v1.5</Name>
+		<Note>Note</Note>
+		<ProgramID>sbg15</ProgramID>
+	</Program>
+	<Program>
+		<Name>System-Z Virus Protector</Name>
+		<Note>1988 System Z</Note>
+		<ProgramID>szunk</ProgramID>
+	</Program>
+	<Program>
+		<Name>System-Z Virus Protector V3.0</Name>
+		<Note>1988 System Z</Note>
+		<ProgramID>sz30</ProgramID>
+	</Program>
+	<Program>
+		<Name>System-Z Virus Protector V4.0</Name>
+		<Note>1988 DSP &amp; A.nonymous</Note>
+		<ProgramID>sz40</ProgramID>
+	</Program>
+	<Program>
+		<Name>System-Z Virus Protector V5.0</Name>
+		<Note>Note</Note>
+		<ProgramID>sz50</ProgramID>
+	</Program>
+	<Program>
+		<Name>Technoforce Bootem 1.0</Name>
+		<Note>Written by Warlock</Note>
+		<ProgramID>tfb10</ProgramID>
+	</Program>
+	<Program>
+		<Name>Tetragon Viruskiller</Name>
+		<Note>Created in Feb 1988 by Laser</Note>
+		<ProgramID>tetv</ProgramID>
+	</Program>
+	<Program>
+		<Name>The Final Virus Killer of Odin</Name>
+		<Note>1988 by S.C.S of O.D.I.N</Note>
+		<ProgramID>fvko</ProgramID>
+	</Program>
+	<Program>
+		<Name>The Jumping Bootwriter</Name>
+		<Note>Mega Force</Note>
+		<ProgramID>tjbw</ProgramID>
+	</Program>
+	<Program>
+		<Name>The Universal Viruschecker</Name>
+		<Note>Created by Level 42</Note>
+		<ProgramID>tuv</ProgramID>
+	</Program>
+	<Program>
+		<Name>The Virus-Protector v1.0</Name>
+		<Note>1987 Mega-Mighty SCA</Note>
+		<ProgramID>tvp10</ProgramID>
+	</Program>
+	<Program>
+		<Name>Tristar Killer 1.0</Name>
+		<Note>by Transformer 1988</Note>
+		<ProgramID>tk10</ProgramID>
+	</Program>
+	<Program>
+		<Name>Tristar Killer 1.1</Name>
+		<Note>by Transformer</Note>
+		<ProgramID>tk11</ProgramID>
+	</Program>
+	<Program>
+		<Name>Tristar Killer 1.3 Professional</Name>
+		<Note>Note</Note>
+		<ProgramID>tk13</ProgramID>
+	</Program>
+	<Program>
+		<Name>Tristar Killer 2.0 Professional</Name>
+		<Note>Note</Note>
+		<ProgramID>tk20</ProgramID>
+	</Program>
+	<Program>
+		<Name>Ultimate Virus Killer 1.22</Name>
+		<Note>Amiguy</Note>
+		<ProgramID>uvk122</ProgramID>
+	</Program>
+	<Program>
+		<Name>USI - Bootwriter Boot Boy III - Blue</Name>
+		<Note>Note</Note>
+		<ProgramID>ubbbIII</ProgramID>
+	</Program>
+	<Program>
+		<Name>V.I.P (Virus Infection Protection) 1.0</Name>
+		<Note>1988</Note>
+		<ProgramID>vip10</ProgramID>
+	</Program>
+	<Program>
+		<Name>vCat 1.1</Name>
+		<Note>Installs Devware Antivirus 1.3 Bootblock and 'AmigaDOS NoBoot Bootblock'</Note>
+		<ProgramID>vcat11</ProgramID>
+	</Program>
+	<Program>
+		<Name>ViewBoot v1.01</Name>
+		<Note>by Late Night Hacks</Note>
+		<ProgramID>vb101</ProgramID>
+	</Program>
+	<Program>
+		<Name>Virus Boot Detector v2.6</Name>
+		<Note>1994 Cheveau Frederic</Note>
+		<ProgramID>vbd26</ProgramID>
+	</Program>
+	<Program>
+		<Name>Virus-Control 1.3</Name>
+		<Note>Note</Note>
+		<ProgramID>vc13</ProgramID>
+	</Program>
+	<Program>
+		<Name>Virus Control 3.0</Name>
+		<Note>Note</Note>
+		<ProgramID>vc30</ProgramID>
+	</Program>
+	<Program>
+		<Name>Virus Control 4.0</Name>
+		<Note>Note</Note>
+		<ProgramID>vc40</ProgramID>
+	</Program>
+	<Program>
+		<Name>Virus Murderer 1.0</Name>
+		<Note>1991 Pussy Sweden</Note>
+		<ProgramID>vmd10</ProgramID>
+	</Program>
+	<Program>
+		<Name>Virus Scope v1.01</Name>
+		<Note>1990 MAXON Computer</Note>
+		<ProgramID>vs101</ProgramID>
+	</Program>
+	<Program>
+		<Name>Virus Scope v1.5</Name>
+		<Note>Note</Note>
+		<ProgramID>vs15</ProgramID>
+	</Program>
+	<Program>
+		<Name>Virus Slayer 1.0</Name>
+		<Note>The Band</Note>
+		<ProgramID>vs10</ProgramID>
+	</Program>
+	<Program>
+		<Name>Virus Terminator 1.0</Name>
+		<Note>Sigma of ACID 1988</Note>
+		<ProgramID>vt10</ProgramID>
+	</Program>
+	<Program>
+		<Name>Virus Workshop 1.0</Name>
+		<Note>1991 The Special Brothers Productions</Note>
+		<ProgramID>tvw10</ProgramID>
+	</Program>
+	<Program>
+		<Name>Virus Zapper 3.1</Name>
+		<Note>by The Supply Team</Note>
+		<ProgramID>vz31</ProgramID>
+	</Program>
+	<Program>
+		<Name>Virus-Control 1.0E</Name>
+		<Note>1988 Christian A.Weber</Note>
+		<ProgramID>vc10e</ProgramID>
+	</Program>
+	<Program>
+		<Name>VirusExecutor 2.34</Name>
+		<Note>Jan Erik Olausen</Note>
+		<ProgramID>ve324</ProgramID>
+	</Program>
+	<Program>
+		<Name>VirusExpert v1.4</Name>
+		<Note>1989 Paul van der Valk</Note>
+		<ProgramID>ve14</ProgramID>
+	</Program>
+	<Program>
+		<Name>VirusExpert v1.6</Name>
+		<Note>Paul van der Valk</Note>
+		<ProgramID>ve16</ProgramID>
+	</Program>
+	<Program>
+		<Name>VirusExpert v2.01</Name>
+		<Note>Paul van der Valk</Note>
+		<ProgramID>ve201</ProgramID>
+	</Program>
+	<Program>
+		<Name>Virusmaker v1.0 (Tristar?)</Name>
+		<Note>Unknown</Note>
+		<ProgramID>vm10</ProgramID>
+	</Program>
+	<Program>
+		<Name>VirusSlayer II V1.0b</Name>
+		<Note>Martin Zemblowski</Note>
+		<ProgramID>vsII10b</ProgramID>
+	</Program>
+	<Program>
+		<Name>VirusWorkshop 2.0a</Name>
+		<Note>Note</Note>
+		<ProgramID>vw20a</ProgramID>
+	</Program>
+	<Program>
+		<Name>VirusWorkshop 2.1+</Name>
+		<Note>Note</Note>
+		<ProgramID>vw21+</ProgramID>
+	</Program>
+	<Program>
+		<Name>VirusWorkshop 2.4</Name>
+		<Note>Note</Note>
+		<ProgramID>vw24</ProgramID>
+	</Program>
+	<Program>
+		<Name>VirusWorkshop 6.9</Name>
+		<Note>1998 Markus Schmall</Note>
+		<ProgramID>vw69</ProgramID>
+	</Program>
+	<Program>
+		<Name>VT-Schutz v1.67</Name>
+		<Note>Note</Note>
+		<ProgramID>vt167</ProgramID>
+	</Program>
+	<Program>
+		<Name>VT-Schutz v3.17</Name>
+		<Note>2000 Heiner Schneegold</Note>
+		<ProgramID>vt317</ProgramID>
+	</Program>
+	<Program>
+		<Name>X-Copy V10</Name>
+		<Note>1993 Cachet</Note>
+		<ProgramID>xcv10</ProgramID>
+	</Program>
+	<Program>
+		<Name>ZeroVirus II v2.0</Name>
+		<Note>1989 by Johnathan Potter</Note>
+		<ProgramID>zvII20</ProgramID>
+	</Program>
+	<Program>
+		<Name>ZeroVirus II v2.01</Name>
+		<Note>1989 by Johnathan Potter</Note>
+		<ProgramID>zvII201</ProgramID>
+	</Program>
+	<Program>
+		<Name>ZeroVirus II v2.27</Name>
+		<Note>1990 by Johnathan Potter</Note>
+		<ProgramID>zvII227</ProgramID>
+	</Program>
+	<Program>
+		<Name>ZeroVirus III v1.10</Name>
+		<Note>1990 by Johnathan Potter</Note>
+		<ProgramID>zvIII110</ProgramID>
+	</Program>
+	<Program>
+		<Name>ZeroVirus III v1.15</Name>
+		<Note>1990 by Johnathan Potter</Note>
+		<ProgramID>zvIII115</ProgramID>
+	</Program>
+	<Program>
+		<Name>ZeroVirus III v1.18</Name>
+		<Note>1990 by Johnathan Potter</Note>
+		<ProgramID>zvIII118</ProgramID>
+	</Program>
+	<Program>
+		<Name>ZeroVirus v1.3</Name>
+		<Note>1989 by Johnathan Potter</Note>
+		<ProgramID>zv13</ProgramID>
+	</Program>
+</Bootprograms>

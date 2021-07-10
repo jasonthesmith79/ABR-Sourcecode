@@ -1,0 +1,50 @@
+<Bootblock>
+    <Name>Corona Covid-19 Virus</Name>
+    <Recog>471,111,211,233,100,0,244,209,328,0,390,12,439,68</Recog>
+    <Class>v</Class>
+    <Notes />
+    <KS>KS1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+    <CRC>---</CRC>
+  </Bootblock>
+  <Bootblock>
+    <Name>Digital Force Virus</Name>
+    <Recog>88,116,240,102,465,174,392,65,187,252,633,47,650,115</Recog>
+    <Class>v</Class>
+    <Notes />
+    <KS>KS1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+    <CRC>---</CRC>
+  </Bootblock>
+  <Bootblock>
+    <Name>Unknown Virus 3</Name>
+    <Recog>23,231,27,58,30,50,34,65,36,0,39,144,40,68</Recog>
+    <Class>v</Class>
+    <Notes />
+    <KS>KS1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+    <CRC>---</CRC>
+  </Bootblock>
+  <Bootblock>
+    <Name>Nightmare Loader Virus</Name>
+    <Recog>132,81,707,77,727,82,98,98,36,255,313,0,491,128</Recog>
+    <Class>v</Class>
+    <Notes />
+    <KS>KS1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+    <CRC>---</CRC>
+  </Bootblock>
+  <Bootblock>
+    <Name>Unknown Virus 4</Name>
+    <Recog>517,56,540,81,229,88,135,250,107,250,771,223,878,240</Recog>
+    <Class>v</Class>
+    <Notes />
+    <KS>KS1.3</KS>
+    <Bootable>Y</Bootable>
+    <Data>N</Data>
+    <CRC>---</CRC>
+  </Bootblock>

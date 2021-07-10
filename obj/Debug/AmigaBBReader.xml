@@ -1,0 +1,217 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+AmigaBBReader
+</name>
+</assembly>
+<members>
+<member name="T:AmigaBBReader.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources._On">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.BeFunky_Collage">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.Binary">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.Binary_very_small">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.Binary1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.blank">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.bootpic">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.disk">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.disksmall">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.Diskstraight">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.diskverysmall">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.donate">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.drawer">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.drawer_unk">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.drawer_unk1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.file1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.help">
+<summary>
+  Looks up a localized string similar to 
+Amiga BootBlock Reader
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ABR is a program that reads and writes the bootblock area of
+Amiga disks. 
+
+
+With this program you can:
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+- View and identify bootblocks from ADF&apos;s and saved bootblock 
+  files
+- Batch scan your ADF files to find viruses / unknown bootblocks
+- Save bootblocks to your PC harddisk from ADF&apos;s for backup 
+  purposes / collection
+- Install a variety of standard AmigaOS bootblocks to ADF&apos;s to 
+  fix booting problems
+-  [rest of string was truncated]&quot;;.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.Lock">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.Nopic">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.Off">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.stdboot1x">
+<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.stdboot1xB">
+<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.stdboot20ffs">
+<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.stdboot20ffsintl">
+<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.stdboot20ofs">
+<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.stdboot20ofsintl">
+<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.stdboot30ffsdir">
+<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.stdboot30ofsdir">
+<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.stdclear">
+<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.temp">
+<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.tempffs">
+<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.texture">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.tick">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.XEN">
+<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member>
+<member name="P:AmigaBBReader.My.Resources.Resources.Zoom">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+</members>
+</doc>
