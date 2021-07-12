@@ -179,24 +179,6 @@
     <Compile Include="StringSearch.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditSearchBBEntry.Designer.vb">
-      <DependentUpon>EditSearchBBEntry.vb</DependentUpon>
-    </Compile>
-    <Compile Include="EditSearchBBEntry.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DialogUnknown.Designer.vb">
-      <DependentUpon>DialogUnknown.vb</DependentUpon>
-    </Compile>
-    <Compile Include="DialogUnknown.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditBrainfileEntry.Designer.vb">
-      <DependentUpon>EditBrainfileEntry.vb</DependentUpon>
-    </Compile>
-    <Compile Include="EditBrainfileEntry.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -229,15 +211,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StringSearch.resx">
       <DependentUpon>StringSearch.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditSearchBBEntry.resx">
-      <DependentUpon>EditSearchBBEntry.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DialogUnknown.resx">
-      <DependentUpon>DialogUnknown.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditBrainfileEntry.resx">
-      <DependentUpon>EditBrainfileEntry.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

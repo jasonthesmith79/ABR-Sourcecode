@@ -42,12 +42,12 @@
         Next
         Return returncolor
     End Function
-    Public Function BootClass() As String
+    Public Function BootClass(ByVal abb() As String, ByVal catn() As String) As String
         Dim x As Integer
-        Dim retclass As String
-        For x = 0 To Main.CatList.Length - 1
-            If BClass = Main.CatList(x).Abb Then
-                retclass = Main.CatList(x).Name
+        Dim retclass As String = ""
+        For x = 0 To abb.Length - 1
+            If BClass = abb(x) Then
+                retclass = catn(x)
                 Return retclass
             Else
                 retclass = ""

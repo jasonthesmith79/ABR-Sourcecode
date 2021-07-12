@@ -12,9 +12,9 @@ Public Class Main
     ' Global variables used in more than one place in the program
     Public objentry As ZipEntry
     Public bootpos As Integer = 0
-    Public FoundbySB As Boolean = False
+    Public FoundbySearch As Boolean = False
     Public zipperfile As String = ""
-    Public StrOpen As String
+    Public OpenBootFile As String
     Public ASMLoc As Integer
     Public filtered As Boolean
     Public ASMFile() As String
@@ -66,7 +66,7 @@ Public Class Main
     Public catselect As Boolean = False
     Public EditNode As Integer
     Public BNum As Integer
-    Public ASCIIInt(1024) As Integer
+    Public BootASCIIIntegers(1024) As Integer
     Dim DefaultH As Integer
     Dim DefaultW As Integer
     Dim Editbuffer() As Byte
@@ -82,7 +82,7 @@ Public Class Main
     Dim Tempdrawer As String
     Dim Batchlist() As String
     Public Foundno As Integer
-    Public IntDisp As Integer = 2
+    Public DisplayType As Integer = 2
     Public Files(20000) As String
     Public Bootno As Integer
     Public BootLen As Integer
@@ -128,42 +128,48 @@ Public Class Main
     Public BBDatabase(2) As AmigaBB
     Public SearchDatabase(2) As AmigaBB
     Public BBE(2) As ABREncyclopedia
+    Public catnames() As String
+    Public abbnames() As String
+
+    'Display types
+    Public Scanner As Integer = 1
+    Public DisplayBoot As Integer = 2
 
     Private Sub ofdBootOpen_FileOk(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles ofdBootOpen.FileOk
         tabBrain.SelectTab(0)
         Isadf = False
         'Setting default open drawer to ADF drawer set on paths tab
-        StrOpen = ofdBootOpen.FileName
+        OpenBootFile = ofdBootOpen.FileName
 
-        If File.Exists(StrOpen) = True Then
-            Dim FileProps As FileInfo = New FileInfo(StrOpen)
+        If File.Exists(OpenBootFile) = True Then
+            Dim FileProps As FileInfo = New FileInfo(OpenBootFile)
             'Checking size and extension of the file opened and enabling and disabling appropriate buttons and passing on to 'disptype' sub
             If FileProps.Length = 1024 Then
                 TestBootblockInBufferToolStripMenuItem.Enabled = True
             End If
-            If InStr(StrOpen.ToUpper, ".ADF") Then
+            If InStr(OpenBootFile.ToUpper, ".ADF") Then
                 BootDiskToolStripMenuItem.Enabled = True
                 SaveADFFileToolStripMenuItem.Enabled = True
                 Isadf = True
-                Call Disptype(IntDisp, StrOpen)
+                Call Disptype(DisplayType, OpenBootFile)
                 TestBootblockInBufferToolStripMenuItem.Enabled = True
             Else
-                Disptype(IntDisp, StrOpen)
+                Disptype(DisplayType, OpenBootFile)
             End If
             If FileProps.Length > 2000000 Then
                 MessageBox.Show("File is too large to be an Amiga disk")
             End If
         End If
     End Sub
-    Public Sub UnzipToFile(ByVal strFileName, ByVal outputdrawer)
+    Public Sub UnzipToFile(ByVal OpenFileName, ByVal outputdrawer)
         Dim strmZipInputStream As ZipInputStream
-        Zipname = strFileName
+        Zipname = OpenFileName
         '' Attempt to open the Zip file
         Try
-            strmZipInputStream = New ZipInputStream(File.OpenRead(strFileName))
+            strmZipInputStream = New ZipInputStream(File.OpenRead(OpenFileName))
         Catch
             AddtoLog("*Cant open file")
-            If IntDisp = 1 Then
+            If DisplayType = Scanner Then
                 Bootname = "Cant open file"
             Else
                 txtBootName.Text = "Invalid file"
@@ -178,7 +184,7 @@ Public Class Main
             If strmZipInputStream.CanRead = True Then objentry = strmZipInputStream.GetNextEntry
         Catch
             AddtoLog("*Cant open ZIP File")
-            If IntDisp = 1 Then
+            If DisplayType = Scanner Then
                 Bootname = "Invalid ZIP File"
             Else
                 txtBootName.Text = "Invalid ZIP file"
@@ -188,10 +194,10 @@ Public Class Main
         Do While IsNothing(objentry) = False
             If InStr(objentry.Name.ToUpper, ".ADF") Then
                 Try
-                    zipper.ExtractZip(strFileName, outputdrawer, "")
+                    zipper.ExtractZip(OpenFileName, outputdrawer, "")
                 Catch
                     AddtoLog("*Invalid ZIP File")
-                    If IntDisp = 1 Then
+                    If DisplayType = Scanner Then
                         Bootname = "Invalid ZIP File"
                     Else
                         txtBootName.Text = "Invalid ZIP File"
@@ -210,7 +216,7 @@ Public Class Main
         strmZipInputStream.Close()
         If zfile = "" Then
             AddtoLog("*No ADFs found in zipfile")
-            If IntDisp = 1 Then
+            If DisplayType = Scanner Then
                 Bootname = "No .ADF files in zipfile"
                 Bootclass = "BAD"
             Else
@@ -219,7 +225,7 @@ Public Class Main
             End If
             Exit Sub
         End If
-        StrOpen = Tempdrawer & "\" & zfile
+        OpenBootFile = Tempdrawer & "\" & zfile
         bootpos = txtReadOffset.Text
         If Bootclass = "BAD" Then
             Exit Sub
@@ -249,10 +255,10 @@ Public Class Main
         Next
         std_err.Close()
     End Sub
-    Public Function UnDMStoFile(ByVal strFileName As String, ByVal Destdrawer As String) As String
+    Public Function UnDMStoFile(ByVal OpenFileName As String, ByVal Destdrawer As String) As String
         Dim up As String
         isdms = True
-        dmsfile = strFileName
+        dmsfile = OpenFileName
         Dim p As New Process
         Dim runner As New ProcessStartInfo
         runner.FileName = My.Settings.XDMS
@@ -260,7 +266,7 @@ Public Class Main
         runner.RedirectStandardOutput = True
         runner.RedirectStandardError = True
         runner.CreateNoWindow = True
-        runner.Arguments = "-d """ & Destdrawer & """ u """ & strFileName & ""
+        runner.Arguments = "-d """ & Destdrawer & """ u """ & OpenFileName & ""
         If runner.FileName = "" Then
             MessageBox.Show("Please Set XDMS path To use this feature")
             Exit Function
@@ -269,56 +275,56 @@ Public Class Main
         p.StartInfo = runner
         p.Start()
         p.WaitForExit()
-        Dim newfile As String = Destdrawer & "\" & Path.GetFileName(strFileName).ToLower.Replace(".dms", ".adf")
-        StrOpen = newfile
+        Dim newfile As String = Destdrawer & "\" & Path.GetFileName(OpenFileName).ToLower.Replace(".dms", ".adf")
+        OpenBootFile = newfile
         Iszip = True
         Dim std_err As StreamReader = p.StandardError
         up = std_err.ReadToEnd
-        Dim FileProps As FileInfo = New FileInfo(StrOpen)
+        Dim FileProps As FileInfo = New FileInfo(OpenBootFile)
         Dim err As Boolean = False
         If up.Contains("Is Not a") Then
-            AddtoLog("*Error unpacking - invalid file " & strFileName)
+            AddtoLog("*Error unpacking - invalid file " & OpenFileName)
             Bootname = "**Invalid DMS File"
             Bootclass = "BAD"
             err = True
         ElseIf up.Contains("encrypted") Then
-            AddtoLog("*Error unpacking " & strFileName)
+            AddtoLog("*Error unpacking " & OpenFileName)
             Bootname = "**Error unpacking DMS File - file is encrypted"
             Bootclass = "BAD"
             err = True
         ElseIf up.Contains("Error In file") Then
-            AddtoLog("*Error unpacking " & strFileName)
+            AddtoLog("*Error unpacking " & OpenFileName)
             Bootname = "**Error unpacking DMS File - Data CRC Error"
             Bootclass = "BAD"
             err = True
         ElseIf up.Contains("checksum Error after unpacking") Then
-            AddtoLog("*Checksum Error unpacking " & strFileName)
+            AddtoLog("*Checksum Error unpacking " & OpenFileName)
             Bootname = "**Error unpacking DMS File - File seems ok, checksum Error after unpacking"
             Bootclass = "BAD"
             err = True
         ElseIf up.Contains("Error In file") Then
-            AddtoLog("*Error unpacking " & strFileName)
+            AddtoLog("*Error unpacking " & OpenFileName)
             Bootname = "**Error unpacking DMS File - Data CRC Error"
             Bootclass = "BAD"
             err = True
         ElseIf up.ToLower.Contains("crc error") Then
-            AddtoLog("*Error unpacking " & strFileName)
+            AddtoLog("*Error unpacking " & OpenFileName)
             Bootname = "**Error unpacking DMS File - CRC Error"
             Bootclass = "BAD"
             err = True
         ElseIf up.Contains("is not a DMS") Then
-            AddtoLog("*Error unpacking " & strFileName)
+            AddtoLog("*Error unpacking " & OpenFileName)
             Bootname = "**Error unpacking DMS File - Invalid DMS File"
             Bootclass = "BAD"
             err = True
         End If
         If err = False Then
             If File.Exists(newfile) = False Then
-                MessageBox.Show(strFileName & ": Unhandled DMS error!!" & up)
+                MessageBox.Show(OpenFileName & ": Unhandled DMS error!!" & up)
                 Exit Function
             End If
             If FileProps.Length = 0 Then
-                AddtoLog("*Error unpacking " & strFileName)
+                AddtoLog("*Error unpacking " & OpenFileName)
                 AddtoLog("File reported unpacking correctly however unpacked ADF Is 0 bytes")
                 Bootname = "**Error unpacking DMS File"
                 Bootclass = "BAD"
@@ -335,11 +341,11 @@ Public Class Main
         std_err.Close()
         Return up
     End Function
-    Public Sub Disptype(ByVal intdisp As Integer, ByVal strFileName As String)
+    Public Sub Disptype(ByVal DisplayType As Integer, ByVal OpenFileName As String)
         Dim a As Integer = 0
         Dim zipcont(50) As String
         IsKnown = False
-        If strFileName = Nothing Then Exit Sub
+        If OpenFileName = Nothing Then Exit Sub
         If picPreview.Image IsNot Nothing Then picPreview.Image = Nothing
         '' File Name and Type checking 
         ''
@@ -348,7 +354,7 @@ Public Class Main
             Bootname = "Scanning skipped - open to scan file"
             Exit Sub
         End If
-        If chkErrorOnly.Checked = False Then AddtoLog("Scanning file " & strFileName)
+        If chkErrorOnly.Checked = False Then AddtoLog("Scanning file " & OpenFileName)
         IsKnown = False
         isdms = False
         Iszip = False
@@ -356,15 +362,15 @@ Public Class Main
         Bootclass = ""
         isadz = False
         Dim ext As String
-        ext = Path.GetExtension(strFileName).ToUpper
-        StrOpen = strFileName
-        If StrOpen = "" Then Exit Sub
+        ext = Path.GetExtension(OpenFileName).ToUpper
+        OpenBootFile = OpenFileName
+        If OpenBootFile = "" Then Exit Sub
         Dim i As Integer = 0
         Dim tryadzaszip As Boolean = False
         'Dim objEntry As ZipArchiveEntry 'OLD .NET 4.5 ZIP CODE
         Dim chars As Char()  'Char array to store bootblock to print to boot display textbox
         chars = New Char(1024) {}
-        Dim FileProps As FileInfo = New FileInfo(StrOpen)
+        Dim FileProps As FileInfo = New FileInfo(OpenBootFile)
         'Invalid File types DMS and LHA etc
         If ext = ".LHA" Then
             Bootname = "LHA Archive file - not supported"
@@ -404,7 +410,7 @@ Public Class Main
             isdms = True
             If chkDMS.Checked = True Then
                 If File.Exists(StartPath & "\xdms.exe") Then
-                    UnDMStoFile(strFileName, Tempdrawer)
+                    UnDMStoFile(OpenFileName, Tempdrawer)
                 End If
             Else
                 Bootname = "'Scan .DMS Files' off - DMS not scanned"
@@ -416,23 +422,23 @@ Public Class Main
             isadz = True
             Dim fslength As Integer
             Isadf = True
-            adzfile = strFileName
+            adzfile = OpenFileName
             Dim dataBuffer As Byte() = New Byte(4095) {}
             Try
-                Using fs As Stream = New FileStream(strFileName, FileMode.Open, FileAccess.Read)
+                Using fs As Stream = New FileStream(OpenFileName, FileMode.Open, FileAccess.Read)
                     Using gzipstream As New GZipInputStream(fs)
-                        Dim fnOut As String = Path.Combine(Tempdrawer, Path.GetFileNameWithoutExtension(strFileName) & ".adf")
+                        Dim fnOut As String = Path.Combine(Tempdrawer, Path.GetFileNameWithoutExtension(OpenFileName) & ".adf")
                         Using fsOut As FileStream = File.Create(fnOut)
                             StreamUtils.Copy(gzipstream, fsOut, dataBuffer)
                             fslength = fsOut.Length
                         End Using
-                        StrOpen = fnOut
+                        OpenBootFile = fnOut
 
                     End Using
                 End Using
             Catch
-                AddtoLog("*Error unpacking ADZ File " & strFileName)
-                If intdisp = 1 Then
+                AddtoLog("*Error unpacking ADZ File " & OpenFileName)
+                If DisplayType = Scanner Then
                     Bootname = "Invalid ADZ File"
                 Else
                     txtBootName.Text = "Invalid ADZ File"
@@ -449,30 +455,30 @@ Public Class Main
         End If
         zfile = ""
         If ext = ".ZIP" OrElse tryadzaszip = True Then
-            UnzipToFile(strFileName, Tempdrawer)
+            UnzipToFile(OpenFileName, Tempdrawer)
         Else
             Iszip = False
         End If
         bootpos = txtReadOffset.Text
         If Bootclass = "BAD" Then Exit Sub
-        If File.Exists(StrOpen) Or File.Exists(ofdReader.FileName) Then
+        If File.Exists(OpenBootFile) Or File.Exists(ofdReader.FileName) Then
             Try
-                Using fs As New FileStream(StrOpen, FileMode.Open, FileAccess.Read)
+                Using fs As New FileStream(OpenBootFile, FileMode.Open, FileAccess.Read)
                     Dim dinput As New BinaryReader(fs)
                     If bootpos > fs.Length Then
                         MessageBox.Show("End of file reached")
                         Exit Sub
                     End If
 
-                    If InStr(StrOpen.ToUpper, ".ADF") Then
+                    If InStr(OpenBootFile.ToUpper, ".ADF") Then
                         Isadf = True
-                        If intdisp > 1 Then
+                        If DisplayType > 1 Then
                             Adfbuffer = dinput.ReadBytes(fs.Length - 1)
                             BootDiskToolStripMenuItem.Enabled = True
                             SaveADFFileToolStripMenuItem.Enabled = True
                         End If
                     End If
-                        If bootpos > 0 Then
+                    If bootpos > 0 Then
                         fs.Position = bootpos
                     Else
                         fs.Position = 0
@@ -490,7 +496,7 @@ Public Class Main
                     End If
                 End Using
             Catch
-                If intdisp = 1 Then
+                If DisplayType = Scanner Then
                     Bootname = "Cant Open file!!!"
                 Else
                     txtBootName.Text = "Cant Open File!!!!"
@@ -498,7 +504,7 @@ Public Class Main
             End Try
         End If
         If Buffer.Length = 0 Then Exit Sub 'check for empty file
-        If intdisp > 1 Then
+        If DisplayType > 1 Then
             txtLen.Text = chars.Length
             Select Case Buffer(3).ToString 'Checking for boot type value at byte 3
                 Case 0
@@ -506,31 +512,31 @@ Public Class Main
                 Case 1
                     txtFS.Text = "FastFileSystem"
                 Case 2
-                     txtFS.Text =  "OFS-International"
+                    txtFS.Text = "OFS-International"
                 Case 3
                     txtFS.Text = "FFS International"
                 Case 4
-                     txtFS.Text =  "OFS DC Int"
+                    txtFS.Text = "OFS DC Int"
                 Case 5
                     txtFS.Text = "FFS DC Int"
                 Case Else
-                     txtFS.Text = "Unknown FS Flag"
+                    txtFS.Text = "Unknown FS Flag"
             End Select
         End If
-        If intdisp = 7 Then
+        If DisplayType = 7 Then
             bootpos = Val(txtReadOffset.Text)
-            intdisp = 2
+            DisplayType = DisplayBoot
         End If
         Try
             If Iszip = True Or isdms = True Then
-                File.Delete(StrOpen)
+                File.Delete(OpenBootFile)
             End If
         Catch
         End Try
         chars = ReadCP.GetChars(Buffer)
         Rchars = chars
         BootLen = chars.Length - 1
-        If intdisp > 1 Then
+        If DisplayType > 1 Then
             If Isadf = True Then
                 BootDiskToolStripMenuItem.Enabled = True
                 SaveADFFileToolStripMenuItem.Enabled = True
@@ -547,14 +553,14 @@ Public Class Main
         Curboot = Buffer
         BootLen = chars.Length - 1
         'Display type for batch scanning - do not display
-        If intdisp = 1 Then
+        If DisplayType = Scanner Then
             Dim x As Integer
             For x = 0 To BootLen
-                ASCIIInt(x) = Buffer(x)
+                BootASCIIIntegers(x) = Buffer(x)
             Next
             'Default display type
             ''
-        ElseIf intdisp = 2 Then
+        ElseIf DisplayType = DisplayBoot Then
 
             If isdms = True Then
                 txtLoad.Text = Path.GetFileName(dmsfile)
@@ -563,7 +569,7 @@ Public Class Main
             ElseIf Iszip Then
                 txtLoad.Text = Path.GetFileName(zipperfile)
             Else
-                txtLoad.Text = Path.GetFileName(StrOpen)
+                txtLoad.Text = Path.GetFileName(OpenBootFile)
             End If
             Dim bootline As String = ""
             Dim x As Integer
@@ -571,12 +577,8 @@ Public Class Main
             Dim str As New StringBuilder
             Dim str2 As New StringBuilder
             Dim isDone As Boolean = False
-            DialogUnknown.lstASClist.Items.Clear()
-            DialogUnknown.lstChar.Items.Clear()
             For x = 0 To BootLen
-                ASCIIInt(x) = Buffer(x).ToString
-                DialogUnknown.lstASClist.Items.Add(x & ", " & ASCIIInt(x))
-                DialogUnknown.lstChar.Items.Add(chars(x))
+                BootASCIIIntegers(x) = Buffer(x).ToString
             Next
             For i = 0 To 16
                 bootline = ""
@@ -613,7 +615,7 @@ Public Class Main
             rtBBDisplay.Text = str.ToString
             BBDisplay.SelectionStart = 0
             BBDisplay.SelectionLength = 0
-        ElseIf intdisp = 4 Then
+        ElseIf DisplayType = 4 Then
             If isdms = True Then
                 txtLoad.Text = Path.GetFileName(dmsfile)
             ElseIf isadz = True Then
@@ -621,7 +623,7 @@ Public Class Main
             ElseIf Iszip Then
                 txtLoad.Text = Path.GetFileName(zipperfile)
             Else
-                txtLoad.Text = Path.GetFileName(StrOpen)
+                txtLoad.Text = Path.GetFileName(OpenBootFile)
             End If
             Dim bootline As String = ""
             Dim x As Integer
@@ -629,12 +631,9 @@ Public Class Main
             Dim str As New StringBuilder
             Dim str2 As New StringBuilder
             Dim isDone As Boolean = False
-            DialogUnknown.lstASClist.Items.Clear()
-            DialogUnknown.lstChar.Items.Clear()
             For x = 0 To BootLen
-                ASCIIInt(x) = Buffer(x).ToString
-                DialogUnknown.lstASClist.Items.Add(x & ", " & ASCIIInt(x))
-                DialogUnknown.lstChar.Items.Add(chars(x))
+                BootASCIIIntegers(x) = Buffer(x).ToString
+
             Next
             For i = 0 To 16
                 bootline = ""
@@ -665,13 +664,13 @@ Public Class Main
             BBDisplay.SelectionLength = 0
 
             If Foundno = -1 Then Else txtNote.Text = BBDatabase(Foundno).Note
-        ElseIf intdisp = 3 Then  'Hex display type
+        ElseIf DisplayType = 3 Then  'Hex display type
             Dim bootline As String = ""
             Dim x As Integer
             Dim count As Integer = 0
             Dim str As New StringBuilder
             For x = 0 To BootLen
-                ASCIIInt(x) = Buffer(x).ToString
+                BootASCIIIntegers(x) = Buffer(x).ToString
             Next
             For i = 0 To 63
                 bootline = ""
@@ -713,7 +712,7 @@ Public Class Main
                 count += 16
             Next
             BBDisplay.Text = str.ToString
-        ElseIf intdisp = 5 Then
+        ElseIf DisplayType = 5 Then
             Dim str As New StringBuilder
             Dim x As Integer
             Dim tester As Char
@@ -751,14 +750,14 @@ Public Class Main
         End If
         'Pass on to checkboot sub for brainfile indentification
         Dim bcrc As String
-        FoundbySB = False
+        FoundbySearch = False
         bcrc = Hex(Crc32.ComputeChecksum(Buffer))
         CheckBootByCRC(bcrc)
         If Bootname = "" Then
-            CheckBoot(ASCIIInt)
+            CheckBoot(BootASCIIIntegers)
         End If
-        Dim dossig As String = ASCIIInt(0) & ASCIIInt(1) & ASCIIInt(2)
-        If intdisp > 1 Then
+        Dim dossig As String = BootASCIIIntegers(0) & BootASCIIIntegers(1) & BootASCIIIntegers(2)
+        If DisplayType > 1 Then
             txtBootName.Text = Bootname
             txtClass.Text = Bootclass
             txtCRC.Text = Hex(Crc32.ComputeChecksum(Buffer))
@@ -789,7 +788,7 @@ Public Class Main
                 Next
             End If
         End If
-            If IsKnown = False Then
+        If IsKnown = False Then
             bootcolor = "Gray"
             If dossig = "687983" Then
                 Bootname = "Unknown Bootblock"
@@ -805,10 +804,10 @@ Public Class Main
             End If
             Dim savename As String
             If chkSUnk.Checked = True Then
-                If StrOpen.Contains(".abb") Then
-                    savename = Path.GetFileName(StrOpen)
+                If OpenBootFile.Contains(".abb") Then
+                    savename = Path.GetFileName(OpenBootFile)
                 Else
-                    savename = Path.GetFileName(StrOpen) & ".abb"
+                    savename = Path.GetFileName(OpenBootFile) & ".abb"
                 End If
 
                 If Directory.Exists(StartPath & "\Unknown") = False Then
@@ -838,30 +837,30 @@ Public Class Main
             If bCRC = BBDatabase(x).CRC Then
                 Boots = x
                 Bootname = BBDatabase(x).Name
-                Bootclass = BBDatabase(x).BootClass
+                Bootclass = BBDatabase(x).BootClass(abbnames, catnames)
                 Foundno = Boots
-                If IntDisp = 2 Then
+                If DisplayType = DisplayBoot Then
                     txtNote.Text = BBDatabase(Boots).Note
                     txtKS.Text = BBDatabase(Boots).KS
                 End If
-                If IntDisp > 1 Then
+                If DisplayType > 1 Then
                     chkBootable.Checked = BBDatabase(Boots).Bootable
                     chkDDR.Checked = BBDatabase(Boots).DataNeeded
                 End If
                 If chkCreate.Checked = True Then
                     SaveInBBLib(BBDatabase(Boots).Name, BBDatabase(Boots).BClass)
                 End If
-                If IntDisp = 1 Then
+                If DisplayType = Scanner Then
                 Else
                     cmdGotoBrain.Enabled = True
-                    If IntDisp = 1 Then
+                    If DisplayType = Scanner Then
                     Else
                         SetTextBox_ThreadSafe(txtBootName, BBDatabase(Boots).Name)
                     End If
                     Dim intpictype As Integer = 0
                     If File.Exists(StartPath & "\bootpic\" & txtBootName.Text & ".png") Then intpictype = 1
                     If File.Exists(StartPath & "\bootpic\" & txtBootName.Text & ".gif") Then intpictype = 2
-                    If IntDisp = 2 Then
+                    If DisplayType = DisplayBoot Then
                         Select Case intpictype
                             Case 1
                                 picPreview.ImageLocation = StartPath & "\bootpic\" & txtBootName.Text & ".png"
@@ -880,7 +879,7 @@ Public Class Main
                 IsKnown = True
                 Dim bootimg As String = BBDatabase(Boots).Name
 
-                If IntDisp > 1 Then
+                If DisplayType > 1 Then
                     If InStr(bootimg, "/") Then
                         bootimg = bootimg.Replace("/", "-")
                     End If
@@ -898,10 +897,10 @@ Public Class Main
         If searchtm = "" Then Exit Sub
         Dim x As Integer
         Dim a As Integer
-        FoundbySB = False
+        FoundbySearch = False
         Dim i As Integer
         Dim endfile As Boolean
-        Dim found As Boolean
+        Dim found As Boolean = False
         Dim bytestring(searchtm.Length - 1) As Byte
         For x = 0 To searchtm.Length - 1
             bytestring(x) = Convert.ToByte(searchtm(x))
@@ -921,7 +920,7 @@ Public Class Main
                     SaveInBBLib(name, bclass)
                 End If
                 IsKnown = True
-                FoundbySB = True
+                FoundbySearch = True
                 Dim catcol As Integer
                 For i = 0 To CatList.Length - 1
                     If bclass = CatList(i).Abb Then
@@ -932,7 +931,7 @@ Public Class Main
                     End If
                 Next
                 Bootname = name
-                If IntDisp > 1 Then
+                If DisplayType > 1 Then
                     txtBootName.Text = name
                     txtBootName.ForeColor = CatList(catcol).Color
                     txtClass.Text = CatList(catcol).Name
@@ -943,22 +942,20 @@ Public Class Main
         Next
     End Sub
 
-    Private Sub CheckBoot(ByVal asciiint As Integer())
+    Private Sub CheckBoot(ByVal BootASCIIIntegers As Integer())
         Dim intPOS As Integer
         Dim intVal As Integer
         Dim i As Integer
         Bootno = 0
         'Count the number of bootblocks in memory
-        For i = 0 To BBDatabase.Length - 2
-            If BBDatabase(i).Name IsNot Nothing Then Bootno += 1
-        Next
+        Bootno = BBDatabase.Length - 2
         Dim x As Integer = 0
         Dim z As Integer = 0
         Dim y As Integer = 0
         Foundno = -1
         Dim hit As Integer = 0
         IsKnown = False
-        Dim dossig As String = asciiint(0) & asciiint(1) & asciiint(2)
+        Dim dossig As String = BootASCIIIntegers(0) & BootASCIIIntegers(1) & BootASCIIIntegers(2)
         For Boots = 0 To Bootno - 1
             If BBDatabase(Boots).Name = "DELETED" OrElse BBDatabase(Boots).Name = "" Then
             Else
@@ -967,7 +964,7 @@ Public Class Main
                 For i = 0 To 6
                     intPOS = IntMainLoc(Boots, x)
                     intVal = IntMainLoc(Boots, y)
-                    If asciiint(intPOS) = intVal Then hit += 1
+                    If BootASCIIIntegers(intPOS) = intVal Then hit += 1
                     x += 2
                     y += 2
                 Next
@@ -975,27 +972,27 @@ Public Class Main
             'If bootblock found...
             If hit = 7 Then
                 Foundno = Boots
-                If IntDisp = 2 Then
+                Bootclass = BBDatabase(Foundno).BootClass(abbnames, catnames)
+                If DisplayType = DisplayBoot Then
                     txtNote.Text = BBDatabase(Boots).Note
                     txtKS.Text = BBDatabase(Boots).KS
-                End If
-                If IntDisp > 1 Then
+                    txtClass.Text = Bootclass
                     chkBootable.Checked = BBDatabase(Foundno).Bootable
                     chkDDR.Checked = BBDatabase(Foundno).DataNeeded
                 End If
                 If chkCreate.Checked = True Then
                     SaveInBBLib(BBDatabase(Boots).Name, BBDatabase(Boots).BClass)
                 End If
-                If IntDisp = 1 Then
+                If DisplayType = Scanner Then
                     Bootname = BBDatabase(Boots).Name
                 Else
                     cmdGotoBrain.Enabled = True
-                    If IntDisp = 1 Then
+                    If DisplayType = Scanner Then
                     Else
                         SetTextBox_ThreadSafe(txtBootName, BBDatabase(Boots).Name)
                     End If
                     Bootname = BBDatabase(Boots).Name
-                    If IntDisp = 2 Then
+                    If DisplayType = DisplayBoot Then
                         If File.Exists(StartPath & "\bootpic\" & txtBootName.Text & ".png") Then
                             picPreview.ImageLocation = StartPath & "\bootpic\" & txtBootName.Text & ".png"
                             picPreview.Load()
@@ -1009,7 +1006,7 @@ Public Class Main
                 Dim bootimg As String = BBDatabase(Boots).Name
                 'Display classification
 
-                If IntDisp > 1 Then
+                If DisplayType > 1 Then
                     If InStr(bootimg, "/") Then
                         bootimg = bootimg.Replace("/", "-")
                     End If
@@ -1069,42 +1066,42 @@ Public Class Main
 
     Private Sub RefreshDisplay()
         rtBBDisplay.Visible = True
-        IntDisp = 2
+        DisplayType = DisplayBoot
         Using f As Font = BBDisplay.Font
             Select Case ListBox2.SelectedIndex
                 Case 0
                     rtBBDisplay.Visible = True
                     BBDisplay.ScrollBars = ScrollBars.None
                     ReadCP = Win
-                    IntDisp = 2
+                    DisplayType = DisplayBoot
                 Case 1
                     BBDisplay.ScrollBars = ScrollBars.None
                     ReadCP = ISO
-                    IntDisp = 2
+                    DisplayType = DisplayBoot
                 Case 2
                     ReadCP = utf7
                     BBDisplay.ScrollBars = ScrollBars.None
-                    IntDisp = 2
+                    DisplayType = DisplayBoot
                 Case 3
                     ReadCP = Encoding.Default
                     BBDisplay.ScrollBars = ScrollBars.None
-                    IntDisp = 2
+                    DisplayType = DisplayBoot
                 Case 4
                     rtBBDisplay.Visible = False
                     ReadCP = Ascii
                     BBDisplay.ScrollBars = ScrollBars.None
-                    IntDisp = 4
+                    DisplayType = 4
                 Case 5
                     rtBBDisplay.Visible = False
-                    IntDisp = 5
+                    DisplayType = 5
                     BBDisplay.ScrollBars = ScrollBars.Vertical
                 Case 6
                     rtBBDisplay.Visible = False
                     BBDisplay.ScrollBars = ScrollBars.Vertical
-                    IntDisp = 3
+                    DisplayType = 3
             End Select
         End Using
-        Call Disptype(IntDisp, StrOpen)
+        Call Disptype(DisplayType, OpenBootFile)
     End Sub
 
     Public Sub ReadBrain()
@@ -1185,7 +1182,7 @@ Public Class Main
                                             data, bnode.Item("KS").InnerText, boot, "---")
             trvSearch.Nodes.Add(SearchDatabase(i).Name)
             trvSearch.Nodes(i).ForeColor = SearchDatabase(i).BootColour
-            trvSearch.Nodes(i).Nodes.Add("Bootblock Type: " & SearchDatabase(i).BootClass)
+            trvSearch.Nodes(i).Nodes.Add("Bootblock Type: " & SearchDatabase(i).BootClass(abbnames, catnames))
             trvSearch.Nodes(i).Nodes.Add("KickStart req:" & SearchDatabase(i).KS)
             trvSearch.Nodes(i).Nodes.Add("Disk Data Required:" & SearchDatabase(i).DataNeeded)
             trvSearch.Nodes(i).Nodes.Add("Bootable:" & SearchDatabase(i).Bootable)
@@ -1216,16 +1213,20 @@ Public Class Main
         Dim nodelist As XmlNodeList
         Dim bnode As XmlNode
         Dim i As Integer = 0
-        Dim catname As String
+
         xmld = New XmlDocument
         xmld.Load("catlist.xml")
         trvCategories.Nodes.Clear()
         nodelist = xmld.GetElementsByTagName("Category")
         ReDim CatList(nodelist.Count - 1)
+        ReDim catnames(CatList.Length - 1)
+        ReDim abbnames(CatList.Length - 1)
         For Each bnode In nodelist
             CatList(i) = New BootCategory(bnode.Item("Name").InnerText, bnode.Item("abbrev").InnerText, bnode.Item("Colour").InnerText, Color.FromName(bnode.Item("Colour").InnerText))
             trvCategories.Nodes.Add(CatList(i).Name & " / " & CatList(i).Abb)
             trvCategories.Nodes(i).ForeColor = CatList(i).Color
+            catnames(i) = CatList(i).Name
+            abbnames(i) = CatList(i).Abb
             i += 1
         Next
         AddtoLog(nodelist.Count & " category nodes found")
@@ -1252,7 +1253,7 @@ Public Class Main
             cmdView.Enabled = False
             cmdOpenFR.Enabled = False
             Worker.CancelAsync()
-            IntDisp = 1
+            DisplayType = Scanner
             ToolStripProgressBar1.Value = 0
             dgvBatch.Rows.Clear()
             Worker.RunWorkerAsync()
@@ -1454,20 +1455,10 @@ Public Class Main
     Public Sub ResetForm() 'Reset all back to default
         Array.Clear(IntBytePos, 0, 6)
         txtTrail.Text = ""
-        DialogUnknown.elem1.Image = Nothing
-        DialogUnknown.elem2.Image = Nothing
-        DialogUnknown.elem3.Image = Nothing
-        DialogUnknown.elem4.Image = Nothing
-        DialogUnknown.elem5.Image = Nothing
-        DialogUnknown.elem6.Image = Nothing
-        DialogUnknown.elem7.Image = Nothing
         IntClicked = 0
         lblMaxel.Visible = False
-        DialogUnknown.cmdGoto.Enabled = True
         txtFS.Text = ""
         txtLen.Text = ""
-        DialogUnknown.lstASClist.Items.Clear()
-        DialogUnknown.lstChar.Items.Clear()
         txtReadOffset.Text = 0
     End Sub
 
@@ -1559,7 +1550,7 @@ Public Class Main
     'End Sub
 
     Private Sub cmdSaveFile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveBufferToFileToolStripMenuItem.Click
-        If StrOpen = "" Then
+        If OpenBootFile = "" Then
             MessageBox.Show("No Bootblock / Disk file loaded")
             Exit Sub
         End If
@@ -1570,7 +1561,7 @@ Public Class Main
     End Sub
 
     Private Sub cmdInstallBoot_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InstallBootblockFromFileToolStripMenuItem.Click
-        If StrOpen = "" Then Exit Sub
+        If OpenBootFile = "" Then Exit Sub
         ofdInstall.InitialDirectory = My.Settings.BBlocks
         ofdInstall.ShowDialog()
     End Sub
@@ -1605,7 +1596,7 @@ Public Class Main
     Private Sub ofdInstall_FileOk(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles ofdInstall.FileOk
         Dim i As Integer
         Dim boot(1024) As Byte
-        Dim adf As New BinaryReader(File.OpenRead(StrOpen))
+        Dim adf As New BinaryReader(File.OpenRead(OpenBootFile))
         If File.Exists(ofdInstall.FileName) Then
             Dim input As New BinaryReader(File.OpenRead(ofdInstall.FileName))
             Dim FileProps As FileInfo = New FileInfo(ofdInstall.FileName)
@@ -1623,13 +1614,13 @@ Public Class Main
             input.Close()
             adf.Close()
             Try
-                File.WriteAllBytes(StrOpen, Adfbuffer)
+                File.WriteAllBytes(OpenBootFile, Adfbuffer)
             Catch
                 MessageBox.Show("Error writing bootblock - ADF file is in use / Write protected")
                 Exit Sub
             End Try
         End If
-        Disptype(2, StrOpen)
+        Disptype(2, OpenBootFile)
         MessageBox.Show("Bootblock " & ofdInstall.SafeFileName & " Installed on " & ofdBootOpen.SafeFileName & " disk")
     End Sub
 
@@ -1640,7 +1631,7 @@ Public Class Main
         tabBrain.SelectTab(1)
         txtReadOffset.Text = 0
         If fbdOpen.SelectedPath IsNot Nothing Then
-            IntDisp = 1
+            DisplayType = Scanner
             ToolStripProgressBar1.Value = 0
             My.Settings.LastPath = fbdOpen.SelectedPath
             My.Settings.Save()
@@ -1685,7 +1676,7 @@ Public Class Main
             tssCount.Text = dgvBatch.Rows.Count - 1 & " / " & dgvBatch.Rows.Count - 1
             txtSel.Text = 1 & "/" & Counter - 1
         End If
-        StrOpen = ""
+        OpenBootFile = ""
         txtCFile.Text = ""
         ToolStripProgressBar1.Visible = True
         txtCFile.Visible = True
@@ -1816,7 +1807,7 @@ Public Class Main
             Batchlist(x) = bfile
             If Boots < BBDatabase.Length - 1 Then
                 filecolor(x) = BBDatabase(Boots).ColorName
-            ElseIf FoundbySB = True Then
+            ElseIf FoundbySearch = True Then
                 filecolor(x) = SearchDatabase(SearchNo(Bootname)).ColorName
             End If
 
@@ -1868,7 +1859,7 @@ Public Class Main
                         If Foundno > -1 Then
                             If BBDatabase(Foundno).CRC = CRCsum Then
                                 kcrc = "Known CRC"
-                            ElseIf BBDatabase(Foundno).crc = "---" Then
+                            ElseIf BBDatabase(Foundno).CRC = "---" Then
                                 kcrc = "---"
                             Else
                                 If Bootclass = "Utility" Then
@@ -1880,7 +1871,7 @@ Public Class Main
                             End If
                         End If
                 End Select
-                If FoundbySB = True Then kcrc = "Text Match"
+                If FoundbySearch = True Then kcrc = "Text Match"
 
                 dgvBatch.Rows.Add(Counter, truncfile, fltext, Filebname(Counter), CRCsum, kcrc)
                 If chkCD.Checked = True Then
@@ -1998,21 +1989,21 @@ Public Class Main
     Private Sub ViewSelectedFile()
         Dim snum As Integer
         Dim filext As String
-        IntDisp = 2
+        DisplayType = DisplayBoot
         Bootclass = ""
         txtBootName.ForeColor = Color.Black
-        txtCFile.Text = StrOpen
+        txtCFile.Text = OpenBootFile
         txtSel.Text = dgvBatch.CurrentCell.RowIndex & "/" & dgvBatch.Rows.Count
         snum = dgvBatch.SelectedRows(0).Cells(0).Value
         Array.Clear(IntBytePos, 0, 6)
         txtTrail.Text = ""
         ListBox2.TopIndex = ListBox2.SelectedIndex
-        StrOpen = Files(snum)
-        Ziprealname = StrOpen
-        If File.Exists(StrOpen) = True Then
-            Dim FileProps As FileInfo = New FileInfo(StrOpen)
-            Call Disptype(IntDisp, StrOpen)
-            filext = Path.GetExtension(StrOpen).ToUpper
+        OpenBootFile = Files(snum)
+        Ziprealname = OpenBootFile
+        If File.Exists(OpenBootFile) = True Then
+            Dim FileProps As FileInfo = New FileInfo(OpenBootFile)
+            Call Disptype(DisplayType, OpenBootFile)
+            filext = Path.GetExtension(OpenBootFile).ToUpper
             If filext = ".ADF" OrElse filext = ".ADZ" OrElse filext = ".DMS" Then
                 BootDiskToolStripMenuItem.Enabled = True
                 SaveADFFileToolStripMenuItem.Enabled = True
@@ -2072,7 +2063,7 @@ Public Class Main
             BrainTree.Nodes(count).Nodes.Add("Bootable: " & BBDatabase(count).Bootable)
             If BBDatabase(count).CRC = "" Then Else BrainTree.Nodes(count).Nodes.Add("CRC: " & BBDatabase(count).CRC)
             If BBDatabase(count).Note = "" Then Else BrainTree.Nodes(count).Nodes.Add("Notes: " & BBDatabase(count).Note)
-            BrainTree.Nodes(count).Nodes.Add("Bootblock Type:" & BBDatabase(count).BootClass)
+            BrainTree.Nodes(count).Nodes.Add("Bootblock Type:" & BBDatabase(count).BootClass(abbnames, catnames))
             BrainTree.Nodes(count).Nodes.Add("KickStart Required: " & BBDatabase(count).KS)
             BrainTree.Nodes(count).Nodes.Add("Disk Data Required: " & BBDatabase(count).DataNeeded)
             BrainTree.Nodes(count).ForeColor = BBDatabase(count).BootColour()
@@ -2111,21 +2102,21 @@ Public Class Main
     End Sub
     Private Sub Button1_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AsOriginalToolStripMenuItem.Click
         Dim runner As String
-        If StrOpen = "" Then Exit Sub
-        If File.Exists(StrOpen) = False Then
+        If OpenBootFile = "" Then Exit Sub
+        If File.Exists(OpenBootFile) = False Then
             If isdms OrElse isadz Then
                 runner = dmsfile
             Else
                 runner = Zipname
             End If
         Else
-            runner = StrOpen
+            runner = OpenBootFile
         End If
         rundisk(runner)
     End Sub
 
     Private Sub cmdTest_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TestBootblockInBufferToolStripMenuItem.Click
-        If StrOpen = "" Then Exit Sub
+        If OpenBootFile = "" Then Exit Sub
         Dim tempfile As String = Tempdrawer & "\abrtemp.adf"
         Dim tempadf(901120) As Byte
         Dim message As New StringBuilder
@@ -2193,7 +2184,7 @@ Public Class Main
         cmdView.Enabled = False
         cmdOpenFR.Enabled = False
         Worker.CancelAsync()
-        IntDisp = 1
+        DisplayType = Scanner
         ToolStripProgressBar1.Value = 0
         dgvBatch.Rows.Clear()
 
@@ -2344,14 +2335,14 @@ Public Class Main
             Exit Sub
         End If
         Dim fbdopen As String
-        Dim strfilename As String = ""
+        Dim OpenFileName As String = ""
         If Fread Then
-            fbdopen = StrOpen
+            fbdopen = OpenBootFile
         Else
             fbdopen = ofdReader.FileName
 
         End If
-        TextBox1.Text = StrOpen
+        TextBox1.Text = OpenBootFile
         Dim i As Integer = 0
         Dim chars As Char()  'Char array to store bootblock to print to boot display textbox
         chars = New Char(1024) {}
@@ -2512,7 +2503,7 @@ Public Class Main
 
     Private Sub cmdDOSSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDOSSearch.Click
         If ofdReader.FileName = "" Then
-            SearchFile(StrOpen, "DOS")
+            SearchFile(OpenBootFile, "DOS")
         Else
             SearchFile(ofdReader.FileName, "DOS")
         End If
@@ -2584,13 +2575,13 @@ Public Class Main
         txtSel.Text = dgvBatch.CurrentRow.Cells(0).Value & "/" & dgvBatch.Rows.Count
         snum = dgvBatch.CurrentRow.Cells(0).Value
         txtReadOffset.Text = 0
-        StrOpen = Files(snum)
-        ofdReader.FileName = StrOpen
+        OpenBootFile = Files(snum)
+        ofdReader.FileName = OpenBootFile
         FReader()
         tabBrain.SelectedIndex = 4
     End Sub
     Private Sub cmdButton5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        ofdReader.FileName = StrOpen
+        ofdReader.FileName = OpenBootFile
         FReader()
         tabBrain.SelectedIndex = 3
     End Sub
@@ -2684,7 +2675,7 @@ Public Class Main
 
             fbdOpen.SelectedPath = StartPath & "\Unknown"
             If Worker.IsBusy Then Worker.CancelAsync()
-            IntDisp = 1
+            DisplayType = Scanner
             ToolStripProgressBar1.Value = 0
             Worker.RunWorkerAsync()
         Else
@@ -2744,7 +2735,7 @@ Public Class Main
             chkCreate.Checked = False
             fbdOpen.SelectedPath = txtSBoots.Text
             If Worker.IsBusy Then Worker.CancelAsync()
-            IntDisp = 1
+            DisplayType = Scanner
             ToolStripProgressBar1.Value = 0
             Worker.RunWorkerAsync()
         Else
@@ -2795,21 +2786,13 @@ Public Class Main
         RefreshDisplay()
     End Sub
 
-    Private Sub BBDisplay_TextChanged(sender As Object, e As EventArgs) Handles BBDisplay.Click
-        If DialogUnknown.Visible = True Then
-            If DialogUnknown.chkAddonClick.Checked = True Then
-                Call DialogUnknown.cmdGoto.PerformClick()
-            End If
-        End If
-    End Sub
-
     Private Sub bootpic_Click(sender As Object, e As EventArgs) Handles bootpic.Click
         If Nopic = True Then Call AttachPic(BrainTree.SelectedNode.Text)
     End Sub
 
     Private Sub RunBB(ByVal s As String)
-        Disptype(IntDisp, s)
-        If StrOpen = "" Then Exit Sub
+        Disptype(DisplayType, s)
+        If OpenBootFile = "" Then Exit Sub
         Dim tempfile As String = Tempdrawer & "\abrtemp.adf"
         Dim tempadf(901120) As Byte
         Dim message As New StringBuilder
@@ -2979,7 +2962,7 @@ Public Class Main
         End Select
         Dim i As Integer
         Try
-            Dim adf As New BinaryReader(File.OpenRead(StrOpen))
+            Dim adf As New BinaryReader(File.OpenRead(OpenBootFile))
             Adfbuffer = adf.ReadBytes(901120)
             adf.Close()
         Catch
@@ -2992,10 +2975,10 @@ Public Class Main
         Next
 
         Try
-            File.WriteAllBytes(StrOpen, Adfbuffer)
+            File.WriteAllBytes(OpenBootFile, Adfbuffer)
 
         Catch
-            Dim fi As New FileInfo(StrOpen)
+            Dim fi As New FileInfo(OpenBootFile)
             If fi.IsReadOnly = True Then
                 MessageBox.Show("Cant write to disk - file is read-only")
             Else
@@ -3003,8 +2986,8 @@ Public Class Main
             End If
             Exit Sub
         End Try
-        Disptype(2, StrOpen)
-        MessageBox.Show("Standard Bootblock installed on " & StrOpen)
+        Disptype(2, OpenBootFile)
+        MessageBox.Show("Standard Bootblock installed on " & OpenBootFile)
     End Sub
 
     Private Sub Button13_Click_1(sender As Object, e As EventArgs) Handles Standard13BootblockToolStripMenuItem.Click
@@ -3153,9 +3136,9 @@ Public Class Main
         ElseIf isadz Then
             sfdADF.FileName = Path.GetFileNameWithoutExtension(adzfile)
         Else
-            sfdADF.FileName = Path.GetFileName(StrOpen)
+            sfdADF.FileName = Path.GetFileName(OpenBootFile)
         End If
-        Adfbuffer = File.ReadAllBytes(StrOpen)
+        Adfbuffer = File.ReadAllBytes(OpenBootFile)
         intresult = sfdADF.ShowDialog()
         If intresult = DialogResult.OK Then
             File.WriteAllBytes(sfdADF.FileName, Adfbuffer)
@@ -3163,7 +3146,7 @@ Public Class Main
     End Sub
 
     Private Sub WithKS13OFSBootblockToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles WithKS13OFSBootblockToolStripMenuItem.Click
-        If StrOpen = "" Then Exit Sub
+        If OpenBootFile = "" Then Exit Sub
         Dim tempfile As String = Tempdrawer & "\abrtemp.adf"
         Dim tempadf(901120) As Byte
         tempadf = Adfbuffer
@@ -3184,7 +3167,7 @@ Public Class Main
     End Sub
 
     Private Sub WithKS20FFSBootblockToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles WithKS20FFSBootblockToolStripMenuItem.Click
-        If StrOpen = "" Then Exit Sub
+        If OpenBootFile = "" Then Exit Sub
         Dim tempfile As String = Tempdrawer & "\abrtemp.adf"
         Dim tempadf(901120) As Byte
         Dim ofsboot() As Byte = My.Resources.stdboot20ffs
@@ -3277,7 +3260,7 @@ Public Class Main
         EQUCount = 0
         TextBox13.Text = txtBootName.Text
         TreeView3.Nodes.Clear()
-        If StrOpen = "" Then Exit Sub
+        If OpenBootFile = "" Then Exit Sub
         TreeView3.Nodes.Clear()
         Dim up As String
         Dim p As New Process

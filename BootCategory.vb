@@ -10,7 +10,5 @@
         ColorName = CName
         Color = CatCol
     End Sub
-    Public Function CatNum(ByVal abb)
 
-    End Function
 End Class

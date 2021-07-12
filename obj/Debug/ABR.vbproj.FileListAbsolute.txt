@@ -39,9 +39,6 @@ E:\ABR Sourcecode\obj\Debug\AmigaBBReader.ZoomBoot.resources
 E:\ABR Sourcecode\obj\Debug\AmigaBBReader.SaveUnkinBB.resources
 E:\ABR Sourcecode\obj\Debug\AmigaBBReader.Main.resources
 E:\ABR Sourcecode\obj\Debug\AmigaBBReader.StringSearch.resources
-E:\ABR Sourcecode\obj\Debug\AmigaBBReader.EditSearchBB.resources
-E:\ABR Sourcecode\obj\Debug\AmigaBBReader.DialogUnknown.resources
-E:\ABR Sourcecode\obj\Debug\AmigaBBReader.EditBrainfileEntry.resources
 E:\ABR Sourcecode\obj\Debug\AmigaBBReader.Resources.resources
 E:\ABR Sourcecode\obj\Debug\ABR.vbproj.GenerateResource.cache
 E:\ABR Sourcecode\obj\Debug\ABR.vbproj.CoreCompileInputs.cache
