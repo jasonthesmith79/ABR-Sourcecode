@@ -121,13 +121,14 @@ Public Class Main
     Public BBAmt As Integer
     Public searchnodes As Integer
     Public LastDrawer As String = My.Settings.LastDrawer
-    Public EName(10) As String
-    Public EID(10) As String
-    Public ENote(10) As String
-    Public EBB(10) As String
+
     Public bblist() As String
+
+    'Class definitions
     Public BBDatabase(2) As AmigaBB
     Public SearchDatabase(2) As AmigaBB
+    Public BBE(2) As ABREncyclopedia
+
     Private Sub ofdBootOpen_FileOk(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles ofdBootOpen.FileOk
         tabBrain.SelectTab(0)
         Isadf = False
@@ -1143,7 +1144,6 @@ Public Class Main
             BBDatabase(i) = New AmigaBB(bnode.Item("Name").InnerText, bnode.Item("Class").InnerText, bnode.Item("Recog").InnerText, data,
                            bnode.Item("KS").InnerText, boot, BootCRC, Note)
             i += 1
-
         Next
         PopulateBFBox()
         BrainTree.Sort()
@@ -1203,15 +1203,10 @@ Public Class Main
         xmld.Load(StartPath & "\encyclopedia.xml")
         TreeView1.Nodes.Clear()
         nodelist = xmld.GetElementsByTagName("Program")
-        ReDim EName(nodelist.Count)
-        ReDim ENote(nodelist.Count)
-        ReDim EID(nodelist.Count)
-        ReDim EBB(nodelist.Count)
+        ReDim BBE(nodelist.Count)
         For Each bnode In nodelist
-            EID(i) = bnode.Item("ProgramID").InnerText
-            ENote(i) = bnode.Item("Note").InnerText
-            EName(i) = bnode.Item("Name").InnerText
-            TreeView1.Nodes.Add(EName(i))
+            BBE(i) = New ABREncyclopedia(bnode.Item("Name").InnerText, bnode.Item("ProgramID").InnerText, bnode.Item("Note").InnerText)
+            TreeView1.Nodes.Add(BBE(i).Name)
             i += 1
         Next
         AddtoLog(nodelist.Count & " entries found")
@@ -2310,12 +2305,6 @@ Public Class Main
         cmdSaveSettings.ForeColor = Color.Red
     End Sub
 
-    Private Sub cmdLearn_Click(sender As Object, e As EventArgs)
-        rtBBDisplay.Visible = False
-        IntClicked = 0
-        ListBox2.SelectedIndex = 0
-        DialogUnknown.Show()
-    End Sub
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles OpenNewFileToolStripMenuItem.Click
         ofdBootOpen.InitialDirectory = LastDrawer
@@ -2323,10 +2312,6 @@ Public Class Main
         LastDrawer = ofdBootOpen.FileName.Substring(0, ofdBootOpen.FileName.Length - ofdBootOpen.SafeFileName.Length)
         My.Settings.LastDrawer = LastDrawer
         My.Settings.Save()
-    End Sub
-
-    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs)
-        System.Diagnostics.Process.Start("http://eab.abime.net")
     End Sub
 
     Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button31.Click
@@ -2593,14 +2578,6 @@ Public Class Main
         FReader()
     End Sub
 
-    Private Sub CheckBox3_CheckedChanged(sender As Object, e As EventArgs)
-        PopulateBFBox()
-    End Sub
-
-    Private Sub cmdLearnSS_Click(sender As Object, e As EventArgs)
-        StringSearch.Show()
-    End Sub
-
     Private Sub cmdOpenFR_Click(sender As Object, e As EventArgs) Handles cmdOpenFR.Click
         Dim snum As Integer
         Fread = True
@@ -2681,10 +2658,6 @@ Public Class Main
             MessageBox.Show(note.ToString)
         End If
 
-    End Sub
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs)
-        EditBrainfileEntry.Show()
     End Sub
 
     Private Sub Button22_Click(sender As Object, e As EventArgs) Handles Button22.Click
@@ -2816,36 +2789,6 @@ Public Class Main
         Return tr
     End Function
 
-    'Public Function BColour(ByVal s As String) As String
-    '    Dim x As Integer = BFind(s)
-    '    Dim y As Integer, z As Integer
-    '    Try
-    '        For y = 0 To CatList.Length - 1
-    '            If Isbtype(x) = CatAb(y) Then
-    '                z = y
-    '            End If
-    '        Next
-    '    Catch
-    '    End Try
-    '    Return catcolours(z)
-    'End Function
-
-    'Public Function SFind(s As String) As Integer
-    '    Dim x As Integer
-    '    Dim f As Integer
-    '    For x = 0 To Searchname.Length - 1
-    '        If Searchname(x) = s Then
-    '            f = x
-    '            Exit For
-    '        Else
-    '            f = -1
-    '        End If
-    '    Next
-    '    Return f
-    'End Function
-
-
-
     Private Sub ListBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox2.SelectedIndexChanged
         If Formloaded = False Then Exit Sub
         If txtBootName.Text = "" Then Exit Sub
@@ -2954,16 +2897,8 @@ Public Class Main
         tabBrain.SelectTab(1)
     End Sub
 
-    Private Sub SaveOptionsToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        My.Settings.Save()
-    End Sub
-
     Private Sub chkZip_Click(sender As Object, e As EventArgs) Handles chkZip.Click
         My.Settings.ProcessZips = chkZip.Checked
-    End Sub
-
-    Private Sub chkCreate_Click(sender As Object, e As EventArgs)
-        My.Settings.CreateBoots = chkCreate.Checked
     End Sub
 
     Private Sub trvCategories_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles trvCategories.AfterSelect
@@ -3099,12 +3034,12 @@ Public Class Main
     Private Sub TreeView1_AfterSelect_1(sender As Object, e As TreeViewEventArgs) Handles TreeView1.AfterSelect
         Dim BBNum As Integer
         Dim y As Integer
-        For y = 0 To EName.Length - 1
-            If EName(y) = TreeView1.SelectedNode.Text Then BBNum = y
+        For y = 0 To BBE.Length - 2
+            If BBE(y).Name = TreeView1.SelectedNode.Text Then BBNum = y
         Next
-        TextBox6.Text = ENote(BBNum)
-        If File.Exists(StartPath & "\encpic\" & EID(BBNum) & ".png") Then
-            PictureBox2.ImageLocation = StartPath & "\encpic\" & EID(BBNum) & ".png"
+        TextBox6.Text = BBE(BBNum).Note
+        If File.Exists(StartPath & "\encpic\" & BBE(BBNum).ID & ".png") Then
+            PictureBox2.ImageLocation = StartPath & "\encpic\" & BBE(BBNum).ID & ".png"
             PictureBox2.Load()
         Else
             PictureBox2.Image = Nothing
@@ -3283,30 +3218,6 @@ Public Class Main
         cmdRescan.PerformClick()
     End Sub
 
-    'Private Sub trvSearch_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles trvSearch.AfterSelect
-    '    Dim sloc As Integer = SFind(trvSearch.SelectedNode.Text)
-    '    Dim bootimg As String = Searchname(sloc)
-    '    If sloc = -1 Then Exit Sub
-    '    grpRec.Visible = True
-    '    txtRec.Text = Searchtext(sloc)
-    '    If InStr(bootimg, "/") Then
-    '        bootimg = bootimg.Replace("/", "-")
-    '    End If
-    '    If File.Exists(StartPath & "\bootpic\" & bootimg & ".png") Then
-    '        bootpic.ImageLocation = StartPath & "\bootpic\" & bootimg & ".png"
-    '        bootpic.Load()
-    '        Nopic = False
-    '    Else
-    '        bootpic.ImageLocation = Nothing
-    '        bootpic.Image = My.Resources.bootpic
-    '        Nopic = True
-    '    End If
-    'End Sub
-
-    Private Sub Button32_Click_1(sender As Object, e As EventArgs)
-        EditSearchBB.Show()
-    End Sub
-
     Private Sub BrowseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BrowseToolStripMenuItem.Click
         Dim result As DialogResult
         result = ofdExtBrain.ShowDialog()
@@ -3320,13 +3231,6 @@ Public Class Main
             UseDefaultToolStripMenuItem.Enabled = True
         End If
         PopInfo()
-    End Sub
-
-    Private Sub DefaultToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        DefaultBrainPath = StartPath & "\brainfile.xml"
-        UseDefaultToolStripMenuItem.Enabled = False
-        OverwriteDefaultBrainfileToolStripMenuItem.Enabled = False
-        ReadBrain()
     End Sub
 
     Private Sub UseExternalBrainfileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UseExternalBrainfileToolStripMenuItem.Click
