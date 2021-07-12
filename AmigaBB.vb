@@ -9,7 +9,6 @@
     Public Property Note As String
     Public Property ColorName As String
 
-
     Public Sub New(ByVal BN As String, ByVal BootClass As String, ByVal BR As String, ByVal DN As Boolean, ByVal BKS As String, ByVal Boot As Boolean, ByVal BCRC As String)
         Name = BN
         Recog = BR
@@ -43,7 +42,17 @@
         Next
         Return returncolor
     End Function
-    Public Function BootClass()
-
+    Public Function BootClass() As String
+        Dim x As Integer
+        Dim retclass As String
+        For x = 0 To Main.CatList.Length - 1
+            If BClass = Main.CatList(x).Abb Then
+                retclass = Main.CatList(x).Name
+                Return retclass
+            Else
+                retclass = ""
+            End If
+        Next
+        Return retclass
     End Function
 End Class

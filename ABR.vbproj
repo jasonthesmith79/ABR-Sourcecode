@@ -138,6 +138,7 @@
     <Compile Include="AboutBox1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ABREncyclopedia.vb" />
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="BatchScan.Designer.vb">
       <DependentUpon>BatchScan.vb</DependentUpon>

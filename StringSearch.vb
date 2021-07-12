@@ -12,20 +12,6 @@ Public Class StringSearch
         ComboBox2.SelectedText = "1.3"
     End Sub
 
-    'Private Sub Button1_Click(sender As Object, e As EventArgs) Handles SaveSS.Click
-    '    Dim newSSClass As String = ""
-    '    Dim newssboot As String
-    '    Dim newssdr As String
-    '    If chkBoot.Checked = True Then newSSBoot = "Y" Else newSSBoot = "N"
-    '    If chkDDR.Checked = True Then newSSDR = "Y" Else newSSDR = "N"
-    '    Dim x As Integer
-    '    For x = 0 To Main.CatList.Length - 1
-    '        If ComboBox1.Text = Main.CatList(x) Then
-    '            newSSClass = Main.CatAb(x)
-    '        End If
-    '    Next
-    '    Main.SaveSearchBBEntry(txtBBName.Text, newSSClass, txtString.Text, ComboBox2.Text, newssdr, newssboot)
-    'End Sub
     Private Sub MatchName() Handles txtBBName.TextChanged
         cbxKnown.Items.Clear()
         Dim i As Integer
