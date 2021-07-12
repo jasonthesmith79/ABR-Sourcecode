@@ -150,7 +150,7 @@ Public Class Main
                 Disptype(IntDisp, StrOpen)
             End If
             If FileProps.Length > 2000000 Then
-                MessageBox.Show("File is too large to be an Amiga disk")
+                MessageBox.Show("File is too LARGE to be an Amiga disk")
             End If
         End If
     End Sub
