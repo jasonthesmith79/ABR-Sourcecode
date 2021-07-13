@@ -27,6 +27,8 @@ Public Class Main
     Public dbox As String
     Public CompVirus As Boolean = False
     Public zfile As String
+
+    'Used in IRA dissassembly
     Public opadd(1) As String
     Public EQUName(20) As String
     Public EQURef(20) As String
@@ -81,16 +83,20 @@ Public Class Main
     Dim Adfbuffer(901120) As Byte
     Dim Tempdrawer As String
     Dim Batchlist() As String
+    Public SBFoundNo As Integer
     Public Foundno As Integer
     Public DisplayType As Integer = 2
     Public Files(20000) As String
     Public Bootno As Integer
     Public BootLen As Integer
     Public IntBytePos(6) As Integer
+
+    'File scanner arrays
     Dim Fileclass(500) As String
     Dim Filebname(500) As String
     Dim Filebnum(500) As Integer
     Public filecolor(500) As String
+
     Public Buffer(1024) As Byte
     Dim Strc As New StringBuilder
     Dim Bootname As String
@@ -107,12 +113,16 @@ Public Class Main
     Public ORecogline(3000) As String
     Dim Nopic As Boolean
     Dim Ziprealname As String
+
+    'Codepages used for different views
     Public ReadCP As Encoding
     ReadOnly Win As Encoding = Encoding.GetEncoding(1251)
     ReadOnly ISO As Encoding = Encoding.GetEncoding("iso8859-1")
     ReadOnly utf7 As Encoding = Encoding.UTF7
     ReadOnly utf8 As Encoding = Encoding.UTF8
     ReadOnly Ascii As ASCIIEncoding = New ASCIIEncoding()
+
+
     Public StartPath As String = Forms.Application.StartupPath
     Public DefaultBrainPath As String = StartPath & "\brainfile.xml"
     Public DefaultSBrainPath As String = StartPath & "\searchbrain.xml"
@@ -777,14 +787,9 @@ Public Class Main
             End If
         End If
         If IsKnown = False Then
-            'If chkSearch.Checked = True Then
-            '    For i = 0 To Searchtext.Length - 1
-            '        SearchBoot(Searchtext(i), Searchname(i), Searchclass(i))
-            '    Next
-            'End If
             If chkSearch.Checked = True Then
                 For i = 0 To SearchDatabase.Length - 2
-                    SearchBoot(SearchDatabase(i).Recog, SearchDatabase(i).Name, SearchDatabase(i).BClass)
+                    SearchBoot(i, SearchDatabase(i).Recog, SearchDatabase(i).Name, SearchDatabase(i).BClass)
                 Next
             End If
         End If
@@ -892,7 +897,7 @@ Public Class Main
         Next
     End Sub
 
-    Private Sub SearchBoot(searchtm As String, name As String, bclass As String)
+    Private Sub SearchBoot(ByVal searchno As Integer, ByVal searchtm As String, name As String, bclass As String)
         If IsKnown = True Then Exit Sub
         If searchtm = "" Then Exit Sub
         Dim x As Integer
@@ -900,6 +905,7 @@ Public Class Main
         FoundbySearch = False
         Dim i As Integer
         Dim endfile As Boolean
+        SBFoundNo = 0
         Dim found As Boolean = False
         Dim bytestring(searchtm.Length - 1) As Byte
         For x = 0 To searchtm.Length - 1
@@ -921,6 +927,7 @@ Public Class Main
                 End If
                 IsKnown = True
                 FoundbySearch = True
+                SBFoundNo = searchno
                 Dim catcol As Integer
                 For i = 0 To CatList.Length - 1
                     If bclass = CatList(i).Abb Then
@@ -1805,10 +1812,10 @@ Public Class Main
             Filebname(x) = Bootname
             Filebnum(x) = Boots
             Batchlist(x) = bfile
-            If Boots < BBDatabase.Length - 1 Then
+            If FoundbySearch = False Then
                 filecolor(x) = BBDatabase(Boots).ColorName
-            ElseIf FoundbySearch = True Then
-                filecolor(x) = SearchDatabase(SearchNo(Bootname)).ColorName
+            Else
+                filecolor(x) = SearchDatabase(SBFoundNo).ColorName
             End If
 
             worker.ReportProgress(x)
@@ -1875,7 +1882,11 @@ Public Class Main
 
                 dgvBatch.Rows.Add(Counter, truncfile, fltext, Filebname(Counter), CRCsum, kcrc)
                 If chkCD.Checked = True Then
-                    If Foundno > -1 Then dgvBatch.Rows(Counter).Cells(3).Style.ForeColor = BBDatabase(Foundno).BootColour
+                    If Foundno > -1 Then
+                        dgvBatch.Rows(Counter).Cells(3).Style.ForeColor = BBDatabase(Foundno).BootColour
+                    Else
+                        dgvBatch.Rows(Counter).Cells(3).Style.ForeColor = SearchDatabase(SBFoundNo).BootColour
+                    End If
                 End If
             Case 1
                 filtered = True
@@ -2442,7 +2453,6 @@ Public Class Main
         HScrollBar1.Maximum = filebuffer.Length
         Dim stloc As Integer = 0
         Dim found As Boolean = False
-        Dim exitnow As Boolean = False
         x = 0
         For x = 0 To parsestring.Length - 1
             bytestring(x) = Convert.ToByte(parsestring(x))

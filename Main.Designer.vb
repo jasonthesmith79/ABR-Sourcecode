@@ -147,20 +147,28 @@ Partial Class Main
         Me.TabPage17 = New System.Windows.Forms.TabPage()
         Me.trvinfo = New System.Windows.Forms.TreeView()
         Me.TabPage9 = New System.Windows.Forms.TabPage()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.rtBBDisplay = New System.Windows.Forms.RichTextBox()
         Me.BBDisplay = New System.Windows.Forms.TextBox()
+        Me.GroupBox11 = New System.Windows.Forms.GroupBox()
+        Me.txtLen = New System.Windows.Forms.TextBox()
+        Me.txtFS = New System.Windows.Forms.TextBox()
+        Me.Label36 = New System.Windows.Forms.Label()
+        Me.Label35 = New System.Windows.Forms.Label()
+        Me.Label34 = New System.Windows.Forms.Label()
+        Me.txtCRC = New System.Windows.Forms.TextBox()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtKS = New System.Windows.Forms.TextBox()
+        Me.chkBootable = New System.Windows.Forms.CheckBox()
+        Me.chkDDR = New System.Windows.Forms.CheckBox()
+        Me.Label32 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.picPreview = New System.Windows.Forms.PictureBox()
         Me.txtNote = New System.Windows.Forms.TextBox()
-        Me.txtCRC = New System.Windows.Forms.TextBox()
         Me.Button5 = New System.Windows.Forms.Button()
-        Me.Label33 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.txtLoad = New System.Windows.Forms.TextBox()
-        Me.chkDDR = New System.Windows.Forms.CheckBox()
         Me.txtClass = New System.Windows.Forms.TextBox()
-        Me.chkBootable = New System.Windows.Forms.CheckBox()
-        Me.txtKS = New System.Windows.Forms.TextBox()
         Me.grpscan = New System.Windows.Forms.GroupBox()
         Me.cmdBSNext = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -180,12 +188,6 @@ Partial Class Main
         Me.Label17 = New System.Windows.Forms.Label()
         Me.chkIFE = New System.Windows.Forms.CheckBox()
         Me.dgvBatch = New System.Windows.Forms.DataGridView()
-        Me.no = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.fsFile = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FSize = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Bootblock = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BCRC = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.KCRC = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.chkSkip = New System.Windows.Forms.CheckBox()
         Me.TextBox10 = New System.Windows.Forms.TextBox()
         Me.ListBox4 = New System.Windows.Forms.ListBox()
@@ -352,14 +354,12 @@ Partial Class Main
         Me.ofdIRA = New System.Windows.Forms.OpenFileDialog()
         Me.sfdASM = New System.Windows.Forms.SaveFileDialog()
         Me.fbdDMS = New System.Windows.Forms.FolderBrowserDialog()
-        Me.Label32 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.GroupBox11 = New System.Windows.Forms.GroupBox()
-        Me.Label34 = New System.Windows.Forms.Label()
-        Me.Label35 = New System.Windows.Forms.Label()
-        Me.Label36 = New System.Windows.Forms.Label()
-        Me.txtFS = New System.Windows.Forms.TextBox()
-        Me.txtLen = New System.Windows.Forms.TextBox()
+        Me.no = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fsFile = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FSize = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Bootblock = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BCRC = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.KCRC = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PicMenu.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -380,6 +380,7 @@ Partial Class Main
         Me.TabPage19.SuspendLayout()
         Me.TabPage17.SuspendLayout()
         Me.TabPage9.SuspendLayout()
+        Me.GroupBox11.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picPreview, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpscan.SuspendLayout()
@@ -406,7 +407,6 @@ Partial Class Main
         Me.TabPage4.SuspendLayout()
         Me.MainMenu.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
-        Me.GroupBox11.SuspendLayout()
         Me.SuspendLayout()
         '
         'ofdInstall
@@ -549,10 +549,10 @@ Partial Class Main
         Me.TabPage1.Controls.Add(Me.GroupBox12)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
         Me.TabPage1.Controls.Add(Me.GroupBox2)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 26)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(1173, 554)
+        Me.TabPage1.Size = New System.Drawing.Size(1173, 553)
         Me.TabPage1.TabIndex = 4
         Me.TabPage1.Text = "Settings"
         '
@@ -958,10 +958,10 @@ Partial Class Main
         '
         Me.TabPage8.BackColor = System.Drawing.Color.WhiteSmoke
         Me.TabPage8.Controls.Add(Me.TabControl4)
-        Me.TabPage8.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage8.Location = New System.Drawing.Point(4, 26)
         Me.TabPage8.Name = "TabPage8"
         Me.TabPage8.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage8.Size = New System.Drawing.Size(1173, 554)
+        Me.TabPage8.Size = New System.Drawing.Size(1173, 553)
         Me.TabPage8.TabIndex = 2
         Me.TabPage8.Text = "Bootblock Brainfile"
         '
@@ -1064,10 +1064,10 @@ Partial Class Main
         Me.TabPage15.Controls.Add(Me.BVal5)
         Me.TabPage15.Controls.Add(Me.Pos4)
         Me.TabPage15.Controls.Add(Me.Pos5)
-        Me.TabPage15.Location = New System.Drawing.Point(23, 4)
+        Me.TabPage15.Location = New System.Drawing.Point(25, 4)
         Me.TabPage15.Name = "TabPage15"
         Me.TabPage15.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage15.Size = New System.Drawing.Size(602, 446)
+        Me.TabPage15.Size = New System.Drawing.Size(600, 446)
         Me.TabPage15.TabIndex = 1
         Me.TabPage15.Text = "Recognition"
         Me.TabPage15.UseVisualStyleBackColor = True
@@ -1289,10 +1289,10 @@ Partial Class Main
         Me.TabPage10.Controls.Add(Me.grpRec)
         Me.TabPage10.Controls.Add(Me.TextBox11)
         Me.TabPage10.Controls.Add(Me.trvSearch)
-        Me.TabPage10.Location = New System.Drawing.Point(23, 4)
+        Me.TabPage10.Location = New System.Drawing.Point(25, 4)
         Me.TabPage10.Name = "TabPage10"
         Me.TabPage10.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage10.Size = New System.Drawing.Size(1123, 512)
+        Me.TabPage10.Size = New System.Drawing.Size(1121, 512)
         Me.TabPage10.TabIndex = 2
         Me.TabPage10.Text = "Search Text Brainfile"
         Me.TabPage10.UseVisualStyleBackColor = True
@@ -1345,10 +1345,10 @@ Partial Class Main
         Me.TabPage19.Controls.Add(Me.txtCat)
         Me.TabPage19.Controls.Add(Me.Label8)
         Me.TabPage19.Controls.Add(Me.txtCCol)
-        Me.TabPage19.Location = New System.Drawing.Point(23, 4)
+        Me.TabPage19.Location = New System.Drawing.Point(25, 4)
         Me.TabPage19.Name = "TabPage19"
         Me.TabPage19.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage19.Size = New System.Drawing.Size(1123, 512)
+        Me.TabPage19.Size = New System.Drawing.Size(1121, 512)
         Me.TabPage19.TabIndex = 3
         Me.TabPage19.Text = "Class Manager"
         Me.TabPage19.UseVisualStyleBackColor = True
@@ -1443,10 +1443,10 @@ Partial Class Main
         'TabPage17
         '
         Me.TabPage17.Controls.Add(Me.trvinfo)
-        Me.TabPage17.Location = New System.Drawing.Point(23, 4)
+        Me.TabPage17.Location = New System.Drawing.Point(25, 4)
         Me.TabPage17.Name = "TabPage17"
         Me.TabPage17.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage17.Size = New System.Drawing.Size(1123, 512)
+        Me.TabPage17.Size = New System.Drawing.Size(1121, 512)
         Me.TabPage17.TabIndex = 1
         Me.TabPage17.Text = "Brainfile Info"
         Me.TabPage17.UseVisualStyleBackColor = True
@@ -1487,18 +1487,6 @@ Partial Class Main
         Me.TabPage9.TabIndex = 5
         Me.TabPage9.Text = "Boot Display"
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.PictureBox1.Image = Global.AmigaBBReader.My.Resources.Resources.Off
-        Me.PictureBox1.Location = New System.Drawing.Point(588, 426)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(46, 23)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 153
-        Me.PictureBox1.TabStop = False
-        '
         'rtBBDisplay
         '
         Me.rtBBDisplay.BackColor = System.Drawing.Color.AliceBlue
@@ -1518,6 +1506,157 @@ Partial Class Main
         Me.BBDisplay.Name = "BBDisplay"
         Me.BBDisplay.Size = New System.Drawing.Size(611, 338)
         Me.BBDisplay.TabIndex = 148
+        '
+        'GroupBox11
+        '
+        Me.GroupBox11.Controls.Add(Me.txtLen)
+        Me.GroupBox11.Controls.Add(Me.txtFS)
+        Me.GroupBox11.Controls.Add(Me.Label36)
+        Me.GroupBox11.Controls.Add(Me.Label35)
+        Me.GroupBox11.Controls.Add(Me.Label34)
+        Me.GroupBox11.Controls.Add(Me.txtCRC)
+        Me.GroupBox11.Controls.Add(Me.Label33)
+        Me.GroupBox11.Controls.Add(Me.Label1)
+        Me.GroupBox11.Controls.Add(Me.txtKS)
+        Me.GroupBox11.Controls.Add(Me.chkBootable)
+        Me.GroupBox11.Controls.Add(Me.chkDDR)
+        Me.GroupBox11.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox11.Location = New System.Drawing.Point(156, 426)
+        Me.GroupBox11.Name = "GroupBox11"
+        Me.GroupBox11.Size = New System.Drawing.Size(321, 75)
+        Me.GroupBox11.TabIndex = 155
+        Me.GroupBox11.TabStop = False
+        Me.GroupBox11.Text = "Info"
+        '
+        'txtLen
+        '
+        Me.txtLen.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.txtLen.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtLen.Location = New System.Drawing.Point(247, 16)
+        Me.txtLen.Name = "txtLen"
+        Me.txtLen.Size = New System.Drawing.Size(68, 13)
+        Me.txtLen.TabIndex = 156
+        '
+        'txtFS
+        '
+        Me.txtFS.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.txtFS.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtFS.Location = New System.Drawing.Point(38, 52)
+        Me.txtFS.Name = "txtFS"
+        Me.txtFS.Size = New System.Drawing.Size(266, 13)
+        Me.txtFS.TabIndex = 155
+        '
+        'Label36
+        '
+        Me.Label36.AutoSize = True
+        Me.Label36.Location = New System.Drawing.Point(8, 52)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(25, 13)
+        Me.Label36.TabIndex = 154
+        Me.Label36.Text = "FS:"
+        '
+        'Label35
+        '
+        Me.Label35.AutoSize = True
+        Me.Label35.Location = New System.Drawing.Point(255, 16)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(0, 13)
+        Me.Label35.TabIndex = 153
+        '
+        'Label34
+        '
+        Me.Label34.AutoSize = True
+        Me.Label34.Location = New System.Drawing.Point(199, 16)
+        Me.Label34.Name = "Label34"
+        Me.Label34.Size = New System.Drawing.Size(49, 13)
+        Me.Label34.TabIndex = 152
+        Me.Label34.Text = "Length:"
+        '
+        'txtCRC
+        '
+        Me.txtCRC.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.txtCRC.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtCRC.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCRC.Location = New System.Drawing.Point(56, 16)
+        Me.txtCRC.Name = "txtCRC"
+        Me.txtCRC.Size = New System.Drawing.Size(138, 13)
+        Me.txtCRC.TabIndex = 151
+        '
+        'Label33
+        '
+        Me.Label33.AutoSize = True
+        Me.Label33.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label33.Location = New System.Drawing.Point(7, 16)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(43, 13)
+        Me.Label33.TabIndex = 150
+        Me.Label33.Text = "CRC32:"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(7, 32)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(49, 13)
+        Me.Label1.TabIndex = 140
+        Me.Label1.Text = "KS Req:"
+        '
+        'txtKS
+        '
+        Me.txtKS.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.txtKS.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtKS.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtKS.Location = New System.Drawing.Point(56, 32)
+        Me.txtKS.Name = "txtKS"
+        Me.txtKS.Size = New System.Drawing.Size(66, 13)
+        Me.txtKS.TabIndex = 139
+        '
+        'chkBootable
+        '
+        Me.chkBootable.AutoSize = True
+        Me.chkBootable.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.chkBootable.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkBootable.Location = New System.Drawing.Point(150, 32)
+        Me.chkBootable.Name = "chkBootable"
+        Me.chkBootable.Size = New System.Drawing.Size(71, 17)
+        Me.chkBootable.TabIndex = 137
+        Me.chkBootable.Text = "Bootable"
+        Me.chkBootable.UseVisualStyleBackColor = True
+        '
+        'chkDDR
+        '
+        Me.chkDDR.AutoSize = True
+        Me.chkDDR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.chkDDR.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkDDR.Location = New System.Drawing.Point(227, 32)
+        Me.chkDDR.Name = "chkDDR"
+        Me.chkDDR.Size = New System.Drawing.Size(77, 17)
+        Me.chkDDR.TabIndex = 138
+        Me.chkDDR.Text = "Disk Data"
+        Me.chkDDR.UseVisualStyleBackColor = True
+        '
+        'Label32
+        '
+        Me.Label32.AutoSize = True
+        Me.Label32.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label32.Location = New System.Drawing.Point(479, 431)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(103, 13)
+        Me.Label32.TabIndex = 154
+        Me.Label32.Text = "Show recognition"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.PictureBox1.Image = Global.AmigaBBReader.My.Resources.Resources.Off
+        Me.PictureBox1.Location = New System.Drawing.Point(588, 426)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(46, 23)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 153
+        Me.PictureBox1.TabStop = False
         '
         'picPreview
         '
@@ -1539,16 +1678,6 @@ Partial Class Main
         Me.txtNote.Size = New System.Drawing.Size(459, 23)
         Me.txtNote.TabIndex = 141
         '
-        'txtCRC
-        '
-        Me.txtCRC.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.txtCRC.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtCRC.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCRC.Location = New System.Drawing.Point(56, 16)
-        Me.txtCRC.Name = "txtCRC"
-        Me.txtCRC.Size = New System.Drawing.Size(138, 13)
-        Me.txtCRC.TabIndex = 151
-        '
         'Button5
         '
         Me.Button5.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1558,16 +1687,6 @@ Partial Class Main
         Me.Button5.TabIndex = 142
         Me.Button5.Text = "Open file in Bootblock ripper ->>"
         Me.Button5.UseVisualStyleBackColor = False
-        '
-        'Label33
-        '
-        Me.Label33.AutoSize = True
-        Me.Label33.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label33.Location = New System.Drawing.Point(7, 16)
-        Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(43, 13)
-        Me.Label33.TabIndex = 150
-        Me.Label33.Text = "CRC32:"
         '
         'Label14
         '
@@ -1588,18 +1707,6 @@ Partial Class Main
         Me.txtLoad.Size = New System.Drawing.Size(573, 20)
         Me.txtLoad.TabIndex = 144
         '
-        'chkDDR
-        '
-        Me.chkDDR.AutoSize = True
-        Me.chkDDR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.chkDDR.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkDDR.Location = New System.Drawing.Point(227, 32)
-        Me.chkDDR.Name = "chkDDR"
-        Me.chkDDR.Size = New System.Drawing.Size(77, 17)
-        Me.chkDDR.TabIndex = 138
-        Me.chkDDR.Text = "Disk Data"
-        Me.chkDDR.UseVisualStyleBackColor = True
-        '
         'txtClass
         '
         Me.txtClass.BackColor = System.Drawing.Color.AliceBlue
@@ -1609,28 +1716,6 @@ Partial Class Main
         Me.txtClass.Size = New System.Drawing.Size(613, 20)
         Me.txtClass.TabIndex = 50
         Me.txtClass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'chkBootable
-        '
-        Me.chkBootable.AutoSize = True
-        Me.chkBootable.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.chkBootable.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkBootable.Location = New System.Drawing.Point(150, 32)
-        Me.chkBootable.Name = "chkBootable"
-        Me.chkBootable.Size = New System.Drawing.Size(71, 17)
-        Me.chkBootable.TabIndex = 137
-        Me.chkBootable.Text = "Bootable"
-        Me.chkBootable.UseVisualStyleBackColor = True
-        '
-        'txtKS
-        '
-        Me.txtKS.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.txtKS.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtKS.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtKS.Location = New System.Drawing.Point(56, 32)
-        Me.txtKS.Name = "txtKS"
-        Me.txtKS.Size = New System.Drawing.Size(66, 13)
-        Me.txtKS.TabIndex = 139
         '
         'grpscan
         '
@@ -1763,10 +1848,10 @@ Partial Class Main
         'TabPage7
         '
         Me.TabPage7.Controls.Add(Me.TabControl3)
-        Me.TabPage7.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage7.Location = New System.Drawing.Point(4, 26)
         Me.TabPage7.Name = "TabPage7"
         Me.TabPage7.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage7.Size = New System.Drawing.Size(1173, 554)
+        Me.TabPage7.Size = New System.Drawing.Size(1173, 553)
         Me.TabPage7.TabIndex = 1
         Me.TabPage7.Text = "Directory Scanner"
         '
@@ -1857,47 +1942,6 @@ Partial Class Main
         Me.dgvBatch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvBatch.Size = New System.Drawing.Size(1109, 344)
         Me.dgvBatch.TabIndex = 177
-        '
-        'no
-        '
-        Me.no.HeaderText = "Column1"
-        Me.no.Name = "no"
-        Me.no.Visible = False
-        '
-        'fsFile
-        '
-        Me.fsFile.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.fsFile.DefaultCellStyle = DataGridViewCellStyle1
-        Me.fsFile.HeaderText = "File Name"
-        Me.fsFile.Name = "fsFile"
-        Me.fsFile.ReadOnly = True
-        '
-        'FSize
-        '
-        Me.FSize.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.FSize.HeaderText = "File Size"
-        Me.FSize.Name = "FSize"
-        '
-        'Bootblock
-        '
-        Me.Bootblock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Bootblock.HeaderText = "Bootblock"
-        Me.Bootblock.Name = "Bootblock"
-        Me.Bootblock.ReadOnly = True
-        '
-        'BCRC
-        '
-        Me.BCRC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.BCRC.HeaderText = "Boot CRC"
-        Me.BCRC.Name = "BCRC"
-        Me.BCRC.Width = 80
-        '
-        'KCRC
-        '
-        Me.KCRC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.KCRC.HeaderText = "CRC / Byte Match"
-        Me.KCRC.Name = "KCRC"
         '
         'chkSkip
         '
@@ -2045,10 +2089,10 @@ Partial Class Main
         Me.TabPage20.Controls.Add(Me.CheckBox4)
         Me.TabPage20.Controls.Add(Me.dgvDMS)
         Me.TabPage20.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabPage20.Location = New System.Drawing.Point(23, 4)
+        Me.TabPage20.Location = New System.Drawing.Point(25, 4)
         Me.TabPage20.Name = "TabPage20"
         Me.TabPage20.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage20.Size = New System.Drawing.Size(1137, 534)
+        Me.TabPage20.Size = New System.Drawing.Size(1135, 534)
         Me.TabPage20.TabIndex = 2
         Me.TabPage20.Text = "DMS Unpacker"
         Me.TabPage20.UseVisualStyleBackColor = True
@@ -2181,10 +2225,10 @@ Partial Class Main
         Me.TabPage11.Controls.Add(Me.Label44)
         Me.TabPage11.Controls.Add(Me.TabControl1)
         Me.TabPage11.Controls.Add(Me.ProgressBar1)
-        Me.TabPage11.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage11.Location = New System.Drawing.Point(4, 26)
         Me.TabPage11.Name = "TabPage11"
         Me.TabPage11.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage11.Size = New System.Drawing.Size(1173, 554)
+        Me.TabPage11.Size = New System.Drawing.Size(1173, 553)
         Me.TabPage11.TabIndex = 17
         Me.TabPage11.Text = "Analyze Bootblock"
         Me.TabPage11.UseVisualStyleBackColor = True
@@ -2332,10 +2376,10 @@ Partial Class Main
         Me.TabPage14.Controls.Add(Me.Button37)
         Me.TabPage14.Controls.Add(Me.Button35)
         Me.TabPage14.Controls.Add(Me.Button36)
-        Me.TabPage14.Location = New System.Drawing.Point(23, 4)
+        Me.TabPage14.Location = New System.Drawing.Point(25, 4)
         Me.TabPage14.Name = "TabPage14"
         Me.TabPage14.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage14.Size = New System.Drawing.Size(402, 486)
+        Me.TabPage14.Size = New System.Drawing.Size(400, 486)
         Me.TabPage14.TabIndex = 1
         Me.TabPage14.Text = "Similarity"
         Me.TabPage14.UseVisualStyleBackColor = True
@@ -2402,10 +2446,10 @@ Partial Class Main
         Me.TabPage5.Controls.Add(Me.Button16)
         Me.TabPage5.Controls.Add(Me.cmdAddTen)
         Me.TabPage5.Controls.Add(Me.Button18)
-        Me.TabPage5.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage5.Location = New System.Drawing.Point(4, 26)
         Me.TabPage5.Name = "TabPage5"
         Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage5.Size = New System.Drawing.Size(1173, 554)
+        Me.TabPage5.Size = New System.Drawing.Size(1173, 553)
         Me.TabPage5.TabIndex = 9
         Me.TabPage5.Text = "Bootblock Ripper"
         '
@@ -2728,9 +2772,9 @@ Partial Class Main
         Me.TabPage2.Controls.Add(Me.Button23)
         Me.TabPage2.Controls.Add(Me.PictureBox5)
         Me.TabPage2.Controls.Add(Me.Button20)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 26)
         Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Size = New System.Drawing.Size(1173, 554)
+        Me.TabPage2.Size = New System.Drawing.Size(1173, 553)
         Me.TabPage2.TabIndex = 12
         Me.TabPage2.Text = "Boot Collection"
         '
@@ -2813,10 +2857,10 @@ Partial Class Main
         Me.TabPage3.Controls.Add(Me.TextBox6)
         Me.TabPage3.Controls.Add(Me.PictureBox2)
         Me.TabPage3.Controls.Add(Me.TreeView1)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 26)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(1173, 554)
+        Me.TabPage3.Size = New System.Drawing.Size(1173, 553)
         Me.TabPage3.TabIndex = 14
         Me.TabPage3.Text = "Encyclopedia"
         Me.TabPage3.UseVisualStyleBackColor = True
@@ -2881,10 +2925,10 @@ Partial Class Main
         Me.TabPage4.Controls.Add(Me.Button6)
         Me.TabPage4.Controls.Add(Me.Label23)
         Me.TabPage4.Controls.Add(Me.TextBox8)
-        Me.TabPage4.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage4.Location = New System.Drawing.Point(4, 26)
         Me.TabPage4.Name = "TabPage4"
         Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage4.Size = New System.Drawing.Size(1173, 554)
+        Me.TabPage4.Size = New System.Drawing.Size(1173, 553)
         Me.TabPage4.TabIndex = 15
         Me.TabPage4.Text = "Log"
         Me.TabPage4.UseVisualStyleBackColor = True
@@ -3322,90 +3366,47 @@ Partial Class Main
         '
         Me.sfdASM.DefaultExt = "asm"
         '
-        'Label32
+        'no
         '
-        Me.Label32.AutoSize = True
-        Me.Label32.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label32.Location = New System.Drawing.Point(479, 431)
-        Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(103, 13)
-        Me.Label32.TabIndex = 154
-        Me.Label32.Text = "Show recognition"
+        Me.no.HeaderText = "Column1"
+        Me.no.Name = "no"
+        Me.no.Visible = False
         '
-        'Label1
+        'fsFile
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(7, 32)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(49, 13)
-        Me.Label1.TabIndex = 140
-        Me.Label1.Text = "KS Req:"
+        Me.fsFile.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.fsFile.DefaultCellStyle = DataGridViewCellStyle1
+        Me.fsFile.HeaderText = "File Name"
+        Me.fsFile.Name = "fsFile"
+        Me.fsFile.ReadOnly = True
+        Me.fsFile.Width = 413
         '
-        'GroupBox11
+        'FSize
         '
-        Me.GroupBox11.Controls.Add(Me.txtLen)
-        Me.GroupBox11.Controls.Add(Me.txtFS)
-        Me.GroupBox11.Controls.Add(Me.Label36)
-        Me.GroupBox11.Controls.Add(Me.Label35)
-        Me.GroupBox11.Controls.Add(Me.Label34)
-        Me.GroupBox11.Controls.Add(Me.txtCRC)
-        Me.GroupBox11.Controls.Add(Me.Label33)
-        Me.GroupBox11.Controls.Add(Me.Label1)
-        Me.GroupBox11.Controls.Add(Me.txtKS)
-        Me.GroupBox11.Controls.Add(Me.chkBootable)
-        Me.GroupBox11.Controls.Add(Me.chkDDR)
-        Me.GroupBox11.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox11.Location = New System.Drawing.Point(156, 426)
-        Me.GroupBox11.Name = "GroupBox11"
-        Me.GroupBox11.Size = New System.Drawing.Size(321, 75)
-        Me.GroupBox11.TabIndex = 155
-        Me.GroupBox11.TabStop = False
-        Me.GroupBox11.Text = "Info"
+        Me.FSize.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.FSize.HeaderText = "File Size"
+        Me.FSize.Name = "FSize"
         '
-        'Label34
+        'Bootblock
         '
-        Me.Label34.AutoSize = True
-        Me.Label34.Location = New System.Drawing.Point(199, 16)
-        Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(49, 13)
-        Me.Label34.TabIndex = 152
-        Me.Label34.Text = "Length:"
+        Me.Bootblock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Bootblock.HeaderText = "Bootblock"
+        Me.Bootblock.Name = "Bootblock"
+        Me.Bootblock.ReadOnly = True
         '
-        'Label35
+        'BCRC
         '
-        Me.Label35.AutoSize = True
-        Me.Label35.Location = New System.Drawing.Point(255, 16)
-        Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(0, 13)
-        Me.Label35.TabIndex = 153
+        Me.BCRC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.BCRC.HeaderText = "Boot CRC"
+        Me.BCRC.Name = "BCRC"
+        Me.BCRC.Width = 80
         '
-        'Label36
+        'KCRC
         '
-        Me.Label36.AutoSize = True
-        Me.Label36.Location = New System.Drawing.Point(8, 52)
-        Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(25, 13)
-        Me.Label36.TabIndex = 154
-        Me.Label36.Text = "FS:"
-        '
-        'txtFS
-        '
-        Me.txtFS.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.txtFS.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtFS.Location = New System.Drawing.Point(38, 52)
-        Me.txtFS.Name = "txtFS"
-        Me.txtFS.Size = New System.Drawing.Size(266, 13)
-        Me.txtFS.TabIndex = 155
-        '
-        'txtLen
-        '
-        Me.txtLen.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.txtLen.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtLen.Location = New System.Drawing.Point(247, 16)
-        Me.txtLen.Name = "txtLen"
-        Me.txtLen.Size = New System.Drawing.Size(68, 13)
-        Me.txtLen.TabIndex = 156
+        Me.KCRC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.KCRC.HeaderText = "CRC / Byte Match"
+        Me.KCRC.Name = "KCRC"
         '
         'Main
         '
@@ -3459,6 +3460,8 @@ Partial Class Main
         Me.TabPage17.ResumeLayout(False)
         Me.TabPage9.ResumeLayout(False)
         Me.TabPage9.PerformLayout()
+        Me.GroupBox11.ResumeLayout(False)
+        Me.GroupBox11.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picPreview, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpscan.ResumeLayout(False)
@@ -3497,8 +3500,6 @@ Partial Class Main
         Me.MainMenu.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
-        Me.GroupBox11.ResumeLayout(False)
-        Me.GroupBox11.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -3806,12 +3807,6 @@ Partial Class Main
     Friend WithEvents chkFS As ToolStripMenuItem
     Friend WithEvents chkSCRC As ToolStripMenuItem
     Friend WithEvents chkBMT As ToolStripMenuItem
-    Friend WithEvents no As DataGridViewTextBoxColumn
-    Friend WithEvents fsFile As DataGridViewTextBoxColumn
-    Friend WithEvents FSize As DataGridViewTextBoxColumn
-    Friend WithEvents Bootblock As DataGridViewTextBoxColumn
-    Friend WithEvents BCRC As DataGridViewTextBoxColumn
-    Friend WithEvents KCRC As DataGridViewTextBoxColumn
     Friend WithEvents rtBBDisplay As RichTextBox
     Friend WithEvents BBDisplay As TextBox
     Friend WithEvents Label16 As Label
@@ -3835,4 +3830,10 @@ Partial Class Main
     Friend WithEvents Label35 As Label
     Friend WithEvents Label34 As Label
     Friend WithEvents txtLen As TextBox
+    Friend WithEvents no As DataGridViewTextBoxColumn
+    Friend WithEvents fsFile As DataGridViewTextBoxColumn
+    Friend WithEvents FSize As DataGridViewTextBoxColumn
+    Friend WithEvents Bootblock As DataGridViewTextBoxColumn
+    Friend WithEvents BCRC As DataGridViewTextBoxColumn
+    Friend WithEvents KCRC As DataGridViewTextBoxColumn
 End Class
