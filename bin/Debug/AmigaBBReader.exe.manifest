@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AmigaBBReader.exe" size="4712448">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AmigaBBReader.exe" size="4728320">
       <assemblyIdentity name="AmigaBBReader" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ZAenGFzRVKTVT8Aj/v6AK5lxEn4vW7O/CHf6HzJ1otw=</dsig:DigestValue>
+        <dsig:DigestValue>kJR/lAfwXOaN6iGDdfHdHWm0tVv/l1Zi3TcqC1I7pdA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

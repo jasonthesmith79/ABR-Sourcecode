@@ -12,21 +12,6 @@ Public Class StringSearch
         ComboBox2.SelectedText = "1.3"
     End Sub
 
-    Private Sub MatchName() Handles txtBBName.TextChanged
-        cbxKnown.Items.Clear()
-        Dim i As Integer
-        For i = 0 To Main.Bootno - 1
-            If InStr(Main.BBDatabase(i).Name.ToUpper, txtBBName.Text.ToUpper) Then
-                cbxKnown.Items.Add(Main.BBDatabase(i).Name)
-            End If
-        Next
-        If cbxKnown.Items.Count = Main.Bootno Or cbxKnown.Items.Count = 0 Then
-            cbxKnown.Text = "No Similar Bootblocks found"
-        ElseIf cbxKnown.Items.Count > 0 Then
-            cbxKnown.Text = cbxKnown.Items(0)
-        End If
-    End Sub
-
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         txtBBName.Text = cbxKnown.Text
     End Sub

@@ -8,6 +8,7 @@
     Public Property Bootable As Boolean
     Public Property Note As String
     Public Property ColorName As String
+    Public Property SearchString As String
 
     Public Sub New(ByVal BN As String, ByVal BootClass As String, ByVal BR As String, ByVal DN As Boolean, ByVal BKS As String, ByVal Boot As Boolean, ByVal BCRC As String)
         Name = BN
@@ -28,15 +29,18 @@
         Note = BNote
         BClass = BootClass
     End Sub
-    Public Function BootColour() As Color
-        Dim returncolor As Color = Color.Black
-        For y = 0 To Main.CatList.Length - 2
-            If BClass = Main.CatList(y).Abb Then
-                returncolor = Main.CatList(y).Color
-                ColorName = Main.CatList(y).ColorName
+    Public Function RecogChar() As String()
+        Dim items() As String = Recog.Split(",")
+        Return items
+    End Function
+    Public Function BootColour(ByVal abb() As String, ByVal catcol() As String) As String
+        Dim returncolor As String = "Black"
+        For y = 0 To abb.Length - 1
+            If BClass = abb(y) Then
+                returncolor = catcol(y)
                 Exit For
             Else
-                returncolor = Color.Black
+                returncolor = "Black"
                 ColorName = "Black"
             End If
         Next

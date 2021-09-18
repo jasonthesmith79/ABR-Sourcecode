@@ -8,27 +8,28 @@ Imports ICSharpCode.SharpZipLib.GZip
 Imports ICSharpCode.SharpZipLib.Zip
 
 Public Class Main
-
-    ' Global variables used in more than one place in the program
+    ' Zip file handling variables
     Public objentry As ZipEntry
-    Public bootpos As Integer = 0
-    Public FoundbySearch As Boolean = False
     Public zipperfile As String = ""
+    Public zfile As String
+    Public zipper As New FastZip
+
+    Public brecog As String
+    Public FoundbySearch As Boolean = False
+
     Public OpenBootFile As String
     Public ASMLoc As Integer
     Public filtered As Boolean
-    Public ASMFile() As String
+
     Public filtercount As Integer = 0
     Public Recogtoggle As Boolean = False
     Public DMSInfo(11) As String
-    Public AddDir As Boolean
     Public drawers() As String
-    Public BackCRC() As String
-    Public dbox As String
     Public CompVirus As Boolean = False
-    Public zfile As String
 
+    Dim Lineoffset(16) As Integer
     'Used in IRA dissassembly
+    Public ASMFile() As String
     Public opadd(1) As String
     Public EQUName(20) As String
     Public EQURef(20) As String
@@ -39,22 +40,14 @@ Public Class Main
     Public CatList(20) As BootCategory
     Public sbfiles() As String
     Public IntMainLoc(2, 2) As Integer
-    Public zipper As New FastZip
-    Public CList() As Color
 
 
     Public newsaved As Boolean = False
-    Public oldbrain() As String
     Public logfile As New StringBuilder
 
-    Public OBootNum As Integer
     Public initialPath As String
-    Public BBDelete As Boolean = False
     Dim Formloaded As Boolean = False
-    Public learnoverride As Boolean
-    Public Cancelprog As Boolean = False
 
-    Public Origsearch As String
     Dim BootNum As Integer
     Public IsKnown As Boolean = False
     Dim Iszip As Boolean = False
@@ -64,55 +57,47 @@ Public Class Main
     Public BrainXML As XmlDocument
     Public dmsfile As String
     Public adzfile As String
-    Public Finput() As String
-    Public catselect As Boolean = False
-    Public EditNode As Integer
-    Public BNum As Integer
+
     Public BootASCIIIntegers(1024) As Integer
     Dim DefaultH As Integer
     Dim DefaultW As Integer
-    Dim Editbuffer() As Byte
+    Public chars As Char()  'Char array to store bootblock to print to boot display textbox
     Dim Counter As Integer
-    Dim Rchars(1024) As Char
-    Public Oldpicname As String
-    Dim Redobuffer() As String
     Dim Curboot(1024) As Byte
-    Dim Savecount As Integer = 0
     Public Boots As Integer
-    Public IntClicked As Integer
     Dim Adfbuffer(901120) As Byte
     Dim Tempdrawer As String
-    Dim Batchlist() As String
     Public SBFoundNo As Integer
     Public Foundno As Integer
     Public DisplayType As Integer = 2
-    Public Files(20000) As String
-    Public Bootno As Integer
+    Public Files(2) As String
     Public BootLen As Integer
     Public IntBytePos(6) As Integer
 
     'File scanner arrays
-    Dim Fileclass(500) As String
-    Dim Filebname(500) As String
-    Dim Filebnum(500) As Integer
-    Public filecolor(500) As String
-
+    Public Fileclass(2) As String
+    Public Filebname(2) As String
+    Public Filebnum(2) As Integer
+    Public filecolor(2) As String
     Public Buffer(1024) As Byte
-    Dim Strc As New StringBuilder
+
+    'Bootblock identifiers
     Dim Bootname As String
     Public Bootclass As String
     Public bootcolor As String
+
+    'Bootblock ripper variables
     Dim Fbuffer(1024) As Byte
+    Public Finput() As String
+    Public Fread As Boolean
+    Public bootpos As Integer = 0
+
     Dim FoundLoc(500) As Integer
     Dim WithEvents Worker As New BackgroundWorker
     Dim WithEvents SWorker As New BackgroundWorker
     Dim Zipname As String
     Dim BType As Integer
-    Public ORMessage As String
     Public Recogline(3000) As String
-    Public ORecogline(3000) As String
-    Dim Nopic As Boolean
-    Dim Ziprealname As String
 
     'Codepages used for different views
     Public ReadCP As Encoding
@@ -122,28 +107,30 @@ Public Class Main
     ReadOnly utf8 As Encoding = Encoding.UTF8
     ReadOnly Ascii As ASCIIEncoding = New ASCIIEncoding()
 
-
+    'Path to Brainfile and Applicaton Start path
     Public StartPath As String = Forms.Application.StartupPath
     Public DefaultBrainPath As String = StartPath & "\brainfile.xml"
     Public DefaultSBrainPath As String = StartPath & "\searchbrain.xml"
     Public Brainpath As String
-    Public Fread As Boolean
-    Public BBAmt As Integer
-    Public searchnodes As Integer
     Public LastDrawer As String = My.Settings.LastDrawer
 
+    'Variables for bootblock compare
     Public bblist() As String
 
     'Class definitions
     Public BBDatabase(2) As AmigaBB
     Public SearchDatabase(2) As AmigaBB
     Public BBE(2) As ABREncyclopedia
-    Public catnames() As String
-    Public abbnames() As String
+
+    'Class friendly lists for Category class
+    Public catnames(1) As String
+    Public abbnames(1) As String
+    Public catcolours(1) As String
 
     'Display types
     Public Scanner As Integer = 1
     Public DisplayBoot As Integer = 2
+    Public HexDisplay As Integer = 3
 
     Private Sub ofdBootOpen_FileOk(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles ofdBootOpen.FileOk
         tabBrain.SelectTab(0)
@@ -266,7 +253,7 @@ Public Class Main
         std_err.Close()
     End Sub
     Public Function UnDMStoFile(ByVal OpenFileName As String, ByVal Destdrawer As String) As String
-        Dim up As String
+        Dim up As String = ""
         isdms = True
         dmsfile = OpenFileName
         Dim p As New Process
@@ -378,7 +365,7 @@ Public Class Main
         Dim i As Integer = 0
         Dim tryadzaszip As Boolean = False
         'Dim objEntry As ZipArchiveEntry 'OLD .NET 4.5 ZIP CODE
-        Dim chars As Char()  'Char array to store bootblock to print to boot display textbox
+
         chars = New Char(1024) {}
         Dim FileProps As FileInfo = New FileInfo(OpenBootFile)
         'Invalid File types DMS and LHA etc
@@ -544,7 +531,6 @@ Public Class Main
         Catch
         End Try
         chars = ReadCP.GetChars(Buffer)
-        Rchars = chars
         BootLen = chars.Length - 1
         If DisplayType > 1 Then
             If Isadf = True Then
@@ -595,7 +581,7 @@ Public Class Main
                 If isDone = True Then Exit For
                 For x = 0 To 63
                     If (count + x) > (BootLen) Then
-                        bootline &= "."
+                        bootline &= " "
                     ElseIf Asc(chars(count + x)) = 0 Then
                         bootline &= "."
                     ElseIf Asc(chars(count + x)) = 3 Then
@@ -612,7 +598,6 @@ Public Class Main
                         bootline &= "?"
                     ElseIf Asc(chars(count + x)) = 13 Then
                         bootline &= "?"
-
                     Else
                         bootline &= chars(count + x)
                     End If
@@ -674,7 +659,7 @@ Public Class Main
             BBDisplay.SelectionLength = 0
 
             If Foundno = -1 Then Else txtNote.Text = BBDatabase(Foundno).Note
-        ElseIf DisplayType = 3 Then  'Hex display type
+        ElseIf displaytype = HexDisplay Then  'Hex display type
             Dim bootline As String = ""
             Dim x As Integer
             Dim count As Integer = 0
@@ -761,6 +746,7 @@ Public Class Main
         'Pass on to checkboot sub for brainfile indentification
         Dim bcrc As String
         FoundbySearch = False
+        cmdLearn.Enabled = False
         bcrc = Hex(Crc32.ComputeChecksum(Buffer))
         CheckBootByCRC(bcrc)
         If Bootname = "" Then
@@ -794,6 +780,7 @@ Public Class Main
             End If
         End If
         If IsKnown = False Then
+            cmdLearn.Enabled = True
             bootcolor = "Gray"
             If dossig = "687983" Then
                 Bootname = "Unknown Bootblock"
@@ -888,7 +875,7 @@ Public Class Main
                     If InStr(bootimg, "/") Then
                         bootimg = bootimg.Replace("/", "-")
                     End If
-                    txtBootName.ForeColor = BBDatabase(Boots).BootColour
+                    txtBootName.ForeColor = Color.FromName(BBDatabase(Boots).BootColour(abbnames, catcolours))
                 End If
 
                 Exit For
@@ -953,9 +940,8 @@ Public Class Main
         Dim intPOS As Integer
         Dim intVal As Integer
         Dim i As Integer
-        Bootno = 0
+        Dim BootTotal As Integer = 0
         'Count the number of bootblocks in memory
-        Bootno = BBDatabase.Length - 2
         Dim x As Integer = 0
         Dim z As Integer = 0
         Dim y As Integer = 0
@@ -963,7 +949,7 @@ Public Class Main
         Dim hit As Integer = 0
         IsKnown = False
         Dim dossig As String = BootASCIIIntegers(0) & BootASCIIIntegers(1) & BootASCIIIntegers(2)
-        For Boots = 0 To Bootno - 1
+        For Boots = 0 To BBDatabase.Length - 2
             If BBDatabase(Boots).Name = "DELETED" OrElse BBDatabase(Boots).Name = "" Then
             Else
                 x = 0
@@ -1063,7 +1049,6 @@ Public Class Main
                 File.WriteAllBytes(writefile, Buffer)
                 newsaved = True
             End If
-            Savecount += 1
         Catch
             Dim result As Integer
             result = MessageBox.Show("Cant write file - " + savename, "Cant write file", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk)
@@ -1105,7 +1090,7 @@ Public Class Main
                 Case 6
                     rtBBDisplay.Visible = False
                     BBDisplay.ScrollBars = ScrollBars.Vertical
-                    DisplayType = 3
+                    displaytype = HexDisplay
             End Select
         End Using
         Call Disptype(DisplayType, OpenBootFile)
@@ -1123,7 +1108,6 @@ Public Class Main
         BrainNodelist = BrainXML.GetElementsByTagName("Bootblock")
         ReDim IntMainLoc(BrainNodelist.Count, 17)
         ReDim BBDatabase(BrainNodelist.Count)
-        BBAmt = BrainNodelist.Count - 1
         For Each bnode In BrainNodelist
             Dim Note As String
             rline = bnode.Item("Recog").InnerText
@@ -1173,7 +1157,7 @@ Public Class Main
         Dim xmld As XmlDocument
         Dim nodelist As XmlNodeList
         Dim bnode As XmlNode
-        Dim i As Integer, x As Integer
+        Dim i As Integer
         Dim items(16) As String
         Dim data As Boolean
         Dim boot As Boolean
@@ -1181,14 +1165,13 @@ Public Class Main
         xmld.Load("searchbrain.xml")
         nodelist = xmld.GetElementsByTagName("Bootblock")
         ReDim SearchDatabase(nodelist.Count)
-        searchnodes = nodelist.Count - 1
         For Each bnode In nodelist
             If bnode.Item("Data").InnerText = "Y" Then data = True Else data = False
             If bnode.Item("Bootable").InnerText = "Y" Then boot = True Else boot = False
             SearchDatabase(i) = New AmigaBB(bnode.Item("Name").InnerText, bnode.Item("Class").InnerText, bnode.Item("Recog").InnerText,
                                             data, bnode.Item("KS").InnerText, boot, "---")
             trvSearch.Nodes.Add(SearchDatabase(i).Name)
-            trvSearch.Nodes(i).ForeColor = SearchDatabase(i).BootColour
+            trvSearch.Nodes(i).ForeColor = Color.FromName(SearchDatabase(i).BootColour(abbnames, catcolours))
             trvSearch.Nodes(i).Nodes.Add("Bootblock Type: " & SearchDatabase(i).BootClass(abbnames, catnames))
             trvSearch.Nodes(i).Nodes.Add("KickStart req:" & SearchDatabase(i).KS)
             trvSearch.Nodes(i).Nodes.Add("Disk Data Required:" & SearchDatabase(i).DataNeeded)
@@ -1228,12 +1211,14 @@ Public Class Main
         ReDim CatList(nodelist.Count - 1)
         ReDim catnames(CatList.Length - 1)
         ReDim abbnames(CatList.Length - 1)
+        ReDim catcolours(CatList.Length - 1)
         For Each bnode In nodelist
             CatList(i) = New BootCategory(bnode.Item("Name").InnerText, bnode.Item("abbrev").InnerText, bnode.Item("Colour").InnerText, Color.FromName(bnode.Item("Colour").InnerText))
             trvCategories.Nodes.Add(CatList(i).Name & " / " & CatList(i).Abb)
             trvCategories.Nodes(i).ForeColor = CatList(i).Color
             catnames(i) = CatList(i).Name
             abbnames(i) = CatList(i).Abb
+            catcolours(i) = CatList(i).ColorName
             i += 1
         Next
         AddtoLog(nodelist.Count & " category nodes found")
@@ -1461,8 +1446,6 @@ Public Class Main
 
     Public Sub ResetForm() 'Reset all back to default
         Array.Clear(IntBytePos, 0, 6)
-        txtTrail.Text = ""
-        IntClicked = 0
         lblMaxel.Visible = False
         txtFS.Text = ""
         txtLen.Text = ""
@@ -1505,11 +1488,7 @@ Public Class Main
             recstring = ""
             If BBDatabase(i).Name = "DELETED" OrElse BBDatabase(i).BClass = "" Then
             Else
-                For x = 0 To 13
-                    recstring &= IntMainLoc(i, x)
-                    If x < 13 Then recstring &= ","
-                Next
-                CreateXMLRec(BBDatabase(i).Name, recstring, BBDatabase(i).BClass, BBDatabase(i).KS, BBDatabase(i).Bootable, BBDatabase(i).DataNeeded,
+                CreateXMLRec(BBDatabase(i).Name, BBDatabase(i).Recog, BBDatabase(i).BClass, BBDatabase(i).KS, BBDatabase(i).Bootable, BBDatabase(i).DataNeeded,
                              BBDatabase(i).Note, BBDatabase(i).CRC, writer)
             End If
         Next
@@ -1519,42 +1498,21 @@ Public Class Main
 
     End Sub
 
-    'Public Sub SaveSearchBB()
-    '    Dim i As Integer
-    '    Dim writer As New XmlTextWriter("searchbrain.xml", utf8)
-    '    writer.WriteStartDocument(True)
-    '    writer.WriteStartElement("SBBootblocks")
-    '    writer.Formatting = Formatting.Indented
-    '    writer.Indentation = 2
-    '    For i = 0 To Searchname(i).Length - 1
-    '        If Searchname(i) = "DELETED" OrElse Searchclass(i) = "" Then
-    '        Else
-    '            CreateXMLRec(Searchname(i), Searchtext(i), Searchclass(i), SearchKS(i), SearchBootable(i), SearchDR(i), Searchnote(i), "---", writer)
-    '        End If
-    '    Next
-    '    writer.WriteEndElement()
-    '    writer.WriteEndDocument()
-    '    writer.Close()
+    Public Sub SaveSearchBB()
+        Dim i As Integer
+        Dim writer As New XmlTextWriter("searchbrain.xml", utf8)
+        writer.WriteStartDocument(True)
+        writer.WriteStartElement("SBBootblocks")
+        writer.Formatting = Formatting.Indented
+        writer.Indentation = 2
+        For i = 0 To SearchDatabase.Length - 2
+            CreateXMLRec(SearchDatabase(i).Name, SearchDatabase(i).Recog, SearchDatabase(i).BClass, SearchDatabase(i).KS, SearchDatabase(i).Bootable, SearchDatabase(i).DataNeeded, SearchDatabase(i).Note, "---", writer)
+        Next
+        writer.WriteEndElement()
+        writer.WriteEndDocument()
+        writer.Close()
 
-    'End Sub
-
-    'Public Sub SaveSearchBBEntry(ByVal newSS As String, ByVal newClass As String, ByVal newText As String, ByVal newKS As String, ByVal newDR As String, ByVal newBoot As String)
-    '    Dim i As Integer
-    '    Dim writer As New XmlTextWriter("searchbrain.xml", utf8)
-    '    writer.WriteStartDocument(True)
-    '    writer.WriteStartElement("SBBootblocks")
-    '    For i = 0 To Searchname(i).Length - 1
-    '        If Searchname(i) = "DELETED" OrElse Isbtype(i) = "" Then
-    '        Else
-    '            CreateXMLRec(Searchname(i), Searchtext(i), Searchclass(i), SearchKS(i), SearchBootable(i), SearchBootable(i), Searchnote(i), "---", writer)
-    '        End If
-    '    Next
-    '    CreateXMLRec(newSS, newText, newClass, newKS, newDR, newBoot, "---", "---", writer)
-    '    writer.WriteEndElement()
-    '    writer.WriteEndDocument()
-    '    writer.Close()
-    '    RefreshSearchBB()
-    'End Sub
+    End Sub
 
     Private Sub cmdSaveFile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveBufferToFileToolStripMenuItem.Click
         If OpenBootFile = "" Then
@@ -1787,8 +1745,6 @@ Public Class Main
             worker.CancelAsync()
         End If
         'Disable controls which will cause errors if used during scan
-        ReDim Batchlist(Files.Length - 1)
-        ReDim CList(Files.Length)
         ReDim Filebname(Files.Length)
         ReDim Fileclass(Files.Length)
         ReDim filecolor(Files.Length)
@@ -1800,7 +1756,6 @@ Public Class Main
             If lbxFilter.SelectedIndex > 0 Then Thread.Sleep(5)
             If chkNoZip.Checked = True Then
                 If InStr(Files(x), ".zip") Then
-                    Batchlist(x) = "Skipped - Please use Open/View"
                 Else
                     Disptype(1, Files(x))
                 End If
@@ -1811,15 +1766,22 @@ Public Class Main
             Fileclass(x) = Bootclass
             Filebname(x) = Bootname
             Filebnum(x) = Boots
-            Batchlist(x) = bfile
-            If FoundbySearch = False Then
-                filecolor(x) = BBDatabase(Boots).ColorName
+            Dim col As String = "Black"
+            If IsKnown = False Then
+                col = "Gray"
             Else
-                filecolor(x) = SearchDatabase(SBFoundNo).ColorName
+                If Foundno > -1 Then
+                    col = BBDatabase(Boots).BootColour(abbnames, catcolours)
+
+                Else
+                    col = SearchDatabase(SBFoundNo).BootColour(abbnames, catcolours)
+                End If
+
             End If
 
+            filecolor(x) = col
             worker.ReportProgress(x)
-            If worker.CancellationPending Then
+                If worker.CancellationPending Then
                 e.Cancel = True
                 Exit Sub
             End If
@@ -1883,9 +1845,9 @@ Public Class Main
                 dgvBatch.Rows.Add(Counter, truncfile, fltext, Filebname(Counter), CRCsum, kcrc)
                 If chkCD.Checked = True Then
                     If Foundno > -1 Then
-                        dgvBatch.Rows(Counter).Cells(3).Style.ForeColor = BBDatabase(Foundno).BootColour
+                        dgvBatch.Rows(Counter).Cells(3).Style.ForeColor = Color.FromName(BBDatabase(Foundno).BootColour(abbnames, catcolours))
                     Else
-                        dgvBatch.Rows(Counter).Cells(3).Style.ForeColor = SearchDatabase(SBFoundNo).BootColour
+                        dgvBatch.Rows(Counter).Cells(3).Style.ForeColor = Color.FromName(SearchDatabase(SBFoundNo).BootColour(abbnames, catcolours))
                     End If
                 End If
             Case 1
@@ -2007,10 +1969,8 @@ Public Class Main
         txtSel.Text = dgvBatch.CurrentCell.RowIndex & "/" & dgvBatch.Rows.Count
         snum = dgvBatch.SelectedRows(0).Cells(0).Value
         Array.Clear(IntBytePos, 0, 6)
-        txtTrail.Text = ""
         ListBox2.TopIndex = ListBox2.SelectedIndex
         OpenBootFile = Files(snum)
-        Ziprealname = OpenBootFile
         If File.Exists(OpenBootFile) = True Then
             Dim FileProps As FileInfo = New FileInfo(OpenBootFile)
             Call Disptype(DisplayType, OpenBootFile)
@@ -2037,32 +1997,6 @@ Public Class Main
         ResetForm()
         ViewSelectedFile()
     End Sub
-
-    'Public Sub PopulateBFBox()
-    '    BrainTree.Nodes.Clear()
-    '    Dim bnode As Xml.XmlNode
-    '    Dim count As Integer = 0
-    '    Dim y As Integer = 0
-    '    Dim mycolor As Color
-    '    Dim BrainNodelist As XmlNodeList = BrainXML.GetElementsByTagName("Bootblock")
-    '    For Each bnode In BrainNodelist
-    '        BrainTree.Nodes.Add(bnode.Item("Name").InnerText)
-    '        BrainTree.Nodes(count).Nodes.Add("Bootable: " & bnode.Item("Bootable").InnerText)
-    '        If BootCRC(count) = "" Then Else BrainTree.Nodes(count).Nodes.Add("CRC: " & bnode.Item("CRC").InnerText)
-    '        If BNote(count) = "" Then Else BrainTree.Nodes(count).Nodes.Add("Notes: " & bnode.Item("Notes").InnerText)
-    '        BrainTree.Nodes(count).Nodes.Add("KickStart Required: " & bnode.Item("KS").InnerText)
-    '        BrainTree.Nodes(count).Nodes.Add("Disk Data Required: " & bnode.Item("Data").InnerText)
-    '        For y = 0 To CatList.Length - 1
-    '            If Isbtype(count).ToUpper = CatAb(y).ToUpper Then
-    '                BrainTree.Nodes(count).Nodes.Add("Bootblock Type: " & CatList(y))
-    '                mycolor = Color.FromName(catcolours(y))
-    '            End If
-    '        Next
-    '        BrainTree.Nodes(count).ForeColor = mycolor
-    '        count += 1
-    '    Next
-
-    'End Sub
     Public Sub PopulateBFBox()
         BrainTree.Nodes.Clear()
         Dim bnode As Xml.XmlNode
@@ -2077,7 +2011,7 @@ Public Class Main
             BrainTree.Nodes(count).Nodes.Add("Bootblock Type:" & BBDatabase(count).BootClass(abbnames, catnames))
             BrainTree.Nodes(count).Nodes.Add("KickStart Required: " & BBDatabase(count).KS)
             BrainTree.Nodes(count).Nodes.Add("Disk Data Required: " & BBDatabase(count).DataNeeded)
-            BrainTree.Nodes(count).ForeColor = BBDatabase(count).BootColour()
+            BrainTree.Nodes(count).ForeColor = Color.FromName(BBDatabase(count).BootColour(abbnames, catcolours))
             count += 1
         Next
     End Sub
@@ -2265,14 +2199,6 @@ Public Class Main
             'If you Then just deleted something this will occur
         End Try
 
-    End Sub
-
-    Private Sub sfdInstall_FileOk(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles sfdInstall.FileOk
-        Try
-            File.WriteAllBytes(sfdInstall.FileName, Editbuffer)
-        Catch
-            MessageBox.Show("Cant write file!!!!", "Write failure")
-        End Try
     End Sub
     Public Function FindinBBLib(ByVal s As String) As String
         Dim x As Integer
@@ -2591,6 +2517,11 @@ Public Class Main
         tabBrain.SelectedIndex = 4
     End Sub
     Private Sub cmdButton5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Dim flen As Integer = FileSystem.FileLen(OpenBootFile)
+        If flen < 1025 Then
+            MessageBox.Show("File is only " & flen & " bytes, all bytes displayed in boot display")
+            Exit Sub
+        End If
         ofdReader.FileName = OpenBootFile
         FReader()
         tabBrain.SelectedIndex = 3
@@ -2796,10 +2727,6 @@ Public Class Main
         RefreshDisplay()
     End Sub
 
-    Private Sub bootpic_Click(sender As Object, e As EventArgs) Handles bootpic.Click
-        If Nopic = True Then Call AttachPic(BrainTree.SelectedNode.Text)
-    End Sub
-
     Private Sub RunBB(ByVal s As String)
         Disptype(DisplayType, s)
         If OpenBootFile = "" Then Exit Sub
@@ -2896,13 +2823,15 @@ Public Class Main
 
     Private Sub trvCategories_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles trvCategories.AfterSelect
         ListBox3.Items.Clear()
-        catselect = True
         TextBox3.Text = trvCategories.SelectedNode.Index
         txtCat.Text = CatList(trvCategories.SelectedNode.Index).Name
         txtCCol.Text = CatList(trvCategories.SelectedNode.Index).ColorName
         txtCCol.BackColor = CatList(trvCategories.SelectedNode.Index).Color
         txtAbbrev.Text = CatList(trvCategories.SelectedNode.Index).Abb
         Dim x As Integer
+        For x = 0 To BBDatabase.Length - 2
+            If BBDatabase(x).BootClass(abbnames, catnames) = txtCat.Text Then ListBox3.Items.Add(BBDatabase(x).Name)
+        Next
     End Sub
 
     Private Sub ScanNewDrawerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ScanNewDrawerToolStripMenuItem.Click
@@ -3653,6 +3582,153 @@ Public Class Main
             DisplayRecog()
         End If
 
+    End Sub
+
+    Private Sub cmdLearn_Click(sender As Object, e As EventArgs) Handles cmdLearn.Click
+        grpLearn.Visible = True
+        GroupBox13.ForeColor = Color.Black
+        RadioButton1.Checked = True
+        TextBox15.Text = Hex(Crc32.ComputeChecksum(Buffer))
+    End Sub
+
+    Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton1.CheckedChanged, RadioButton2.CheckedChanged, RadioButton3.CheckedChanged
+        GroupBox13.Enabled = False
+        GroupBox14.Enabled = False
+        GroupBox15.Enabled = False
+        Button32.Enabled = False
+        If RadioButton1.Checked = True Then GroupBox13.Enabled = True
+        If RadioButton2.Checked = True Then
+            GroupBox14.Enabled = True
+            If TextBox9.Text.Length > 0 Then Button32.Enabled = True
+        End If
+        If RadioButton3.Checked = True Then
+            GroupBox15.Enabled = True
+            Button32.Enabled = True
+        End If
+    End Sub
+
+    Private Sub Button24_Click_2(sender As Object, e As EventArgs) Handles Button24.Click
+        Dim x As Integer
+        GroupBox13.ForeColor = Color.Black
+        Button26.Enabled = True
+        TextBox17.Text = "1 / 7"
+        For x = 0 To 6
+            CheckedListBox1.SetItemChecked(x, False)
+        Next
+        DataGridView2.Rows.Clear()
+    End Sub
+
+    Private Sub rtBBDisplay_TextChanged(sender As Object, e As EventArgs) Handles rtBBDisplay.SelectionChanged
+        Dim SelectFix As Integer = rtBBDisplay.SelectionStart
+        SelectFix -= Math.Floor(rtBBDisplay.SelectionStart / 64)
+        If chkAuto.Checked = True Then Button26.PerformClick()
+
+        If RadioButton1.Checked = True Then
+            '  If rtBBDisplay.SelectionStart > BootLen Then Exit Sub
+            TextBox16.Text = "Pos: " & SelectFix & " / " & "Char:" & chars(SelectFix)
+        End If
+        If RadioButton2.Checked = True Then
+            TextBox9.Text = rtBBDisplay.SelectedText
+            If TextBox9.Text.Length > 0 Then
+                Button32.Enabled = True
+            Else
+                Button32.Enabled = False
+            End If
+        End If
+    End Sub
+
+    Private Sub Button26_Click(sender As Object, e As EventArgs) Handles Button26.Click
+        Dim counter As Integer = DataGridView2.Rows.Count
+        Dim Selindex As Integer = rtBBDisplay.SelectionStart
+        Selindex -= Math.Floor(rtBBDisplay.SelectionStart / 64)
+        DataGridView2.Rows.Add(counter, selindex, chars(selindex))
+        If counter = 7 Then
+            CheckedListBox1.SetItemChecked(counter - 1, True)
+            brecog &= selindex & "," & Buffer(selindex)
+            TextBox17.Text = "7 / 7"
+            Button32.Enabled = True
+            GroupBox13.ForeColor = Color.Green
+            Button26.Enabled = False
+            Exit Sub
+        Else
+            brecog &= selindex & "," & Buffer(selindex) & ","
+        End If
+        CheckedListBox1.SetItemChecked(counter - 1, True)
+        TextBox17.Text = counter & " / 7"
+    End Sub
+
+    Private Sub Button32_Click_1(sender As Object, e As EventArgs) Handles Button32.Click
+        grpLearn.Visible = False
+        GroupBox16.Visible = True
+        TreeView2.Nodes.Clear()
+        ListBox6.SelectedIndex = 1
+        Dim x As Integer
+        For x = 0 To trvCategories.Nodes.Count - 1
+            TreeView2.Nodes.Add(trvCategories.Nodes(x).Text)
+            TreeView2.Nodes(x).ForeColor = trvCategories.Nodes(x).ForeColor
+        Next
+        TreeView2.SelectedNode = TreeView2.Nodes(1)
+    End Sub
+
+    Private Sub TextBox18_TextChanged(sender As Object, e As EventArgs) Handles txtNewFN.TextChanged
+        ListBox7.Items.Clear()
+        Dim i As Integer
+        If txtNewFN.Text.Length = 0 Then Exit Sub
+        For i = 0 To BBDatabase.Length - 2
+            If InStr(BBDatabase(i).Name.ToUpper, txtNewFN.Text.ToUpper) Then
+                ListBox7.Items.Add(BBDatabase(i).Name)
+            End If
+        Next
+    End Sub
+
+    Private Sub ListBox7_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox7.SelectedIndexChanged
+        txtNewFN.Text = ListBox7.GetItemText(ListBox7.SelectedItem)
+        txtNewFN.Focus()
+    End Sub
+
+    Private Sub Button39_Click(sender As Object, e As EventArgs) Handles Button39.Click
+        GroupBox16.Visible = False
+    End Sub
+
+    Private Sub Button25_Click(sender As Object, e As EventArgs) Handles Button25.Click
+        DataGridView2.Rows.Clear()
+        TextBox9.Clear()
+        grpLearn.Visible = False
+    End Sub
+
+    Private Sub Button33_Click(sender As Object, e As EventArgs) Handles Button33.Click
+        Dim crcval As String
+        Dim recogval As String
+        Dim newrecog As String = ""
+        If ListBox6.SelectedItem = Nothing Then Exit Sub
+        Dim newBBLen As Integer = BBDatabase.Length
+        ReDim Preserve BBDatabase(newBBLen)
+        If RadioButton1.Checked = True Then
+            recogval = brecog
+            crcval = ""
+            BBDatabase(newBBLen - 1) = New AmigaBB(txtNewFN.Text, abbnames(TreeView2.SelectedNode.Index), recogval, CheckBox7.Checked, ListBox6.GetItemText(ListBox6.SelectedItem), CheckBox6.Checked, crcval)
+            SaveBrain()
+            ReadBrain()
+        ElseIf RadioButton2.Checked Then
+            Dim newSBLen As Integer = SearchDatabase.Length
+            ReDim Preserve SearchDatabase(newSBLen)
+            crcval = ""
+            SearchDatabase(newSBLen - 1) = New AmigaBB(txtNewFN.Text, abbnames(TreeView2.SelectedNode.Index), TextBox9.Text, CheckBox7.Checked, ListBox6.GetItemText(ListBox6.SelectedItem), CheckBox6.Checked, crcval)
+            SaveSearchBB()
+            RefreshSearchBB()
+        ElseIf RadioButton3.Checked Then
+            recogval = ""
+            crcval = Hex(Crc32.ComputeChecksum(Buffer))
+            BBDatabase(newBBLen - 1) = New AmigaBB(txtNewFN.Text, abbnames(TreeView2.SelectedNode.Index), "", CheckBox7.Checked, ListBox6.GetItemText(ListBox6.SelectedItem), CheckBox6.Checked, crcval)
+            SaveBrain()
+            ReadBrain()
+        End If
+        GroupBox16.Visible = False
+        Disptype(2, OpenBootFile)
+    End Sub
+
+    Private Sub Button40_Click(sender As Object, e As EventArgs) Handles Button40.Click
+        txtNewFN.Text = Path.GetFileNameWithoutExtension(OpenBootFile)
     End Sub
 End Class
 

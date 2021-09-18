@@ -27,8 +27,9 @@ Partial Class Main
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ofdBrain = New System.Windows.Forms.OpenFileDialog()
         Me.ofdInstall = New System.Windows.Forms.OpenFileDialog()
         Me.fbdOpen = New System.Windows.Forms.FolderBrowserDialog()
@@ -147,6 +148,44 @@ Partial Class Main
         Me.TabPage17 = New System.Windows.Forms.TabPage()
         Me.trvinfo = New System.Windows.Forms.TreeView()
         Me.TabPage9 = New System.Windows.Forms.TabPage()
+        Me.GroupBox16 = New System.Windows.Forms.GroupBox()
+        Me.Button40 = New System.Windows.Forms.Button()
+        Me.Label38 = New System.Windows.Forms.Label()
+        Me.Button39 = New System.Windows.Forms.Button()
+        Me.Button33 = New System.Windows.Forms.Button()
+        Me.ListBox7 = New System.Windows.Forms.ListBox()
+        Me.GroupBox18 = New System.Windows.Forms.GroupBox()
+        Me.TextBox19 = New System.Windows.Forms.TextBox()
+        Me.Label37 = New System.Windows.Forms.Label()
+        Me.ListBox6 = New System.Windows.Forms.ListBox()
+        Me.CheckBox6 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox7 = New System.Windows.Forms.CheckBox()
+        Me.GroupBox17 = New System.Windows.Forms.GroupBox()
+        Me.TreeView2 = New System.Windows.Forms.TreeView()
+        Me.txtNewFN = New System.Windows.Forms.TextBox()
+        Me.grpLearn = New System.Windows.Forms.GroupBox()
+        Me.GroupBox13 = New System.Windows.Forms.GroupBox()
+        Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
+        Me.TextBox17 = New System.Windows.Forms.TextBox()
+        Me.chkAuto = New System.Windows.Forms.CheckBox()
+        Me.TextBox16 = New System.Windows.Forms.TextBox()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.Button26 = New System.Windows.Forms.Button()
+        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.Col1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Po = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BVal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Button24 = New System.Windows.Forms.Button()
+        Me.Button32 = New System.Windows.Forms.Button()
+        Me.GroupBox15 = New System.Windows.Forms.GroupBox()
+        Me.TextBox15 = New System.Windows.Forms.TextBox()
+        Me.RadioButton3 = New System.Windows.Forms.RadioButton()
+        Me.GroupBox14 = New System.Windows.Forms.GroupBox()
+        Me.TextBox9 = New System.Windows.Forms.TextBox()
+        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.Button25 = New System.Windows.Forms.Button()
+        Me.cmdLearn = New System.Windows.Forms.Button()
+        Me.picPreview = New System.Windows.Forms.PictureBox()
         Me.rtBBDisplay = New System.Windows.Forms.RichTextBox()
         Me.BBDisplay = New System.Windows.Forms.TextBox()
         Me.GroupBox11 = New System.Windows.Forms.GroupBox()
@@ -163,7 +202,6 @@ Partial Class Main
         Me.chkDDR = New System.Windows.Forms.CheckBox()
         Me.Label32 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.picPreview = New System.Windows.Forms.PictureBox()
         Me.txtNote = New System.Windows.Forms.TextBox()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Label14 = New System.Windows.Forms.Label()
@@ -178,7 +216,6 @@ Partial Class Main
         Me.txtBootName = New System.Windows.Forms.TextBox()
         Me.cmdCycle = New System.Windows.Forms.Button()
         Me.ListBox2 = New System.Windows.Forms.ListBox()
-        Me.txtTrail = New System.Windows.Forms.TextBox()
         Me.Button21 = New System.Windows.Forms.Button()
         Me.cmdGotoBrain = New System.Windows.Forms.Button()
         Me.TabPage7 = New System.Windows.Forms.TabPage()
@@ -188,6 +225,12 @@ Partial Class Main
         Me.Label17 = New System.Windows.Forms.Label()
         Me.chkIFE = New System.Windows.Forms.CheckBox()
         Me.dgvBatch = New System.Windows.Forms.DataGridView()
+        Me.no = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fsFile = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FSize = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Bootblock = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BCRC = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.KCRC = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.chkSkip = New System.Windows.Forms.CheckBox()
         Me.TextBox10 = New System.Windows.Forms.TextBox()
         Me.ListBox4 = New System.Windows.Forms.ListBox()
@@ -354,12 +397,6 @@ Partial Class Main
         Me.ofdIRA = New System.Windows.Forms.OpenFileDialog()
         Me.sfdASM = New System.Windows.Forms.SaveFileDialog()
         Me.fbdDMS = New System.Windows.Forms.FolderBrowserDialog()
-        Me.no = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.fsFile = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FSize = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Bootblock = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BCRC = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.KCRC = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PicMenu.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -380,9 +417,17 @@ Partial Class Main
         Me.TabPage19.SuspendLayout()
         Me.TabPage17.SuspendLayout()
         Me.TabPage9.SuspendLayout()
+        Me.GroupBox16.SuspendLayout()
+        Me.GroupBox18.SuspendLayout()
+        Me.GroupBox17.SuspendLayout()
+        Me.grpLearn.SuspendLayout()
+        Me.GroupBox13.SuspendLayout()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox15.SuspendLayout()
+        Me.GroupBox14.SuspendLayout()
+        CType(Me.picPreview, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox11.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picPreview, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpscan.SuspendLayout()
         Me.TabPage7.SuspendLayout()
         Me.TabControl3.SuspendLayout()
@@ -532,9 +577,6 @@ Partial Class Main
         Me.chkIntro.Name = "chkIntro"
         Me.chkIntro.Size = New System.Drawing.Size(104, 24)
         Me.chkIntro.TabIndex = 0
-        '
-        'sfdInstall
-        '
         '
         'ofdNewBrain
         '
@@ -1033,7 +1075,7 @@ Partial Class Main
         '
         'Button12
         '
-        Me.Button12.Image = Global.AmigaBBReader.My.Resources.Resources.Zoom
+        Me.Button12.Image = CType(resources.GetObject("Button12.Image"), System.Drawing.Image)
         Me.Button12.Location = New System.Drawing.Point(555, 418)
         Me.Button12.Name = "Button12"
         Me.Button12.Size = New System.Drawing.Size(28, 23)
@@ -1463,12 +1505,15 @@ Partial Class Main
         'TabPage9
         '
         Me.TabPage9.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.TabPage9.Controls.Add(Me.GroupBox16)
+        Me.TabPage9.Controls.Add(Me.grpLearn)
+        Me.TabPage9.Controls.Add(Me.cmdLearn)
+        Me.TabPage9.Controls.Add(Me.picPreview)
         Me.TabPage9.Controls.Add(Me.rtBBDisplay)
         Me.TabPage9.Controls.Add(Me.BBDisplay)
         Me.TabPage9.Controls.Add(Me.GroupBox11)
         Me.TabPage9.Controls.Add(Me.Label32)
         Me.TabPage9.Controls.Add(Me.PictureBox1)
-        Me.TabPage9.Controls.Add(Me.picPreview)
         Me.TabPage9.Controls.Add(Me.txtNote)
         Me.TabPage9.Controls.Add(Me.Button5)
         Me.TabPage9.Controls.Add(Me.Label14)
@@ -1478,7 +1523,6 @@ Partial Class Main
         Me.TabPage9.Controls.Add(Me.txtBootName)
         Me.TabPage9.Controls.Add(Me.cmdCycle)
         Me.TabPage9.Controls.Add(Me.ListBox2)
-        Me.TabPage9.Controls.Add(Me.txtTrail)
         Me.TabPage9.Controls.Add(Me.Button21)
         Me.TabPage9.Controls.Add(Me.cmdGotoBrain)
         Me.TabPage9.Location = New System.Drawing.Point(4, 26)
@@ -1487,12 +1531,389 @@ Partial Class Main
         Me.TabPage9.TabIndex = 5
         Me.TabPage9.Text = "Boot Display"
         '
+        'GroupBox16
+        '
+        Me.GroupBox16.Controls.Add(Me.Button40)
+        Me.GroupBox16.Controls.Add(Me.Label38)
+        Me.GroupBox16.Controls.Add(Me.Button39)
+        Me.GroupBox16.Controls.Add(Me.Button33)
+        Me.GroupBox16.Controls.Add(Me.ListBox7)
+        Me.GroupBox16.Controls.Add(Me.GroupBox18)
+        Me.GroupBox16.Controls.Add(Me.GroupBox17)
+        Me.GroupBox16.Controls.Add(Me.txtNewFN)
+        Me.GroupBox16.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox16.Location = New System.Drawing.Point(638, 43)
+        Me.GroupBox16.Name = "GroupBox16"
+        Me.GroupBox16.Size = New System.Drawing.Size(506, 349)
+        Me.GroupBox16.TabIndex = 17
+        Me.GroupBox16.TabStop = False
+        Me.GroupBox16.Text = "Save Bootblock"
+        Me.GroupBox16.Visible = False
+        '
+        'Button40
+        '
+        Me.Button40.Location = New System.Drawing.Point(344, 42)
+        Me.Button40.Name = "Button40"
+        Me.Button40.Size = New System.Drawing.Size(122, 23)
+        Me.Button40.TabIndex = 7
+        Me.Button40.Text = "Copy filename"
+        Me.Button40.UseVisualStyleBackColor = True
+        '
+        'Label38
+        '
+        Me.Label38.AutoSize = True
+        Me.Label38.Location = New System.Drawing.Point(151, 59)
+        Me.Label38.Name = "Label38"
+        Me.Label38.Size = New System.Drawing.Size(133, 13)
+        Me.Label38.TabIndex = 6
+        Me.Label38.Text = "Autofill suggestions:"
+        '
+        'Button39
+        '
+        Me.Button39.Location = New System.Drawing.Point(264, 320)
+        Me.Button39.Name = "Button39"
+        Me.Button39.Size = New System.Drawing.Size(202, 23)
+        Me.Button39.TabIndex = 5
+        Me.Button39.Text = "Cancel"
+        Me.Button39.UseVisualStyleBackColor = True
+        '
+        'Button33
+        '
+        Me.Button33.Location = New System.Drawing.Point(7, 320)
+        Me.Button33.Name = "Button33"
+        Me.Button33.Size = New System.Drawing.Size(252, 23)
+        Me.Button33.TabIndex = 4
+        Me.Button33.Text = "Save bootblock"
+        Me.Button33.UseVisualStyleBackColor = True
+        '
+        'ListBox7
+        '
+        Me.ListBox7.FormattingEnabled = True
+        Me.ListBox7.Location = New System.Drawing.Point(9, 75)
+        Me.ListBox7.Name = "ListBox7"
+        Me.ListBox7.Size = New System.Drawing.Size(457, 108)
+        Me.ListBox7.TabIndex = 3
+        '
+        'GroupBox18
+        '
+        Me.GroupBox18.Controls.Add(Me.TextBox19)
+        Me.GroupBox18.Controls.Add(Me.Label37)
+        Me.GroupBox18.Controls.Add(Me.ListBox6)
+        Me.GroupBox18.Controls.Add(Me.CheckBox6)
+        Me.GroupBox18.Controls.Add(Me.CheckBox7)
+        Me.GroupBox18.Location = New System.Drawing.Point(9, 189)
+        Me.GroupBox18.Name = "GroupBox18"
+        Me.GroupBox18.Size = New System.Drawing.Size(250, 128)
+        Me.GroupBox18.TabIndex = 2
+        Me.GroupBox18.TabStop = False
+        Me.GroupBox18.Text = "Attributes"
+        '
+        'TextBox19
+        '
+        Me.TextBox19.Location = New System.Drawing.Point(8, 75)
+        Me.TextBox19.Multiline = True
+        Me.TextBox19.Name = "TextBox19"
+        Me.TextBox19.Size = New System.Drawing.Size(235, 47)
+        Me.TextBox19.TabIndex = 143
+        '
+        'Label37
+        '
+        Me.Label37.AutoSize = True
+        Me.Label37.Location = New System.Drawing.Point(118, 24)
+        Me.Label37.Name = "Label37"
+        Me.Label37.Size = New System.Drawing.Size(115, 13)
+        Me.Label37.TabIndex = 142
+        Me.Label37.Text = "Kickstart Required"
+        '
+        'ListBox6
+        '
+        Me.ListBox6.FormattingEnabled = True
+        Me.ListBox6.Items.AddRange(New Object() {"KS1.2", "KS1.3", "KS2.0", "KS3.0"})
+        Me.ListBox6.Location = New System.Drawing.Point(110, 38)
+        Me.ListBox6.Name = "ListBox6"
+        Me.ListBox6.Size = New System.Drawing.Size(133, 30)
+        Me.ListBox6.TabIndex = 141
+        '
+        'CheckBox6
+        '
+        Me.CheckBox6.AutoSize = True
+        Me.CheckBox6.Checked = True
+        Me.CheckBox6.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CheckBox6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CheckBox6.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox6.Location = New System.Drawing.Point(17, 28)
+        Me.CheckBox6.Name = "CheckBox6"
+        Me.CheckBox6.Size = New System.Drawing.Size(71, 17)
+        Me.CheckBox6.TabIndex = 139
+        Me.CheckBox6.Text = "Bootable"
+        Me.CheckBox6.UseVisualStyleBackColor = True
+        '
+        'CheckBox7
+        '
+        Me.CheckBox7.AutoSize = True
+        Me.CheckBox7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CheckBox7.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox7.Location = New System.Drawing.Point(17, 52)
+        Me.CheckBox7.Name = "CheckBox7"
+        Me.CheckBox7.Size = New System.Drawing.Size(77, 17)
+        Me.CheckBox7.TabIndex = 140
+        Me.CheckBox7.Text = "Disk Data"
+        Me.CheckBox7.UseVisualStyleBackColor = True
+        '
+        'GroupBox17
+        '
+        Me.GroupBox17.Controls.Add(Me.TreeView2)
+        Me.GroupBox17.Location = New System.Drawing.Point(264, 189)
+        Me.GroupBox17.Name = "GroupBox17"
+        Me.GroupBox17.Size = New System.Drawing.Size(200, 128)
+        Me.GroupBox17.TabIndex = 1
+        Me.GroupBox17.TabStop = False
+        Me.GroupBox17.Text = "Categories"
+        '
+        'TreeView2
+        '
+        Me.TreeView2.Location = New System.Drawing.Point(7, 17)
+        Me.TreeView2.Name = "TreeView2"
+        Me.TreeView2.ShowRootLines = False
+        Me.TreeView2.Size = New System.Drawing.Size(187, 105)
+        Me.TreeView2.TabIndex = 0
+        '
+        'txtNewFN
+        '
+        Me.txtNewFN.Location = New System.Drawing.Point(9, 21)
+        Me.txtNewFN.Name = "txtNewFN"
+        Me.txtNewFN.Size = New System.Drawing.Size(457, 20)
+        Me.txtNewFN.TabIndex = 0
+        '
+        'grpLearn
+        '
+        Me.grpLearn.Controls.Add(Me.GroupBox13)
+        Me.grpLearn.Controls.Add(Me.RadioButton3)
+        Me.grpLearn.Controls.Add(Me.RadioButton2)
+        Me.grpLearn.Controls.Add(Me.Button32)
+        Me.grpLearn.Controls.Add(Me.GroupBox15)
+        Me.grpLearn.Controls.Add(Me.GroupBox14)
+        Me.grpLearn.Controls.Add(Me.RadioButton1)
+        Me.grpLearn.Controls.Add(Me.Button25)
+        Me.grpLearn.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpLearn.Location = New System.Drawing.Point(640, 43)
+        Me.grpLearn.Name = "grpLearn"
+        Me.grpLearn.Size = New System.Drawing.Size(479, 349)
+        Me.grpLearn.TabIndex = 157
+        Me.grpLearn.TabStop = False
+        Me.grpLearn.Text = "Learn Bootblock"
+        Me.grpLearn.Visible = False
+        '
+        'GroupBox13
+        '
+        Me.GroupBox13.Controls.Add(Me.CheckedListBox1)
+        Me.GroupBox13.Controls.Add(Me.TextBox17)
+        Me.GroupBox13.Controls.Add(Me.chkAuto)
+        Me.GroupBox13.Controls.Add(Me.TextBox16)
+        Me.GroupBox13.Controls.Add(Me.Button26)
+        Me.GroupBox13.Controls.Add(Me.DataGridView2)
+        Me.GroupBox13.Controls.Add(Me.Button24)
+        Me.GroupBox13.Location = New System.Drawing.Point(7, 36)
+        Me.GroupBox13.Name = "GroupBox13"
+        Me.GroupBox13.Size = New System.Drawing.Size(267, 251)
+        Me.GroupBox13.TabIndex = 11
+        Me.GroupBox13.TabStop = False
+        Me.GroupBox13.Text = "7 Byte recognition (default)"
+        '
+        'CheckedListBox1
+        '
+        Me.CheckedListBox1.FormattingEnabled = True
+        Me.CheckedListBox1.Items.AddRange(New Object() {"Position 1", "Position 2", "Position 3", "Position 4", "Position 5", "Position 6", "Position 7"})
+        Me.CheckedListBox1.Location = New System.Drawing.Point(171, 108)
+        Me.CheckedListBox1.Name = "CheckedListBox1"
+        Me.CheckedListBox1.Size = New System.Drawing.Size(87, 109)
+        Me.CheckedListBox1.TabIndex = 7
+        '
+        'TextBox17
+        '
+        Me.TextBox17.Location = New System.Drawing.Point(170, 223)
+        Me.TextBox17.Name = "TextBox17"
+        Me.TextBox17.Size = New System.Drawing.Size(88, 20)
+        Me.TextBox17.TabIndex = 6
+        Me.TextBox17.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'chkAuto
+        '
+        Me.chkAuto.AutoSize = True
+        Me.chkAuto.Location = New System.Drawing.Point(174, 70)
+        Me.chkAuto.Name = "chkAuto"
+        Me.chkAuto.Size = New System.Drawing.Size(74, 17)
+        Me.chkAuto.TabIndex = 5
+        Me.chkAuto.Text = "Auto add"
+        Me.chkAuto.UseVisualStyleBackColor = True
+        '
+        'TextBox16
+        '
+        Me.TextBox16.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox16.Location = New System.Drawing.Point(5, 223)
+        Me.TextBox16.Name = "TextBox16"
+        Me.TextBox16.Size = New System.Drawing.Size(160, 20)
+        Me.TextBox16.TabIndex = 3
+        Me.TextBox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'RadioButton1
+        '
+        Me.RadioButton1.AutoSize = True
+        Me.RadioButton1.Location = New System.Drawing.Point(12, 17)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(14, 13)
+        Me.RadioButton1.TabIndex = 6
+        Me.RadioButton1.TabStop = True
+        Me.RadioButton1.UseVisualStyleBackColor = True
+        '
+        'Button26
+        '
+        Me.Button26.Location = New System.Drawing.Point(172, 17)
+        Me.Button26.Name = "Button26"
+        Me.Button26.Size = New System.Drawing.Size(87, 23)
+        Me.Button26.TabIndex = 2
+        Me.Button26.Text = "Add"
+        Me.Button26.UseVisualStyleBackColor = True
+        '
+        'DataGridView2
+        '
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridView2.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Col1, Me.Po, Me.BVal})
+        Me.DataGridView2.Location = New System.Drawing.Point(6, 18)
+        Me.DataGridView2.Name = "DataGridView2"
+        Me.DataGridView2.RowHeadersVisible = False
+        Me.DataGridView2.Size = New System.Drawing.Size(159, 199)
+        Me.DataGridView2.TabIndex = 0
+        '
+        'Col1
+        '
+        Me.Col1.HeaderText = "No"
+        Me.Col1.Name = "Col1"
+        Me.Col1.Width = 50
+        '
+        'Po
+        '
+        Me.Po.HeaderText = "Pos"
+        Me.Po.Name = "Po"
+        Me.Po.Width = 50
+        '
+        'BVal
+        '
+        Me.BVal.HeaderText = "Byte Value"
+        Me.BVal.Name = "BVal"
+        Me.BVal.Width = 50
+        '
+        'Button24
+        '
+        Me.Button24.Location = New System.Drawing.Point(172, 41)
+        Me.Button24.Name = "Button24"
+        Me.Button24.Size = New System.Drawing.Size(87, 23)
+        Me.Button24.TabIndex = 1
+        Me.Button24.Text = "Clear"
+        Me.Button24.UseVisualStyleBackColor = True
+        '
+        'Button32
+        '
+        Me.Button32.Location = New System.Drawing.Point(6, 291)
+        Me.Button32.Name = "Button32"
+        Me.Button32.Size = New System.Drawing.Size(465, 23)
+        Me.Button32.TabIndex = 16
+        Me.Button32.Text = "OK"
+        Me.Button32.UseVisualStyleBackColor = True
+        '
+        'GroupBox15
+        '
+        Me.GroupBox15.Controls.Add(Me.TextBox15)
+        Me.GroupBox15.Location = New System.Drawing.Point(286, 171)
+        Me.GroupBox15.Name = "GroupBox15"
+        Me.GroupBox15.Size = New System.Drawing.Size(176, 44)
+        Me.GroupBox15.TabIndex = 13
+        Me.GroupBox15.TabStop = False
+        Me.GroupBox15.Text = "Learn by CRC32"
+        '
+        'TextBox15
+        '
+        Me.TextBox15.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox15.Location = New System.Drawing.Point(5, 17)
+        Me.TextBox15.Name = "TextBox15"
+        Me.TextBox15.Size = New System.Drawing.Size(160, 20)
+        Me.TextBox15.TabIndex = 10
+        '
+        'RadioButton3
+        '
+        Me.RadioButton3.AutoSize = True
+        Me.RadioButton3.Location = New System.Drawing.Point(291, 152)
+        Me.RadioButton3.Name = "RadioButton3"
+        Me.RadioButton3.Size = New System.Drawing.Size(14, 13)
+        Me.RadioButton3.TabIndex = 15
+        Me.RadioButton3.TabStop = True
+        Me.RadioButton3.UseVisualStyleBackColor = True
+        '
+        'GroupBox14
+        '
+        Me.GroupBox14.Controls.Add(Me.TextBox9)
+        Me.GroupBox14.Location = New System.Drawing.Point(287, 36)
+        Me.GroupBox14.Name = "GroupBox14"
+        Me.GroupBox14.Size = New System.Drawing.Size(176, 78)
+        Me.GroupBox14.TabIndex = 12
+        Me.GroupBox14.TabStop = False
+        Me.GroupBox14.Text = "String selection"
+        '
+        'TextBox9
+        '
+        Me.TextBox9.Location = New System.Drawing.Point(6, 19)
+        Me.TextBox9.Multiline = True
+        Me.TextBox9.Name = "TextBox9"
+        Me.TextBox9.Size = New System.Drawing.Size(159, 49)
+        Me.TextBox9.TabIndex = 5
+        '
+        'RadioButton2
+        '
+        Me.RadioButton2.AutoSize = True
+        Me.RadioButton2.Location = New System.Drawing.Point(293, 19)
+        Me.RadioButton2.Name = "RadioButton2"
+        Me.RadioButton2.Size = New System.Drawing.Size(14, 13)
+        Me.RadioButton2.TabIndex = 14
+        Me.RadioButton2.TabStop = True
+        Me.RadioButton2.UseVisualStyleBackColor = True
+        '
+        'Button25
+        '
+        Me.Button25.Location = New System.Drawing.Point(6, 320)
+        Me.Button25.Name = "Button25"
+        Me.Button25.Size = New System.Drawing.Size(465, 23)
+        Me.Button25.TabIndex = 2
+        Me.Button25.Text = "Cancel"
+        Me.Button25.UseVisualStyleBackColor = True
+        '
+        'cmdLearn
+        '
+        Me.cmdLearn.Location = New System.Drawing.Point(642, 458)
+        Me.cmdLearn.Name = "cmdLearn"
+        Me.cmdLearn.Size = New System.Drawing.Size(224, 26)
+        Me.cmdLearn.TabIndex = 156
+        Me.cmdLearn.Text = "Learn bootblock"
+        Me.cmdLearn.UseVisualStyleBackColor = True
+        '
+        'picPreview
+        '
+        Me.picPreview.BackColor = System.Drawing.Color.AliceBlue
+        Me.picPreview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.picPreview.Location = New System.Drawing.Point(642, 53)
+        Me.picPreview.Name = "picPreview"
+        Me.picPreview.Size = New System.Drawing.Size(475, 339)
+        Me.picPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picPreview.TabIndex = 133
+        Me.picPreview.TabStop = False
+        '
         'rtBBDisplay
         '
         Me.rtBBDisplay.BackColor = System.Drawing.Color.AliceBlue
         Me.rtBBDisplay.DetectUrls = False
         Me.rtBBDisplay.Font = New System.Drawing.Font("Consolas", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rtBBDisplay.Location = New System.Drawing.Point(22, 54)
+        Me.rtBBDisplay.Location = New System.Drawing.Point(20, 54)
         Me.rtBBDisplay.Name = "rtBBDisplay"
         Me.rtBBDisplay.Size = New System.Drawing.Size(612, 338)
         Me.rtBBDisplay.TabIndex = 149
@@ -1650,7 +2071,7 @@ Partial Class Main
         '
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.PictureBox1.Image = Global.AmigaBBReader.My.Resources.Resources.Off
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(588, 426)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(46, 23)
@@ -1658,24 +2079,13 @@ Partial Class Main
         Me.PictureBox1.TabIndex = 153
         Me.PictureBox1.TabStop = False
         '
-        'picPreview
-        '
-        Me.picPreview.BackColor = System.Drawing.Color.AliceBlue
-        Me.picPreview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.picPreview.Location = New System.Drawing.Point(640, 43)
-        Me.picPreview.Name = "picPreview"
-        Me.picPreview.Size = New System.Drawing.Size(514, 371)
-        Me.picPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.picPreview.TabIndex = 133
-        Me.picPreview.TabStop = False
-        '
         'txtNote
         '
         Me.txtNote.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNote.Location = New System.Drawing.Point(640, 420)
+        Me.txtNote.Location = New System.Drawing.Point(642, 398)
         Me.txtNote.Multiline = True
         Me.txtNote.Name = "txtNote"
-        Me.txtNote.Size = New System.Drawing.Size(459, 23)
+        Me.txtNote.Size = New System.Drawing.Size(477, 20)
         Me.txtNote.TabIndex = 141
         '
         'Button5
@@ -1726,7 +2136,7 @@ Partial Class Main
         Me.grpscan.Controls.Add(Me.txtSel)
         Me.grpscan.Enabled = False
         Me.grpscan.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grpscan.Location = New System.Drawing.Point(640, 449)
+        Me.grpscan.Location = New System.Drawing.Point(639, 490)
         Me.grpscan.Name = "grpscan"
         Me.grpscan.Size = New System.Drawing.Size(472, 47)
         Me.grpscan.TabIndex = 142
@@ -1810,21 +2220,12 @@ Partial Class Main
         Me.ListBox2.Size = New System.Drawing.Size(129, 43)
         Me.ListBox2.TabIndex = 132
         '
-        'txtTrail
-        '
-        Me.txtTrail.BackColor = System.Drawing.Color.AliceBlue
-        Me.txtTrail.Location = New System.Drawing.Point(1133, 462)
-        Me.txtTrail.Name = "txtTrail"
-        Me.txtTrail.Size = New System.Drawing.Size(21, 22)
-        Me.txtTrail.TabIndex = 40
-        Me.txtTrail.Visible = False
-        '
         'Button21
         '
         Me.Button21.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button21.Location = New System.Drawing.Point(884, 503)
+        Me.Button21.Location = New System.Drawing.Point(872, 424)
         Me.Button21.Name = "Button21"
-        Me.Button21.Size = New System.Drawing.Size(233, 36)
+        Me.Button21.Size = New System.Drawing.Size(247, 31)
         Me.Button21.TabIndex = 131
         Me.Button21.Text = "Save to BB Collection"
         Me.Button21.UseVisualStyleBackColor = False
@@ -1836,10 +2237,10 @@ Partial Class Main
         Me.cmdGotoBrain.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
         Me.cmdGotoBrain.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdGotoBrain.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.cmdGotoBrain.Location = New System.Drawing.Point(654, 503)
+        Me.cmdGotoBrain.Location = New System.Drawing.Point(642, 424)
         Me.cmdGotoBrain.Name = "cmdGotoBrain"
         Me.cmdGotoBrain.Padding = New System.Windows.Forms.Padding(17, 0, 0, 0)
-        Me.cmdGotoBrain.Size = New System.Drawing.Size(224, 36)
+        Me.cmdGotoBrain.Size = New System.Drawing.Size(224, 31)
         Me.cmdGotoBrain.TabIndex = 53
         Me.cmdGotoBrain.Text = "Find in brainfile"
         Me.cmdGotoBrain.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1943,6 +2344,48 @@ Partial Class Main
         Me.dgvBatch.Size = New System.Drawing.Size(1109, 344)
         Me.dgvBatch.TabIndex = 177
         '
+        'no
+        '
+        Me.no.HeaderText = "Column1"
+        Me.no.Name = "no"
+        Me.no.Visible = False
+        '
+        'fsFile
+        '
+        Me.fsFile.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.fsFile.DefaultCellStyle = DataGridViewCellStyle4
+        Me.fsFile.HeaderText = "File Name"
+        Me.fsFile.Name = "fsFile"
+        Me.fsFile.ReadOnly = True
+        Me.fsFile.Width = 413
+        '
+        'FSize
+        '
+        Me.FSize.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.FSize.HeaderText = "File Size"
+        Me.FSize.Name = "FSize"
+        '
+        'Bootblock
+        '
+        Me.Bootblock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Bootblock.HeaderText = "Bootblock"
+        Me.Bootblock.Name = "Bootblock"
+        Me.Bootblock.ReadOnly = True
+        '
+        'BCRC
+        '
+        Me.BCRC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.BCRC.HeaderText = "Boot CRC"
+        Me.BCRC.Name = "BCRC"
+        Me.BCRC.Width = 80
+        '
+        'KCRC
+        '
+        Me.KCRC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.KCRC.HeaderText = "CRC / Byte Match"
+        Me.KCRC.Name = "KCRC"
+        '
         'chkSkip
         '
         Me.chkSkip.AutoSize = True
@@ -1997,12 +2440,12 @@ Partial Class Main
         Me.cmdView.BackColor = System.Drawing.Color.WhiteSmoke
         Me.cmdView.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
         Me.cmdView.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdView.Image = Global.AmigaBBReader.My.Resources.Resources.disksmall
+        Me.cmdView.Image = CType(resources.GetObject("cmdView.Image"), System.Drawing.Image)
         Me.cmdView.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdView.Location = New System.Drawing.Point(6, 424)
         Me.cmdView.Name = "cmdView"
         Me.cmdView.Padding = New System.Windows.Forms.Padding(0, 0, 23, 0)
-        Me.cmdView.Size = New System.Drawing.Size(330, 58)
+        Me.cmdView.Size = New System.Drawing.Size(330, 37)
         Me.cmdView.TabIndex = 42
         Me.cmdView.Text = "&Open selected file"
         Me.cmdView.UseVisualStyleBackColor = False
@@ -2022,9 +2465,9 @@ Partial Class Main
         Me.cmdOpenFR.Enabled = False
         Me.cmdOpenFR.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdOpenFR.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdOpenFR.Location = New System.Drawing.Point(889, 422)
+        Me.cmdOpenFR.Location = New System.Drawing.Point(6, 463)
         Me.cmdOpenFR.Name = "cmdOpenFR"
-        Me.cmdOpenFR.Size = New System.Drawing.Size(226, 60)
+        Me.cmdOpenFR.Size = New System.Drawing.Size(330, 38)
         Me.cmdOpenFR.TabIndex = 144
         Me.cmdOpenFR.Text = "Open selected file in Bootblock &Ripper"
         Me.cmdOpenFR.UseVisualStyleBackColor = False
@@ -2041,18 +2484,18 @@ Partial Class Main
         '
         Me.cmdStop.Enabled = False
         Me.cmdStop.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdStop.Location = New System.Drawing.Point(1004, 10)
+        Me.cmdStop.Location = New System.Drawing.Point(878, 422)
         Me.cmdStop.Name = "cmdStop"
-        Me.cmdStop.Size = New System.Drawing.Size(111, 56)
+        Me.cmdStop.Size = New System.Drawing.Size(237, 79)
         Me.cmdStop.TabIndex = 125
         Me.cmdStop.Text = "Stop scanner (Space)"
         Me.cmdStop.UseVisualStyleBackColor = False
         '
         'cmdRescan
         '
-        Me.cmdRescan.Location = New System.Drawing.Point(866, 10)
+        Me.cmdRescan.Location = New System.Drawing.Point(878, 6)
         Me.cmdRescan.Name = "cmdRescan"
-        Me.cmdRescan.Size = New System.Drawing.Size(132, 56)
+        Me.cmdRescan.Size = New System.Drawing.Size(237, 56)
         Me.cmdRescan.TabIndex = 167
         Me.cmdRescan.Text = "Rescan drawer (&F5)"
         Me.cmdRescan.UseVisualStyleBackColor = False
@@ -3366,48 +3809,6 @@ Partial Class Main
         '
         Me.sfdASM.DefaultExt = "asm"
         '
-        'no
-        '
-        Me.no.HeaderText = "Column1"
-        Me.no.Name = "no"
-        Me.no.Visible = False
-        '
-        'fsFile
-        '
-        Me.fsFile.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.fsFile.DefaultCellStyle = DataGridViewCellStyle1
-        Me.fsFile.HeaderText = "File Name"
-        Me.fsFile.Name = "fsFile"
-        Me.fsFile.ReadOnly = True
-        Me.fsFile.Width = 413
-        '
-        'FSize
-        '
-        Me.FSize.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.FSize.HeaderText = "File Size"
-        Me.FSize.Name = "FSize"
-        '
-        'Bootblock
-        '
-        Me.Bootblock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Bootblock.HeaderText = "Bootblock"
-        Me.Bootblock.Name = "Bootblock"
-        Me.Bootblock.ReadOnly = True
-        '
-        'BCRC
-        '
-        Me.BCRC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.BCRC.HeaderText = "Boot CRC"
-        Me.BCRC.Name = "BCRC"
-        Me.BCRC.Width = 80
-        '
-        'KCRC
-        '
-        Me.KCRC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.KCRC.HeaderText = "CRC / Byte Match"
-        Me.KCRC.Name = "KCRC"
-        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 14.0!)
@@ -3460,10 +3861,24 @@ Partial Class Main
         Me.TabPage17.ResumeLayout(False)
         Me.TabPage9.ResumeLayout(False)
         Me.TabPage9.PerformLayout()
+        Me.GroupBox16.ResumeLayout(False)
+        Me.GroupBox16.PerformLayout()
+        Me.GroupBox18.ResumeLayout(False)
+        Me.GroupBox18.PerformLayout()
+        Me.GroupBox17.ResumeLayout(False)
+        Me.grpLearn.ResumeLayout(False)
+        Me.grpLearn.PerformLayout()
+        Me.GroupBox13.ResumeLayout(False)
+        Me.GroupBox13.PerformLayout()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox15.ResumeLayout(False)
+        Me.GroupBox15.PerformLayout()
+        Me.GroupBox14.ResumeLayout(False)
+        Me.GroupBox14.PerformLayout()
+        CType(Me.picPreview, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox11.ResumeLayout(False)
         Me.GroupBox11.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picPreview, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpscan.ResumeLayout(False)
         Me.grpscan.PerformLayout()
         Me.TabPage7.ResumeLayout(False)
@@ -3559,7 +3974,6 @@ Partial Class Main
     Friend WithEvents TabPage9 As System.Windows.Forms.TabPage
     Friend WithEvents txtClass As System.Windows.Forms.TextBox
     Friend WithEvents cmdGotoBrain As System.Windows.Forms.Button
-    Friend WithEvents txtTrail As System.Windows.Forms.TextBox
     Friend WithEvents txtSel As System.Windows.Forms.TextBox
     Friend WithEvents cmdBSPrev As System.Windows.Forms.Button
     Friend WithEvents cmdBSNext As System.Windows.Forms.Button
@@ -3836,4 +4250,41 @@ Partial Class Main
     Friend WithEvents Bootblock As DataGridViewTextBoxColumn
     Friend WithEvents BCRC As DataGridViewTextBoxColumn
     Friend WithEvents KCRC As DataGridViewTextBoxColumn
+    Friend WithEvents cmdLearn As Button
+    Friend WithEvents grpLearn As GroupBox
+    Friend WithEvents Button24 As Button
+    Friend WithEvents DataGridView2 As DataGridView
+    Friend WithEvents GroupBox15 As GroupBox
+    Friend WithEvents TextBox15 As TextBox
+    Friend WithEvents GroupBox14 As GroupBox
+    Friend WithEvents TextBox9 As TextBox
+    Friend WithEvents GroupBox13 As GroupBox
+    Friend WithEvents Button25 As Button
+    Friend WithEvents TextBox16 As TextBox
+    Friend WithEvents Button26 As Button
+    Friend WithEvents RadioButton3 As RadioButton
+    Friend WithEvents RadioButton2 As RadioButton
+    Friend WithEvents RadioButton1 As RadioButton
+    Friend WithEvents chkAuto As CheckBox
+    Friend WithEvents TextBox17 As TextBox
+    Friend WithEvents Button32 As Button
+    Friend WithEvents GroupBox16 As GroupBox
+    Friend WithEvents GroupBox18 As GroupBox
+    Friend WithEvents CheckBox6 As CheckBox
+    Friend WithEvents CheckBox7 As CheckBox
+    Friend WithEvents GroupBox17 As GroupBox
+    Friend WithEvents txtNewFN As TextBox
+    Friend WithEvents TreeView2 As TreeView
+    Friend WithEvents Button33 As Button
+    Friend WithEvents ListBox7 As ListBox
+    Friend WithEvents TextBox19 As TextBox
+    Friend WithEvents Label37 As Label
+    Friend WithEvents ListBox6 As ListBox
+    Friend WithEvents Button39 As Button
+    Friend WithEvents Label38 As Label
+    Friend WithEvents Button40 As Button
+    Friend WithEvents CheckedListBox1 As CheckedListBox
+    Friend WithEvents Col1 As DataGridViewTextBoxColumn
+    Friend WithEvents Po As DataGridViewTextBoxColumn
+    Friend WithEvents BVal As DataGridViewTextBoxColumn
 End Class

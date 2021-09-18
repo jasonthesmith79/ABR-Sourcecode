@@ -10,5 +10,4 @@
         ColorName = CName
         Color = CatCol
     End Sub
-
 End Class
